@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/5.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/4.jpg">
 <meta property="article:published_time" content="2020-04-22T03:36:52.000Z">
-<meta property="article:modified_time" content="2020-04-22T04:49:33.334Z">
+<meta property="article:modified_time" content="2020-04-22T05:10:19.420Z">
 <meta property="article:author" content="韦键松">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/1.jpg">
@@ -338,7 +338,7 @@ deploy:
 <p>是不是很简单呀？<br><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/8.jpg" alt></p>
 <p>but， 当时我搭建的时候真的气到爆炸，每走一步，就出现一个错误，特别是下载git那里，我发现在cmd里面就是下载不了，最后不得不用软件管家下载。<br>若你未关联Github，则执行hexo deploy<br>命令时终端会提示你输入Github的用户名和密码，即<br>Username for ‘<a href="https://github.com&#39;" target="_blank" rel="noopener">https://github.com&#39;</a>:<br>Password for ‘<a href="https://github.com&#39;" target="_blank" rel="noopener">https://github.com&#39;</a>:</p>
 <p>这样呢，是不是就会好了呢，nonono<br><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/6.jpg" alt></p>
-<p>你的博客不可能都是文字描述吧，古人还说图文并茂呢，所以呀，我迎来了我的又一个大坑，去chrome上访问了很多大佬的博客，然后乐呵呵的去安装步骤一步步进行，安装了上传图片的插件:<br>1.首先把blog（hexo）目录下的_config.yml里的psot_asset_folder:设置为true</p>
+<h2 id="关于如何上传本地图片"><a href="#关于如何上传本地图片" class="headerlink" title="关于如何上传本地图片"></a>关于如何上传本地图片</h2><p>你的博客不可能都是文字描述吧，古人还说图文并茂呢，所以呀，我迎来了我的又一个大坑，去chrome上访问了很多大佬的博客，然后乐呵呵的去安装步骤一步步进行，安装了上传图片的插件:<br>1.首先把blog（hexo）目录下的_config.yml里的psot_asset_folder:设置为true</p>
 <p>2.在blog（hexo）目录下执行:</p>
 <p>cnpm install hexo-asset-image –save</p>
 <p>3.在blog（hexo）目录下Git Bash Here，运行hexo n “博客名”来生成md博客时，会在_post目录下看到一个与博客同名的文件夹。</p>
@@ -346,11 +346,13 @@ deploy:
 <p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E5%9B%BE%E7%89%87%E5%90%8D.jpg" alt="你想要输入的替代文字"></p>
 <p>然后》》》》</p>
 <p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/9.png" alt></p>
-<p>what?<br>关键是这可是安装大佬的方法一步步进行的哎，咋回事啊，小老弟？<br>后来找了很多关于这个的博客，差不多是这个方法啊，难不成我的电脑有毒吗？</p>
+<p>what?<br>关键是这可是按照大佬的方法一步步进行的哎，咋回事啊，小老弟？<br>后来找了很多关于这个的博客，差不多是这个方法啊，难不成我的电脑有毒吗？</p>
 <p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/5.jpg" alt></p>
 <p>后来，终于在一个冷门的论坛里面找到了原因：可能是版本原因<br>cnpm install hexo-asset-image –save<br>使用这条语句，安装的是0.0.1版本的插件<br>cnpm install <a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="noopener">https://github.com/CodeFalling/hexo-asset-image</a> – save<br>使用这条语句，安装的是0.0.5版本的插件</p>
 <p>由于地址映射的不同，0.0.1这个版本的不支持本地图片的映射。</p>
-<h2 id><a href="#" class="headerlink" title></a><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/4.jpg" alt></h2>
+<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/4.jpg" alt></p>
+<p>哼，你对bug的力量一无所知。</p>
+<h2 id="好了，这就是我关于搭建博客的一些方法，以及遇到过的坑"><a href="#好了，这就是我关于搭建博客的一些方法，以及遇到过的坑" class="headerlink" title="好了，这就是我关于搭建博客的一些方法，以及遇到过的坑"></a>好了，这就是我关于搭建博客的一些方法，以及遇到过的坑</h2>
       
     </div>
     
@@ -361,7 +363,7 @@ deploy:
         <p><span>本文标题:</span><a  href="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">扒一扒搭建博客踩过的坑</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 韦键松 的个人博客">韦键松</a></p>
         <p><span>发布时间:</span>2020年04月22日 - 11时36分</p>
-        <p><span>最后更新:</span>2020年04月22日 - 12时49分</p>
+        <p><span>最后更新:</span>2020年04月22日 - 13时10分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/" title="扒一扒搭建博客踩过的坑">http://yoursite.com/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/　　作者: 韦键松" title=""></span>
@@ -389,7 +391,7 @@ deploy:
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#B站是个好地方"><span class="toc-number">1.</span> <span class="toc-text">B站是个好地方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于更换主题"><span class="toc-number">2.</span> <span class="toc-text">关于更换主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">3.</span> <span class="toc-text"></span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#B站是个好地方"><span class="toc-number">1.</span> <span class="toc-text">B站是个好地方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于更换主题"><span class="toc-number">2.</span> <span class="toc-text">关于更换主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于如何上传本地图片"><span class="toc-number">3.</span> <span class="toc-text">关于如何上传本地图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#好了，这就是我关于搭建博客的一些方法，以及遇到过的坑"><span class="toc-number">4.</span> <span class="toc-text">好了，这就是我关于搭建博客的一些方法，以及遇到过的坑</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
