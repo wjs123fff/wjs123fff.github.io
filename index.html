@@ -324,33 +324,21 @@
 <p>Dist函数就是欧氏距离算法，计算两个点坐标的距离。定义一个变量d存储计算的距离，如果当前距离小于recordDistance存储的距离，就更新，并将这条路径存入bestEver数组中。<br>最后用p5.js进行可视化。<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/9.png" alt></p>
 <p>我们要明白的是，只要随机的量足够大，最终一定能得到结果，因为能随机到枚举的全部。<br>是不是感觉最终得不到最优解，可是当你循环个50000次试试，你就知道，基本上99%都能拿到最优解，这个比暴力搜索快，但是比dp不稳，这个算法的有点在于编码不复杂，而且在基本问题上面都能得到最优解，所以最终我选择了这个</p>
 <hr>
-<h2 id="四流程图"><a href="#四流程图" class="headerlink" title="四流程图:"></a>四流程图:</h2><h2 id><a href="#" class="headerlink" title></a><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/10.jpg" alt></h2><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果:"></a>实验结果:</h2><p>这个是城市数为6时生成的最短路径<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/11.jpg" alt></p>
-<p>这个是城市数为8时，生成的最短路径<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/12.jpg" alt></p>
+<h2 id="四流程图"><a href="#四流程图" class="headerlink" title="四流程图:"></a>四流程图:</h2><h2 id><a href="#" class="headerlink" title></a><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/10.jpg" alt></h2><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果:"></a>实验结果:</h2><p>这个是城市数为6时生成的最短路径<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/11.png" alt></p>
+<p>这个是城市数为8时，生成的最短路径<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/12.png" alt></p>
 <hr>
 <h2 id="总结和展望："><a href="#总结和展望：" class="headerlink" title="总结和展望："></a>总结和展望：</h2><p>   这一次的旅行商问题，我在百度上查找了很多的方法，也看了很多算法的实现原理。我就找了一种比较简单的算法。这个算法也是追求局部最优解而忽视了全局最优的选择。所以不太稳定。但是效率却很高，时间复杂度比较小。这个算法的难点在于随机路径的参数，以及如何在这个路径下找到最短路径。可以通过交换两个城市来进行比较。<br>  总之这一次课题让我有了很大的感触，算法真的特别能锻炼人的思维，同时自己也在不断的思考慢慢的得到了成长。</p>
 <hr>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><html>
-<head>
-  <meta charset="UTF-8">
-
-  <script language="javascript" type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.min.js"></script>
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-
-<body>
-<script>
-
-<p>var cities = [];<br>var totalCities = 6;<br>var recordDistance;<br>var bestEver;</p>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><p>var cities = [];<br>var totalCities = 6;<br>var recordDistance;<br>var bestEver;</p>
 <p>function setup() {<br>  createCanvas(600,400);<br>  for (var i = 0; i &lt; totalCities; i++) {<br>    var v = createVector(random(width), random(height));<br>    cities[i] = v;<br>  }<br>  var d = calcDistance(cities);<br>  recordDistance = d;<br>  bestEver = cities.slice();<br>}</p>
 <p>function draw() {<br>  background(0);</p>
 <p>  stroke(255);<br>  strokeWeight(1);<br>  noFill();<br>  beginShape();<br>  for (var i = 0; i &lt; cities.length; i++) {<br>    vertex(cities[i].x, cities[i].y);<br>  }<br>  endShape();</p>
 <p>  stroke(255, 0, 255);<br>  strokeWeight(4);<br>  noFill();<br>  beginShape();<br>  for (var i = 0; i &lt; cities.length; i++) {<br>    vertex(bestEver[i].x, bestEver[i].y);<br>  }<br>  endShape();</p>
 <p>  for (let k = 0;k &lt; 20; k++){</p>
 <p>  var i = floor(random(cities.length));<br>  var j = floor(random(cities.length));<br>  swap(cities, i, j);</p>
-<p>  var d = calcDistance(cities);<br>  if (d &lt; recordDistance) {<br>    recordDistance = d;<br>    bestEver = cities.slice();<br>  }<br>}<br>}<br>function swap(a, i, j) {<br>  var temp = a[i];<br>  a[i] = a[j];<br>  a[j] = temp;<br>}<br>function calcDistance(points) {<br>  var sum = 0;<br>  for (var i = 0; i &lt; points.length - 1; i++) {<br>    var d = dist(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);<br>    sum += d;<br>  }<br>  return sum;<br>}<br></script><p></p>
-</body>
-</html>
----
+<p>  var d = calcDistance(cities);<br>  if (d &lt; recordDistance) {<br>    recordDistance = d;<br>    bestEver = cities.slice();<br>  }<br>}<br>}<br>function swap(a, i, j) {<br>  var temp = a[i];<br>  a[i] = a[j];<br>  a[j] = temp;<br>}<br>function calcDistance(points) {<br>  var sum = 0;<br>  for (var i = 0; i &lt; points.length - 1; i++) {<br>    var d = dist(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);<br>    sum += d;<br>  }<br>  return sum;<br>}</p>
+<hr>
+
       
     </div>
     
