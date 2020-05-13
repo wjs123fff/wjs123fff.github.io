@@ -277,6 +277,125 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-程序员-舔狗" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/13/%E7%A8%8B%E5%BA%8F%E5%91%98-%E8%88%94%E7%8B%97/" class="article-date">
+      <time datetime="2020-05-13T07:01:50.000Z" itemprop="datePublished">2020-05-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/13/%E7%A8%8B%E5%BA%8F%E5%91%98-%E8%88%94%E7%8B%97/">程序员 = 舔狗</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="bug的魅力"><a href="#bug的魅力" class="headerlink" title="bug的魅力"></a>bug的魅力</h2><p>之前运行一个项目，各种配置，然后出各种bug，还不带重样的。当时整个人真的是被bug折磨到不行，刚调好Tomact的配置，数据库又出现了问题。我总结了一些我遇到的问题：<br>1.数据库无法加载驱动：java.sql.SQLException: No suitable driver found for jdbc<br>我找遍了方法，还是不能解决，我把驱动加到项目lib下,或者把之前的驱动remove掉然后重新加载，后来我在想会不会是代码的问题。因为这个项目就是简单的MVC模式下的一个小项目，没有涉及到更复杂的框架。检查后也没有发现。我打算把项目重构一下。</p>
+<p>2.tomcat无法加载，或者找不到路径输出404错误。后来我找了好久才发现是tomcat的日志冗余导致项目加载不成功，后来我换了另外一个版本的tomcat就好了。</p>
+<p>3.因为之前项目运行的Oracle数据库，而我把Oracle卸载了，安装的是MySQL数据库，后来我导入表的时候发现总是出错。我之前那个项目的数据库中运用了触发器，这个虽然有点危险，但是我感觉太省事了，其实触发器用的好的话真的对数据统一化起很大的作用。但是我将触发器添加到表中时就是出错了。我检查了好多遍，可是还是想不通。<br>下面举例其中一个触发器：<br>实现级联更新<br>采购管理t_Buy与员工管理(enumber)：<br>CREATE OR REPLACE TRIGGER TGR_employee_UPDATE<br>AFTER UPDATE OF e_id ON employee<br>FOR EACH ROW<br>BEGIN<br>  IF :OLD.e_id&lt;&gt;:NEW.e_id THEN<br>    UPDATE Purchasing_List SET e_id=:NEW.e_id WHERE e_id=:OLD.e_id;<br>  END IF;<br>END;</p>
+<p><img src="/2020/05/13/%E7%A8%8B%E5%BA%8F%E5%91%98-%E8%88%94%E7%8B%97/1.jpg" alt></p>
+<p>纵使BUG虐我千百遍，我待BUG如初恋。<br>这不就是舔狗本质吗？</p>
+<h2 id="关于框架二三事"><a href="#关于框架二三事" class="headerlink" title="关于框架二三事"></a>关于框架二三事</h2><p>什么是框架：框架是一个半成品，已经对基础的代码进行了封装并提供相应的API，开发者在使用框架是直接调用封装好的api可以省去很多代码编写，从而提高工作效率和开发速度。</p>
+<p>我的理解：前阵子学过软件分析与设计，里面说到关于模式的开发其实和我们今天流行的前端框架，后端框架啥的差不多。简单点说，以前只是为了实现这个功能和需求。但选择的开发更多的是面向工程化的开发。所谓前人栽树，后人乘凉。框架就是程序员前辈们经过不断的总结后的出的最优解。</p>
+<p>下面来举例java开发中遇到的一些框架吧：</p>
+<h2 id="一、SpringMVC"><a href="#一、SpringMVC" class="headerlink" title="一、SpringMVC"></a>一、SpringMVC</h2><p>Spring Web MVC是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，即使用了MVC架构模式的思想，将web层进行职责解耦，基于请求驱动指的就是使用请求-响应模型，框架的目的就是帮助我们简化开发，Spring Web MVC也是要简化我们日常Web开发的。</p>
+<p>模型（Model ）封装了应用程序的数据和一般他们会组成的POJO。</p>
+<p>视图（View）是负责呈现模型数据和一般它生成的HTML输出，客户端的浏览器能够解释。</p>
+<p>控制器（Controller ）负责处理用户的请求，并建立适当的模型，并把它传递给视图渲染。</p>
+<p>Spring的web模型 - 视图 - 控制器（MVC）框架是围绕着处理所有的HTTP请求和响应的DispatcherServlet的设计。<br>申请流程图：<br><img src="/2020/05/13/%E7%A8%8B%E5%BA%8F%E5%91%98-%E8%88%94%E7%8B%97/3.jpg" alt></p>
+<h2 id="二、Spring"><a href="#二、Spring" class="headerlink" title="二、Spring"></a>二、Spring</h2><p>2.1、IOC容器：</p>
+<p>IOC容器就是具有依赖注入功能的容器，IOC容器负责实例化、定位、配置应用程序中的对象及建立这些对象间的依赖。应用程序无需直接在代码中new相关的对象，应用程序由IOC容器进行组装。在Spring中BeanFactory是IOC容器的实际代表者。</p>
+<p>2.2、AOP：</p>
+<p>简单地说，就是将那些与业务无关，却为业务模块所共同调用的逻辑或责任封装起来，便于减少系统的重复代码，降低模块间的耦合度，并有利于未来的可操作性和可维护性。AOP代表的是一个横向的关系</p>
+<p>AOP用来封装横切关注点，具体可以在下面的场景中使用:</p>
+<p>Authentication 权限<br>Caching 缓存<br>Context passing 内容传递<br>Error handling 错误处理<br>Lazy loading　懒加载<br>Debugging 调试<br>logging, tracing, profiling and monitoring　记录跟踪　优化　校准<br>Performance optimization　性能优化<br>Persistence 持久化<br>Resource pooling　资源池<br>Synchronization　同步<br>Transactions 事务</p>
+<h2 id="springBoot"><a href="#springBoot" class="headerlink" title="springBoot"></a>springBoot</h2><p>SpringBoot是Spring家族推出的一个“简化版”，通过SpringBoot可以更加方便地完成开发过程，很多配置也做了大幅度地简化，这是提升Spring使用体验的关键。Spring经过多年的发展形成了一个庞大的解决方案，也陆续推出了一系列应用于不同场景的开发框架，虽然这些框架提供了更加丰富的开发方案，但是也给开发人员带来了一定的困惑，在多个框架之间切换和组合也带来了一定的维护问题，而SpringBoot实际上就是为了解决这些问题。</p>
+<h2 id="三、Mybatis"><a href="#三、Mybatis" class="headerlink" title="三、Mybatis"></a>三、Mybatis</h2><p>MyBatis 是支持普通 SQL查询，存储过程和高级映射的优秀持久层框架。MyBatis 消除了几乎所有的JDBC代码和参数的手工设置以及结果集的检索。MyBatis 使用简单的 XML或注解用于配置和原始映射，将接口和 Java 的POJOs（Plain Old Java Objects，普通的 Java对象）映射成数据库中的记录。</p>
+<p>总体流程：</p>
+<p>(1)加载配置并初始化</p>
+<p>触发条件：加载配置文件</p>
+<p>将SQL的配置信息加载成为一个个MappedStatement对象（包括了传入参数映射配置、执行的SQL语句、结果映射配置），存储在内存中。</p>
+<p>(2)接收调用请求</p>
+<p>触发条件：调用Mybatis提供的API</p>
+<p>传入参数：为SQL的ID和传入参数对象</p>
+<p>处理过程：将请求传递给下层的请求处理层进行处理。</p>
+<p>(3)处理操作请求</p>
+<p>触发条件：API接口层传递请求过来</p>
+<p>传入参数：为SQL的ID和传入参数对象</p>
+<p>处理过程：</p>
+<p>(A)根据SQL的ID查找对应的MappedStatement对象。</p>
+<p>(B)根据传入参数对象解析MappedStatement对象，得到最终要执行的SQL和执行传入参数。</p>
+<p>(C)获取数据库连接，根据得到的最终SQL语句和执行传入参数到数据库执行，并得到执行结果。</p>
+<p>(D)根据MappedStatement对象中的结果映射配置对得到的执行结果进行转换处理，并得到最终的处理结果。</p>
+<p>(E)释放连接资源。</p>
+<p>(4)返回处理结果将最终的处理结果返回</p>
+<p>MyBatis 最强大的特性之一就是它的动态语句功能。如果您以前有使用JDBC或者类似框架的经历，您就会明白把SQL语句条件连接在一起是多么的痛苦，要确保不能忘记空格或者不要在columns列后面省略一个逗号等。动态语句能够完全解决掉这些痛苦。</p>
+<h2 id="四、Dubbo"><a href="#四、Dubbo" class="headerlink" title="四、Dubbo"></a>四、Dubbo</h2><p>Dubbo是一个分布式服务框架，致力于提供高性能和透明化的RPC（远程过程调用协议）远程服务调用方案，以及SOA服务治理方案。简单的说，dubbo就是个服务框架，如果没有分布式的需求，其实是不需要用的，只有在分布式的时候，才有dubbo这样的分布式服务框架的需求，并且本质上是个服务调用的东东，说白了就是个远程服务调用的分布式框架。</p>
+<p>1、透明化的远程方法调用，就像调用本地方法一样调用远程方法，只需简单配置，没有任何API侵入。</p>
+<p>2、软负载均衡及容错机制，可在内网替代F5等硬件负载均衡器，降低成本，减少单点。</p>
+<p>3、 服务自动注册与发现，不再需要写死服务提供方地址，注册中心基于接口名查询服务提供者的IP地址，并且能够平滑添加或删除服务提供者。</p>
+<p>节点角色说明：</p>
+<p>Provider: 暴露服务的服务提供方。<br>Consumer: 调用远程服务的服务消费方。<br>Registry: 服务注册与发现的注册中心。<br>Monitor: 统计服务的调用次调和调用时间的监控中心。<br>Container: 服务运行容器。</p>
+<h2 id="五、Maven"><a href="#五、Maven" class="headerlink" title="五、Maven"></a>五、Maven</h2><p>Maven这个个项目管理和构建自动化工具，越来越多的开发人员使用它来管理项目中的jar包。但是对于我们程序员来说，我们最关心的是它的项目构建功能。</p>
+<p>Maven 特点<br>项目设置遵循统一的规则。</p>
+<p>任意工程中共享。</p>
+<p>依赖管理包括自动更新。</p>
+<p>一个庞大且不断增长的库。</p>
+<p>可扩展，能够轻松编写 Java 或脚本语言的插件。</p>
+<p>只需很少或不需要额外配置即可即时访问新功能。</p>
+<p>基于模型的构建 − Maven能够将任意数量的项目构建到预定义的输出类型中，如 JAR，WAR 或基于项目元数据的分发，而不需要在大多数情况下执行任何脚本。</p>
+<p>项目信息的一致性站点 − 使用与构建过程相同的元数据，Maven 能够生成一个网站或PDF，包括您要添加的任何文档，并添加到关于项目开发状态的标准报告中。</p>
+<p>发布管理和发布单独的输出 − Maven 将不需要额外的配置，就可以与源代码管理系统（如 Subversion 或 Git）集成，并可以基于某个标签管理项目的发布。它也可以将其发布到分发位置供其他项目使用。Maven 能够发布单独的输出，如 JAR，包含其他依赖和文档的归档，或者作为源代码发布。</p>
+<p>向后兼容性 − 您可以很轻松的从旧版本 Maven 的多个模块移植到 Maven 3 中。</p>
+<p>子项目使用父项目依赖时，正常情况子项目应该继承父项目依赖，无需使用版本号，</p>
+<p>并行构建 − 编译的速度能普遍提高20 - 50 %。</p>
+<p>更好的错误报告 − Maven 改进了错误报告，它为您提供了 Maven wiki 页面的链接，您可以点击链接查看错误的完整描述<br>(当时在东软实训时，老师大概花了一个星期来讲什么是maven框架和Mybatis框架，尽管实训时间短，但是真的学到了很多。对框架有了初步的理解，但是仅仅只是初步而已，哎，太难了)</p>
+<hr>
+<p><img src="/2020/05/13/%E7%A8%8B%E5%BA%8F%E5%91%98-%E8%88%94%E7%8B%97/9.jpg" alt></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-leetcode刷题第一天：幂运算" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
