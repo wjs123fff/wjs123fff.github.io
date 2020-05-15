@@ -7,30 +7,27 @@
   
   
   
-  <title>酒店管理系统 | Hexo</title>
+  <title>Vue知识点1 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="酒店管理系统用例文本：1.系统功能设计（模块结构图统领下，对各个模块功能进行详尽的文字描述）应用环境:根据用户的需求陈述可以确定系统分为前台和后台，前台的主要功能是接待、预订、收银等;后台的主要是管理、统计等。本    系统只能在非网络模式下运行，无论是服务人员、管理人员还是经理，    都要通过系统登录本系统，服务人员通过用户界面获取信息、登记客户    信息;管理人员通过权限对系统进行管理，了">
+  <meta name="description" content="Vue–1day1.关于let(es6中定义变量)和const(es6定义常量)let定义得变量的值是可以进行改变的，但是const定义的变量是不能改变的。var没有作用域 2.vue的基本格式：  &lt;div id&#x3D;&quot;app&quot;&gt;{{message}}}&lt;&#x2F;div&gt;  ---&gt;{{}}里面嵌套的是程序段或数据  &lt;script&gt; cons">
 <meta property="og:type" content="article">
-<meta property="og:title" content="酒店管理系统">
-<meta property="og:url" content="http://yoursite.com/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:title" content="Vue知识点1">
+<meta property="og:url" content="http://yoursite.com/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="酒店管理系统用例文本：1.系统功能设计（模块结构图统领下，对各个模块功能进行详尽的文字描述）应用环境:根据用户的需求陈述可以确定系统分为前台和后台，前台的主要功能是接待、预订、收银等;后台的主要是管理、统计等。本    系统只能在非网络模式下运行，无论是服务人员、管理人员还是经理，    都要通过系统登录本系统，服务人员通过用户界面获取信息、登记客户    信息;管理人员通过权限对系统进行管理，了">
+<meta property="og:description" content="Vue–1day1.关于let(es6中定义变量)和const(es6定义常量)let定义得变量的值是可以进行改变的，但是const定义的变量是不能改变的。var没有作用域 2.vue的基本格式：  &lt;div id&#x3D;&quot;app&quot;&gt;{{message}}}&lt;&#x2F;div&gt;  ---&gt;{{}}里面嵌套的是程序段或数据  &lt;script&gt; cons">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/1.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/10.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/2.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/3.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/4.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/5.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/6.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/7.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/8.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/9.png">
-<meta property="article:published_time" content="2020-04-24T11:52:56.000Z">
-<meta property="article:modified_time" content="2020-04-26T04:06:12.566Z">
+<meta property="og:image" content="http://yoursite.com/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/5.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/6.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/7.png">
+<meta property="article:published_time" content="2020-05-15T03:28:58.000Z">
+<meta property="article:modified_time" content="2020-05-15T11:19:03.676Z">
 <meta property="article:author" content="韦键松">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/1.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -287,11 +284,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-酒店管理系统" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Vue知识点1" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" class="article-date">
-      <time datetime="2020-04-24T11:52:56.000Z" itemprop="datePublished">2020-04-24</time>
+      <a  href="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/" class="article-date">
+      <time datetime="2020-05-15T03:28:58.000Z" itemprop="datePublished">2020-05-15</time>
 </a>
 
     </div>
@@ -305,7 +302,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      酒店管理系统
+      Vue知识点1
     </h1>
   
 
@@ -323,48 +320,29 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="酒店管理系统"><a href="#酒店管理系统" class="headerlink" title="酒店管理系统"></a>酒店管理系统</h2><p>用例文本：<br>1.系统功能设计（模块结构图统领下，对各个模块功能进行详尽的文字描述）<br>应用环境:根据用户的需求陈述可以确定系统分为前台和后台，<br>前台的主要功能是接待、预订、收银等;后台的主要是管理、统计等。本    系统只能在非网络模式下运行，无论是服务人员、管理人员还是经理，    都要通过系统登录本系统，服务人员通过用户界面获取信息、登记客户    信息;管理人员通过权限对系统进行管理，了解酒店动态。</p>
-<p>1.1登录系统:主要执行数据库的运行权限管理，只有用户登录通过才可以进入主页面进行操作。<br>1.2顾客信息登记系统（订单管理）：主要是记录顾客基本入住信息，包括身份证，姓名，年龄，家庭住址，以及一些入住信息，这个将关系到后面得结算系统。后台管理人员也可以通过查看客源来调整相应的住房情况。</p>
-<p>1.3客房标准管理系统:包括客房的编号、类型、面积、最多容纳的人数、<br>价格以及客房的硬件设施，如果空调、电视、网络、卫生间等。当添加    新的客房时，就添加相应的标准信息，可以随时查看客房的标准信息，<br>根据需要进行修改和删除等操作。</p>
-<p>1.4客房信息管理系统:酒店客房管理系统的核心部分。它的主要功能是    存储订房时的信息，包括登记人姓名、证件号、登记类型、所选的餐饮    标准、押金及入住时间等。这些信息直接关系到后续的结算信息管理。</p>
-<p>1.5结算信息管理系统:结合订房的信息进行自动化结账，并存储结算信    息，包括客房定价、押金、餐饮消费、客房消费、客户类型、结算时间、    入住天数、消费总额等,  结算完毕就可以退房。</p>
-<p>1．    参与者：</p>
-<p>参与者                角色描述<br>前台人员            接待、订房，收银等<br>顾客               预定管理<br>后台管理人员        管理、统计等<br>（备注：本系统只能在非网络模式下运行，所以所谓的预定管理指的是有一些不是当天入住的顾客）</p>
-<h2 id="用例图"><a href="#用例图" class="headerlink" title="用例图"></a>用例图</h2><p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/1.jpg" alt></p>
-<h2 id="活动流程图"><a href="#活动流程图" class="headerlink" title="活动流程图"></a>活动流程图</h2><p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/10.png" alt></p>
-<h2 id="用例描述"><a href="#用例描述" class="headerlink" title="用例描述"></a>用例描述</h2><p>3用例描述：</p>
-<p>用例号    1<br>用例名称    顾客信息登记<br>参与者    前台人员，顾客，<br>用例描述    顾客可以提前和酒店预约住房，前台人员根据顾客的描述，将顾客的一些基本信息进行系统录入数据库，并和住房信息表进行关联。</p>
-<p>用例号    2<br>用例名称    住房信息系统<br>参与者    前台人员，后台人员<br>用例描述    前台人员通过住房信息系统，进行顾客住房信息的存储（下单），并根据顾客需求调整住房信息的一些参数，例如续住，押金，以及换房等信息的修改。后台人员通过住房信息表可以关联到客房标准的修改，以及了解酒店的动态。</p>
-<p>用例号    3<br>用例名称    结算系统<br>参与者    前台人员，后台<br>用例描述    根据顾客信息表以及住房信息表进行顾客入住的结算，退还相应的押金，打印账单</p>
-<p>用例号    4<br>用例名称    客房标准<br>参与者    后台<br>用例描述    后台人员根据酒店的情况，可以增加一些新的套间，房型。</p>
-<h2 id="系统顺序图"><a href="#系统顺序图" class="headerlink" title="系统顺序图"></a>系统顺序图</h2><p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/2.jpg" alt></p>
-<h2 id="操作契约"><a href="#操作契约" class="headerlink" title="操作契约:"></a>操作契约:</h2><p>契约name:Win2 (宾客订单)<br>操作：win2 ()<br>交叉引用：用例：添加顾客信息<br>前置条件：无<br>后置条件：初始化数据库顾客信息表table的属性，<br>          与查询Win3()，删除Win4()，修改Win5()形成关联</p>
-<p>契约name:Win4<br>操作：win4 ()<br>交叉引用：用例：删除顾客信息<br>前置条件：无<br>后置条件： 数据库的table表刷新，<br>          与查询Win3()，修改Win5()形成关联，<br>           Win3()查询的顾客信息改变<br>           Win5()显示的顾客信息表改变。</p>
-<p>契约name:Win5<br>操作：win5 ()<br>交叉引用：用例：修改顾客信息<br>前置条件：无<br>后置条件： 数据库的顾客信息表刷新，<br>          与删除Win4()，查询Win3()形成关联，<br>           Win3()查询的顾客信息改变<br>           Win4()显示的顾客信息表改变。</p>
-<p>契约name:Win1<br>操作：win1 ()<br>交叉引用：用例：顾客信息查询<br>前置条件：无<br>后置条件：无 </p>
-<p>契约name:RoomSearch<br>操作：RoomSearch ()<br>交叉引用：用例：客房信息查询<br>前置条件：无<br>后置条件： 数据库的住房信息表刷新，<br>          与RoomAdd(),RoomDelete(),RoomUpdate()形成关联</p>
-<p>契约name:Room_date<br>操作：Room_date ()<br>交叉引用：用例：入住信息登记<br>前置条件：无<br>后置条件： 数据库的入住信息表刷新，与Room_mondel(),Room_update(),Room_delete()形成关联。</p>
-<p>契约name:Room_model<br>操作：Room_model()<br>交叉引用：用例：入住信息查询<br>前置条件：无<br>后置条件： 无</p>
-<p>契约name:Room_update<br>操作：Room_update ()<br>交叉引用：用例：入住信息更新<br>前置条件：无<br>后置条件：数据库入住信息表刷新，与Room_model()，Room_delete()，Room_search()关联的信息参数获取改变。</p>
-<p>契约name:Room_delete<br>操作：Room_delete ()<br>交叉引用：用例：入住信息删除<br>前置条件：无<br>后置条件：数据库入住信息表刷新，与Room_model()，Room_update()，Room_search()关联的信息参数获取改变。</p>
-<p>契约name:RoomAdd<br>操作：RoomAdd ()<br>交叉引用：用例：客房类型增加<br>前置条件：无<br>后置条件：数据库入住信息表初始化，与RoomUpdate ()，RoomDelete()关联的信息参数获取改变。</p>
-<p>契约name: RoomUpdate<br>操作：RoomUpdate ()<br>交叉引用：用例：客房类型增加<br>前置条件：无<br>后置条件：数据库入住信息表刷新，与RoomAdd()，RoomDelete()关联的信息参数获取改变。</p>
-<p>契约name: RoomDelete<br>操作：RoomDelete ()<br>交叉引用：用例：客房类型删除<br>前置条件：无<br>后置条件：数据库入住信息表刷新，与RoomAdd()，RoomUpdate ()关联的信息参数获取改变。</p>
-<p>契约name:BillSerach<br>操作：BillSerach()<br>交叉引用：用例：账单查询<br>前置条件：无<br>后置条件：无</p>
-<p>契约name:Bill_Add<br>操作：Bill_Add()<br>交叉引用：用例：添账单信息<br>前置条件：无<br>后置条件：数据库账单信息初始化，与Bill_update(),Bill_delete()关联的获取参数改变。</p>
-<p>契约name:Bill_update<br>操作：Bill_update ()<br>交叉引用：用例：添账单信息<br>前置条件：无<br>后置条件：数据库账单信息初始化，与Bill_Add(),Bill_delete()关联的获取参数改变。</p>
-<p>契约name: Bill_delete<br>操作：Bill_delete ()<br>交叉引用：用例：添账单信息<br>前置条件：无<br>后置条件：数据库账单信息初始化，与Bill_update(),Bill_Add()关联的获取参数改变。</p>
-<hr>
-<p>以上的字都是自己一个个敲的，图也是自己一笔笔画的。<br>附赠部分界面图：</p>
-<p>备注：当时因为只是测试，所以数据选的不是很好。<br>     编译器：eclipse<br>     数据库：Oracle<br>     JDK：3.1版本<br>     未采用数据库配置连接而采用驱动包JRE6</p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/3.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/4.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/5.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/6.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/7.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/8.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/9.png" alt></p>
-<hr>
+        <h2 id="Vue–1day"><a href="#Vue–1day" class="headerlink" title="Vue–1day"></a>Vue–1day</h2><p>1.关于let(es6中定义变量)和const(es6定义常量)<br>let定义得变量的值是可以进行改变的，但是const定义的变量是不能改变的。<br>var没有作用域</p>
+<p>2.vue的基本格式：</p>
+<pre><code> &lt;div id=&quot;app&quot;&gt;{{message}}}&lt;/div&gt;  ---&gt;{{}}里面嵌套的是程序段或数据
+
+&lt;script&gt;
+const app = new Vue({
+
+        e:&apos;#app&apos;,         ---&gt;用于挂载要管理的元素
+        data:{            ---&gt;定义数据
+       message:&apos;hello world!&apos;
+   }
+})
+&lt;/script&gt;</code></pre><p>3.vue的数据是动态双向绑定的，与JavaScript和jQuery相比，当数据刷新时，前端加载出来的数据也同步更新，不用再重新编写语句将新数据渲染到页面标签中。（VUE的核心：数据驱动视图。），适用于任何前后端分离的项目。<br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/1.png" alt><br>4.v-for:基于源数据多次渲染元素或模板块。此指令之值，必须使用特定语法 alias in expression，为当前遍历的元素提供别名：</p>
+<pre><code>&lt;div v-for=&quot;item in items&quot;&gt;
+  {{ item.text }}
+ &lt;/div&gt; </code></pre><p><a href="https://cn.vuejs.org/v2/api/#v-for" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-for</a></p>
+<p>5.v-on：缩写：“@”，绑定事件监听器。事件类型由参数指定。表达式可以是一个方法的名字或一个内联语句，如果没有修饰符也可以省略。</p>
+<p><a href="https://cn.vuejs.org/v2/api/#v-on" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-on</a></p>
+<h2 id="VUE中的MVVM（Model-View-ViewModel）开发模式"><a href="#VUE中的MVVM（Model-View-ViewModel）开发模式" class="headerlink" title="VUE中的MVVM（Model View  ViewModel）开发模式:"></a>VUE中的MVVM（Model View  ViewModel）开发模式:</h2><p>在MVVM的框架下视图和模型是不能直接通信的。它们通过ViewModel来通信，ViewModel通常要实现一个observer观察者，当数据发生变化，ViewModel能够监听到数据的这种变化，然后通知到对应的视图做自动更新，而当用户操作视图，ViewModel也能监听到视图的变化，然后通知数据做改动，这实际上就实现了数据的双向绑定。并且MVVM中的View 和 ViewModel可以互相通信。<br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/2.jpg" alt></p>
+<p><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/3.png" alt></p>
+<p>ViewModel的作用：1界面触发事件，通过viewModel回调到model。<br>                 2.model更新的数据，通过viewmodel向页面传递。<br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/4.png" alt><br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/5.png" alt></p>
+<h2 id="创建Vue实例传入options"><a href="#创建Vue实例传入options" class="headerlink" title="创建Vue实例传入options"></a>创建Vue实例传入options</h2><p><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/6.png" alt></p>
+<h2 id="vue的生命周期"><a href="#vue的生命周期" class="headerlink" title="vue的生命周期"></a>vue的生命周期</h2><p>什么是生命周期：事物的产生到消亡的过程<br>关于版本选择：debug(开发版本)/relese（稳定版本）<br>个人理解：当创建一个实例后，在做每件事的过程中，生命周期会进行回调，告诉程序进行到了哪一步。<br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/7.png" alt><br>生命周期的作用：生命周期给了很多回调，所有要根据项目需求决定要用哪些回调。通过callhook函数传递的数据，hook(钩子)函数来进行回调。其实有点像Java通过监听器来判断实例是否触发，再调用相应接口实现相应的功能。</p>
 
       
     </div>
@@ -373,13 +351,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">酒店管理系统</a></p>
+        <p><span>本文标题:</span><a  href="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/">Vue知识点1</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 韦键松 的个人博客">韦键松</a></p>
-        <p><span>发布时间:</span>2020年04月24日 - 19时52分</p>
-        <p><span>最后更新:</span>2020年04月26日 - 12时06分</p>
+        <p><span>发布时间:</span>2020年05月15日 - 11时28分</p>
+        <p><span>最后更新:</span>2020年05月15日 - 19时19分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" title="酒店管理系统">http://yoursite.com/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/　　作者: 韦键松" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/" title="Vue知识点1">http://yoursite.com/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/　　作者: 韦键松" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -390,18 +368,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          随机搜索算法解决TSP问题
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">扒一扒搭建博客踩过的坑</div>
+    <a  href="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机网络笔记5</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -413,7 +382,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#酒店管理系统"><span class="toc-number">1.</span> <span class="toc-text">酒店管理系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用例图"><span class="toc-number">2.</span> <span class="toc-text">用例图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#活动流程图"><span class="toc-number">3.</span> <span class="toc-text">活动流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用例描述"><span class="toc-number">4.</span> <span class="toc-text">用例描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统顺序图"><span class="toc-number">5.</span> <span class="toc-text">系统顺序图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作契约"><span class="toc-number">6.</span> <span class="toc-text">操作契约:</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue–1day"><span class="toc-number">1.</span> <span class="toc-text">Vue–1day</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VUE中的MVVM（Model-View-ViewModel）开发模式"><span class="toc-number">2.</span> <span class="toc-text">VUE中的MVVM（Model View  ViewModel）开发模式:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建Vue实例传入options"><span class="toc-number">3.</span> <span class="toc-text">创建Vue实例传入options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue的生命周期"><span class="toc-number">4.</span> <span class="toc-text">vue的生命周期</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -486,13 +455,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/" title="上一篇: 随机搜索算法解决TSP问题">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/" title="下一篇: 扒一扒搭建博客踩过的坑">
+            <a  href="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/" title="下一篇: 计算机网络笔记5">
                 <i class="fa fa-angle-right"></i>
             </a>
         

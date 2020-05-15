@@ -277,6 +277,86 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Vue知识点1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/" class="article-date">
+      <time datetime="2020-05-15T03:28:58.000Z" itemprop="datePublished">2020-05-15</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/">Vue知识点1</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Vue–1day"><a href="#Vue–1day" class="headerlink" title="Vue–1day"></a>Vue–1day</h2><p>1.关于let(es6中定义变量)和const(es6定义常量)<br>let定义得变量的值是可以进行改变的，但是const定义的变量是不能改变的。<br>var没有作用域</p>
+<p>2.vue的基本格式：</p>
+<pre><code> &lt;div id=&quot;app&quot;&gt;{{message}}}&lt;/div&gt;  ---&gt;{{}}里面嵌套的是程序段或数据
+
+&lt;script&gt;
+const app = new Vue({
+
+        e:&apos;#app&apos;,         ---&gt;用于挂载要管理的元素
+        data:{            ---&gt;定义数据
+       message:&apos;hello world!&apos;
+   }
+})
+&lt;/script&gt;</code></pre><p>3.vue的数据是动态双向绑定的，与JavaScript和jQuery相比，当数据刷新时，前端加载出来的数据也同步更新，不用再重新编写语句将新数据渲染到页面标签中。（VUE的核心：数据驱动视图。），适用于任何前后端分离的项目。<br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/1.png" alt><br>4.v-for:基于源数据多次渲染元素或模板块。此指令之值，必须使用特定语法 alias in expression，为当前遍历的元素提供别名：</p>
+<pre><code>&lt;div v-for=&quot;item in items&quot;&gt;
+  {{ item.text }}
+ &lt;/div&gt; </code></pre><p><a href="https://cn.vuejs.org/v2/api/#v-for" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-for</a></p>
+<p>5.v-on：缩写：“@”，绑定事件监听器。事件类型由参数指定。表达式可以是一个方法的名字或一个内联语句，如果没有修饰符也可以省略。</p>
+<p><a href="https://cn.vuejs.org/v2/api/#v-on" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-on</a></p>
+<h2 id="VUE中的MVVM（Model-View-ViewModel）开发模式"><a href="#VUE中的MVVM（Model-View-ViewModel）开发模式" class="headerlink" title="VUE中的MVVM（Model View  ViewModel）开发模式:"></a>VUE中的MVVM（Model View  ViewModel）开发模式:</h2><p>在MVVM的框架下视图和模型是不能直接通信的。它们通过ViewModel来通信，ViewModel通常要实现一个observer观察者，当数据发生变化，ViewModel能够监听到数据的这种变化，然后通知到对应的视图做自动更新，而当用户操作视图，ViewModel也能监听到视图的变化，然后通知数据做改动，这实际上就实现了数据的双向绑定。并且MVVM中的View 和 ViewModel可以互相通信。<br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/2.jpg" alt></p>
+<p><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/3.png" alt></p>
+<p>ViewModel的作用：1界面触发事件，通过viewModel回调到model。<br>                 2.model更新的数据，通过viewmodel向页面传递。<br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/4.png" alt><br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/5.png" alt></p>
+<h2 id="创建Vue实例传入options"><a href="#创建Vue实例传入options" class="headerlink" title="创建Vue实例传入options"></a>创建Vue实例传入options</h2><p><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/6.png" alt></p>
+<h2 id="vue的生命周期"><a href="#vue的生命周期" class="headerlink" title="vue的生命周期"></a>vue的生命周期</h2><p>什么是生命周期：事物的产生到消亡的过程<br>关于版本选择：debug(开发版本)/relese（稳定版本）<br>个人理解：当创建一个实例后，在做每件事的过程中，生命周期会进行回调，告诉程序进行到了哪一步。<br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/7.png" alt><br>生命周期的作用：生命周期给了很多回调，所有要根据项目需求决定要用哪些回调。通过callhook函数传递的数据，hook(钩子)函数来进行回调。其实有点像Java通过监听器来判断实例是否触发，再调用相应接口实现相应的功能。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-计算机网络笔记5" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -960,94 +1040,6 @@
 <p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/9.png" alt></p>
 <hr>
 
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-扒一扒搭建博客踩过的坑" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/" class="article-date">
-      <time datetime="2020-04-22T03:36:52.000Z" itemprop="datePublished">2020-04-22</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">扒一扒搭建博客踩过的坑</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="B站是个好地方"><a href="#B站是个好地方" class="headerlink" title="B站是个好地方"></a>B站是个好地方</h2><p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/1.jpg" alt></p>
-<p>某天正在B站”白嫖“计算机网络的时候，偶然间看见一个up主发布了一篇关于如何免费搭建个人博客而且不需要自己掏钱买域名服务器的方法，作为”资深白白嫖客“的我，如何能错过。</p>
-<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/2.jpg" alt></p>
-<p>1:下载node.js，安装淘宝镜像。<br>npm install -g cnpm –registry=<a href="http://registry.npm.taobao.org" target="_blank" rel="noopener">http://registry.npm.taobao.org</a>    #安装淘宝的cnpm 管理器<br>2：安装hexo博客框架<br>cnpm install -g hexo-cli    #安装hexo框架<br>hexo -v    #查看hexo版本<br>cd blog    #创建blog目录<br>cd blog     #进入blog目录(注：如果电脑是Mac的，命令行是：mkdir)<br>hexo init     #生成博客 初始化博客（mac:mkdir blog    #创建blog目录）<br>hexo s    #启动本地博客服务<br><a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>    #本地访问地址<br>hexo n “我的第一篇文章” #创建新的文章<br>#返回blog目录<br>hexo clean #清理<br>hexo g #生成<br>#Github创建一个新的仓库 你的GitHub的用户名.github.io<br>cnpm install –save hexo-deployer-git #在blog目录下安装git部署插件<br>（git是为了将项目部署到远端GitHub，对本地的项目管理以及远端项目克隆也是极好的）<br>#配置_config.yml </p>
-<pre><code># Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-      type: git
-     repo: https://github.com/YourGithubName/YourGithubName.github.io.git
-      branch: master</code></pre><p>hexo d    #部署到Github仓库里<br>https://你的GitHub的用户名.github.io/  #访问这个地址可以查看博客</p>
-<hr>
-<h2 id="关于更换主题"><a href="#关于更换主题" class="headerlink" title="关于更换主题"></a>关于更换主题</h2><p> git clone <a href="https://github.com/litten/hexo-theme-yilia.git" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia  #下载yilia主题到本地<br>（注：也可以自己去网上找一款自己喜欢的主题，我用的是black_bluez这一款）</p>
-<p>#修改hexo根目录下的 _config.yml 文件 ： theme: yilia</p>
-<p>hexo c    #清理一下<br>hexo g    #生成<br>hexo d    #部署到远程Github仓库<br>https://你的GitHub的用户名.io/  #查看博客</p>
-<p>是不是很简单呀？<br><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/8.jpg" alt></p>
-<p>but， 当时我搭建的时候真的气到爆炸，每走一步，就出现一个错误，特别是下载git那里，我发现在cmd里面就是下载不了，最后不得不用软件管家下载。<br>若你未关联Github，则执行hexo deploy<br>命令时终端会提示你输入Github的用户名和密码，即<br>Username for ‘<a href="https://github.com&#39;" target="_blank" rel="noopener">https://github.com&#39;</a>:<br>Password for ‘<a href="https://github.com&#39;" target="_blank" rel="noopener">https://github.com&#39;</a>:</p>
-<p>这样呢，是不是就会好了呢，nonono<br><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/6.jpg" alt></p>
-<h2 id="关于如何上传本地图片"><a href="#关于如何上传本地图片" class="headerlink" title="关于如何上传本地图片"></a>关于如何上传本地图片</h2><p>你的博客不可能都是文字描述吧，古人还说图文并茂呢，所以呀，我迎来了我的又一个大坑，去chrome上访问了很多大佬的博客，然后乐呵呵的去安装步骤一步步进行，安装了上传图片的插件:<br>1.首先把blog（hexo）目录下的_config.yml里的psot_asset_folder:设置为true</p>
-<p>2.在blog（hexo）目录下执行:</p>
-<p>cnpm install hexo-asset-image –save</p>
-<p>3.在blog（hexo）目录下Git Bash Here，运行hexo n “博客名”来生成md博客时，会在_post目录下看到一个与博客同名的文件夹。</p>
-<p>4.将想要上传的图片先扔到文件夹下，然后在博客中使用markdown的格式引入图片：</p>
-<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E5%9B%BE%E7%89%87%E5%90%8D.jpg" alt="你想要输入的替代文字"></p>
-<p>然后》》》》</p>
-<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/9.png" alt></p>
-<p>what?<br>关键是这可是按照大佬的方法一步步进行的哎，咋回事啊，小老弟？<br>后来找了很多关于这个的博客，差不多是这个方法啊，难不成我的电脑有毒吗？</p>
-<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/5.jpg" alt></p>
-<p>后来，终于在一个冷门的论坛里面找到了原因：可能是版本原因<br>cnpm install hexo-asset-image –save<br>使用这条语句，安装的是0.0.1版本的插件<br>cnpm install <a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="noopener">https://github.com/CodeFalling/hexo-asset-image</a> – save<br>使用这条语句，安装的是0.0.5版本的插件</p>
-<p>由于地址映射的不同，0.0.1这个版本的不支持本地图片的映射。</p>
-<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/4.jpg" alt></p>
-<p>哼，你对bug的力量一无所知。</p>
-<h2 id="好了，这就是我关于搭建博客的一些方法，以及遇到过的坑"><a href="#好了，这就是我关于搭建博客的一些方法，以及遇到过的坑" class="headerlink" title="好了，这就是我关于搭建博客的一些方法，以及遇到过的坑"></a>好了，这就是我关于搭建博客的一些方法，以及遇到过的坑</h2>
       
     </div>
     

@@ -277,6 +277,94 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-扒一扒搭建博客踩过的坑" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/" class="article-date">
+      <time datetime="2020-04-22T03:36:52.000Z" itemprop="datePublished">2020-04-22</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">扒一扒搭建博客踩过的坑</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="B站是个好地方"><a href="#B站是个好地方" class="headerlink" title="B站是个好地方"></a>B站是个好地方</h2><p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/1.jpg" alt></p>
+<p>某天正在B站”白嫖“计算机网络的时候，偶然间看见一个up主发布了一篇关于如何免费搭建个人博客而且不需要自己掏钱买域名服务器的方法，作为”资深白白嫖客“的我，如何能错过。</p>
+<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/2.jpg" alt></p>
+<p>1:下载node.js，安装淘宝镜像。<br>npm install -g cnpm –registry=<a href="http://registry.npm.taobao.org" target="_blank" rel="noopener">http://registry.npm.taobao.org</a>    #安装淘宝的cnpm 管理器<br>2：安装hexo博客框架<br>cnpm install -g hexo-cli    #安装hexo框架<br>hexo -v    #查看hexo版本<br>cd blog    #创建blog目录<br>cd blog     #进入blog目录(注：如果电脑是Mac的，命令行是：mkdir)<br>hexo init     #生成博客 初始化博客（mac:mkdir blog    #创建blog目录）<br>hexo s    #启动本地博客服务<br><a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>    #本地访问地址<br>hexo n “我的第一篇文章” #创建新的文章<br>#返回blog目录<br>hexo clean #清理<br>hexo g #生成<br>#Github创建一个新的仓库 你的GitHub的用户名.github.io<br>cnpm install –save hexo-deployer-git #在blog目录下安装git部署插件<br>（git是为了将项目部署到远端GitHub，对本地的项目管理以及远端项目克隆也是极好的）<br>#配置_config.yml </p>
+<pre><code># Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+      type: git
+     repo: https://github.com/YourGithubName/YourGithubName.github.io.git
+      branch: master</code></pre><p>hexo d    #部署到Github仓库里<br>https://你的GitHub的用户名.github.io/  #访问这个地址可以查看博客</p>
+<hr>
+<h2 id="关于更换主题"><a href="#关于更换主题" class="headerlink" title="关于更换主题"></a>关于更换主题</h2><p> git clone <a href="https://github.com/litten/hexo-theme-yilia.git" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia  #下载yilia主题到本地<br>（注：也可以自己去网上找一款自己喜欢的主题，我用的是black_bluez这一款）</p>
+<p>#修改hexo根目录下的 _config.yml 文件 ： theme: yilia</p>
+<p>hexo c    #清理一下<br>hexo g    #生成<br>hexo d    #部署到远程Github仓库<br>https://你的GitHub的用户名.io/  #查看博客</p>
+<p>是不是很简单呀？<br><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/8.jpg" alt></p>
+<p>but， 当时我搭建的时候真的气到爆炸，每走一步，就出现一个错误，特别是下载git那里，我发现在cmd里面就是下载不了，最后不得不用软件管家下载。<br>若你未关联Github，则执行hexo deploy<br>命令时终端会提示你输入Github的用户名和密码，即<br>Username for ‘<a href="https://github.com&#39;" target="_blank" rel="noopener">https://github.com&#39;</a>:<br>Password for ‘<a href="https://github.com&#39;" target="_blank" rel="noopener">https://github.com&#39;</a>:</p>
+<p>这样呢，是不是就会好了呢，nonono<br><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/6.jpg" alt></p>
+<h2 id="关于如何上传本地图片"><a href="#关于如何上传本地图片" class="headerlink" title="关于如何上传本地图片"></a>关于如何上传本地图片</h2><p>你的博客不可能都是文字描述吧，古人还说图文并茂呢，所以呀，我迎来了我的又一个大坑，去chrome上访问了很多大佬的博客，然后乐呵呵的去安装步骤一步步进行，安装了上传图片的插件:<br>1.首先把blog（hexo）目录下的_config.yml里的psot_asset_folder:设置为true</p>
+<p>2.在blog（hexo）目录下执行:</p>
+<p>cnpm install hexo-asset-image –save</p>
+<p>3.在blog（hexo）目录下Git Bash Here，运行hexo n “博客名”来生成md博客时，会在_post目录下看到一个与博客同名的文件夹。</p>
+<p>4.将想要上传的图片先扔到文件夹下，然后在博客中使用markdown的格式引入图片：</p>
+<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E5%9B%BE%E7%89%87%E5%90%8D.jpg" alt="你想要输入的替代文字"></p>
+<p>然后》》》》</p>
+<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/9.png" alt></p>
+<p>what?<br>关键是这可是按照大佬的方法一步步进行的哎，咋回事啊，小老弟？<br>后来找了很多关于这个的博客，差不多是这个方法啊，难不成我的电脑有毒吗？</p>
+<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/5.jpg" alt></p>
+<p>后来，终于在一个冷门的论坛里面找到了原因：可能是版本原因<br>cnpm install hexo-asset-image –save<br>使用这条语句，安装的是0.0.1版本的插件<br>cnpm install <a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="noopener">https://github.com/CodeFalling/hexo-asset-image</a> – save<br>使用这条语句，安装的是0.0.5版本的插件</p>
+<p>由于地址映射的不同，0.0.1这个版本的不支持本地图片的映射。</p>
+<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/4.jpg" alt></p>
+<p>哼，你对bug的力量一无所知。</p>
+<h2 id="好了，这就是我关于搭建博客的一些方法，以及遇到过的坑"><a href="#好了，这就是我关于搭建博客的一些方法，以及遇到过的坑" class="headerlink" title="好了，这就是我关于搭建博客的一些方法，以及遇到过的坑"></a>好了，这就是我关于搭建博客的一些方法，以及遇到过的坑</h2>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-我的第一篇博客" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
