@@ -277,6 +277,141 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-vlan三层交换机划分子网" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/" class="article-date">
+      <time datetime="2020-05-17T15:11:56.000Z" itemprop="datePublished">2020-05-17</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/">vlan三层交换机划分子网</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-设计题目与要求"><a href="#一-设计题目与要求" class="headerlink" title="一.设计题目与要求:"></a>一.设计题目与要求:</h2><p>   网络参数设计表</p>
+<p>计算机名           IP地址           VLAN号        网  关<br>  PC11         192.168.10.11/24       10       192.168.10.254/24<br>  PC12         192.168.10.12/24       10       192.168.10.254/24<br>  PC13         192.168.10.13/24       10       192.168.10.254/24<br>  PC21         192.168.20.21/24       20       192.168.20.254/24<br>  PC22         192.168.20.22/24       20       192.168.20.254/24<br>  PC23         192.168.20.23/24       20       192.168.20.254/24<br>  PC31         192.168.30.31/24       30       192.168.30.254/24<br>  PC32         192.168.30.32/24       30       192.168.30.254/24<br>  PC33         192.168.30.33/24       30       192.168.30.254/24<br>  DNS          192.168.40.1/24        40       192.168.40.254/24<br>  WEB-FTP      192.168.40.2/24        40       192.168.40.254/24</p>
+<p>设计要求：<br>1.正确划分VLAN。<br>2.不同VLAN之间的计算机能相互通信。<br>3.所有计算机能够用域名访问WEB服务器和FTP服务器。<br>WEB服务器域名为：<a href="http://www.anli.com.cn,FTP服务器域名为：ftp.anli.com.cn">www.anli.com.cn,FTP服务器域名为：ftp.anli.com.cn</a></p>
+<h2 id="二、设计与实现的过程："><a href="#二、设计与实现的过程：" class="headerlink" title="二、设计与实现的过程："></a>二、设计与实现的过程：</h2><p>首先我们要分析一下如何划分vlan，然后配置路由表的问题。<br>由于我也是摸石头过河式进行的实验，所以只给出相关的指令，以及划分示意图。<br>1.首先划分vlan。</p>
+<p><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/1.png" alt></p>
+<p>2.配置lsw1：<br>创建vlan：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/2.png" alt><br>配置trunk链路：<br>[Huawei]int e0/0/4<br>[Huawei-Ethernet0/0/4]port link-type trunk<br>[Huawei-Ethernet0/0/4]port trunk allow-pass vlan all<br>划分vlan10:<br>[Huawei]int e0/0/1<br>[Huawei-Ethernet0/0/1]port link-type access<br>[Huawei-Ethernet0/0/1]port default vlan 10<br>划分vlan20:<br>[Huawei]int e0/0/2<br>[Huawei-Ethernet0/0/2]port link-type access<br>[Huawei-Ethernet0/0/2]port default vlan 20<br>划分vlan30:<br>[Huawei]int e0/0/3<br>[Huawei-Ethernet0/0/3]port link-type access<br>[Huawei-Ethernet0/0/3]port default vlan 30<br>3.配置lsw2：<br>创建vlan：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/2.png" alt><br>配置trunk链路：<br>[Huawei]int e0/0/4<br>[Huawei-Ethernet0/0/4]port link-type trunk<br>[Huawei-Ethernet0/0/4]port trunk allow-pass vlan all<br>[Huawei]int e0/0/5<br>[Huawei-Ethernet0/0/5]port link-type trunk<br>[Huawei-Ethernet0/0/5]port trunk allow-pass vlan all<br>[Huawei]int e0/0/6<br>[Huawei-Ethernet0/0/6]port link-type trunk<br>[Huawei-Ethernet0/0/6]port trunk allow-pass vlan all<br>划分vlan同lsw1一样<br>4.配置lsw3：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/2.png" alt><br>配置trunk链路：<br>[Huawei]int e0/0/4<br>[Huawei-Ethernet0/0/4]port link-type trunk<br>[Huawei-Ethernet0/0/4]port trunk allow-pass vlan all<br>划分vlan同lsw1一样<br>5.配置lsw5：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/2.png" alt><br>配置trunk链路：<br>[Huawei]int GigabitEthernet 0/0/1<br>[Huawei-GigabitEthernet0/0/1]port link-type trunk<br>[Huawei-GigabitEthernet 0/0/1]port trunk allow-pass vlan all<br>lsw1的trunk链路创建成功<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/3.png" alt><br>lsw1的vlan载入成功<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/4.png" alt><br>接下来要通过lsw5配置网关：<br>[Huawei]int VlanIf 10<br>[Huawei- VlanIf10]ip add 192.168.10.254 24<br>[Huawei]int VlanIf 20<br>[Huawei- VlanIf10]ip add 192.168.20.254 24<br>[Huawei]int VlanIf 30<br>[Huawei- VlanIf10]ip add 192.168.30.254 24<br>[Huawei]int VlanIf 40<br>[Huawei- VlanIf10]ip add 192.168.40.254 24<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/5.png" alt><br>5.配置DNS<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/6.png" alt><br>6.配置web-ftp:<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/7.png" alt><br>三、测试运行结果:<br>计算机之间的互ping：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/8.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/9.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/10.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/11.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/12.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/13.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/14.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/15.png" alt><br>四、遇到的主要问题及解决办法:<br>1.关于指令的一些用法不太懂，一开始拿到这个就是挺懵的。然后不停的百度以及各种查资料。然后把指令都写在记事本上方便查阅。<br>2.关于vlan划分的概念以及作用的不理解以及迷惑。后来去B站看了韩立刚老师的关于划分子网那部分才明白这些概念。然后看了这方面的视频。<br>3.刚开始划分了四个子网，然后就开始ping，但是发现vlan10-30这几个网段可以相互ping通，但是就是ping不通vlan40，，我的解决办法就是删掉一切重建，然后捋清楚自己的思路。然后发现可以了。<br>4.当配置域名的时候，发现通过域名就是无法访问，后来检查发现我把网关地址写成IP地址的，可能是写急眼了，改正后就好了。<br>5.我想说这个华为ensp其实bug挺多的，有时明明可以ping通的，但是过一会就不行了，我老以为是自己的问题，但是过一会再ping就又通了，我只能说还需改进啊。<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/9.gif" alt></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Vue知识点2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/" class="article-date">
+      <time datetime="2020-05-16T01:49:07.000Z" itemprop="datePublished">2020-05-16</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/">Vue知识点2</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Vue的指令函数："><a href="#Vue的指令函数：" class="headerlink" title="Vue的指令函数："></a>Vue的指令函数：</h2><p>1.v-for:基于源数据多次渲染元素或模板块。此指令之值，必须使用特定语法 alias in expression，为当前遍历的元素提供别名：</p>
+<pre><code>&lt;div v-for=&quot;item in items&quot;&gt;
+  {{ item.text }}
+ &lt;/div&gt; </code></pre><p><a href="https://cn.vuejs.org/v2/api/#v-for" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-for</a></p>
+<p>2.v-on：缩写：“@”，绑定事件监听器。事件类型由参数指定。表达式可以是一个方法的名字或一个内联语句，如果没有修饰符也可以省略。</p>
+<p><a href="https://cn.vuejs.org/v2/api/#v-on" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-on</a></p>
+<p>3.v-once:只渲染元素和组件一次。随后的重新渲染，元素/组件及其所有的子节点将被视为静态内容并跳过。这可以用于优化更新性能。</p>
+<p><a href="https://cn.vuejs.org/v2/api/#v-once" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-once</a></p>
+<p><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/1.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/2.png" alt></p>
+<p>4.v-html:更新元素的 innerHTML<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/3.png" alt><br><a href="https://cn.vuejs.org/v2/api/#v-html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-html</a></p>
+<p>5.v-text:更新元素的 textContent。如果要更新部分的 textContent，需要使用  插值。<br><a href="https://cn.vuejs.org/v2/api/#v-text" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-text</a><br>但是不推荐使用，不够灵活<br>          </p><h2 v-test="message">,we are</h2><br>          message的内容会直接覆盖掉“,we are”<p></p>
+<p>6.v-pre:跳过这个元素和它的子元素的编译过程。可以用来显示原始 Mustache 标签。跳过大量没有指令的节点会加快编译。<br><a href="https://cn.vuejs.org/v2/api/#v-pre" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-pre</a><br>其实就是取消转义，要得不多，了解即可。</p>
+<p>7.v-cloak（cloak:斗篷）:这个指令保持在元素上直到关联实例结束编译<br>主要是应对在开发时，有时候js代码运行卡顿时，会将一些元素渲染出来，当js运行后会再将数据加载到元素上时，页面出现闪动效果。所有这个标签作用就是只有当js解析运行后才将元素加载。<br><a href="https://cn.vuejs.org/v2/api/#v-cloak" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-cloak</a><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/4.png" alt></p>
+<p>8.v-bind:动态地绑定一个或多个 attribute，或一个组件 prop 到表达式<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/5.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/6.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/7.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/8.png" alt><br>宿主语法：<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/9.png" alt><br>v-bind绑定style属性：</p>
+<p>作业：鼠标点击，改变颜色<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/10.png" alt><br>当时做这一题的时候，我想到了要动态绑定数组序列号，动态绑定Class改变颜色的属性，由click事件触发，序列号改变，点击哪个序列触发事件，颜色改变。但是我想用的是方法和函数，所有很复杂。但是其实只要定义一个变量currentindex等于当前我选中的序列，然后this.currentindex = index,就可以实现我想要的功能。<br><a href="https://cn.vuejs.org/v2/api/#v-bind" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-bind</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Vue知识点1" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -851,194 +986,6 @@ const app = new Vue({
 <p>1010101010101010101010101010101<br>16进制为：0x55555555<br><img src="/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/3.jpg" alt><br>var isPowerOfFour = function(n) {<br>   if((n &amp; (n-1) &amp;&amp; n &gt; 0)) {<br>       if((n &amp; 0x55555555) == n) {<br>           return true;<br>       }<br>   }<br>   return false;<br>};</p>
 <hr>
 <p>最后，我只想说：<br><img src="/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/9.gif" alt></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-随机搜索算法解决TSP问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/" class="article-date">
-      <time datetime="2020-04-26T11:28:06.000Z" itemprop="datePublished">2020-04-26</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/">随机搜索算法解决TSP问题</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一问题引入"><a href="#一问题引入" class="headerlink" title="一问题引入:"></a>一问题引入:</h2><p>TSP(Traveling Salesman Problem)即旅行商问题，是数学领域中著名问题之一。这个问题是这样的：假设有一个旅行商人要拜访n个城市，他必须选择所要走的路径，路径的限制是每个城市只能拜访一次，而且最后要回到原来出发的城市。路径的选择目标是要求得的路径长度为所有路径之中的最小值。</p>
-<hr>
-<h2 id="二问题分析"><a href="#二问题分析" class="headerlink" title="二问题分析:"></a>二问题分析:</h2><p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/1.png" alt></p>
-<p>假设将上面的问题简化为上面这张图片所描述的内容，那么到底该<br>如何选择路径，让售货员便利整个城市回到原点的路径和最短呢？<br>由上图可知，选择不同，路径不同，距离就不同。</p>
-<hr>
-<h2 id="三编程思路"><a href="#三编程思路" class="headerlink" title="三编程思路:"></a>三编程思路:</h2><p>解决这类问题有多种不同的解法，例如模拟退伙法，蚁群迁移法，遗传法，暴力枚举法，贪心法，动态粒子追踪法等等。每种算法都有自己的优缺点以及时间复杂度各有不同。可以根据不同的条件选择合适的算法。<br>   我采用的是基于暴力算法的随机搜索算法，而暴力算法是例举出所有可能的路径，再从其中找到最短的那一条。<br>例如：<br>         A          B            C</p>
-<p>随机选择就有：ABC, ACB,BAC,BCA,CBA,CAB，6种路径的选择。<br>而当城市数目过于庞大的时候。这种算法的时间复杂度就不太适合。<br>   所以，随机搜索算法并没有像暴力法那样找出所有可能路径，<br>而是随机生成N个访问路径，从这随机生成的N条访问路径中挑出最短的那条作为结果返回。<br>    这次实验是基于p5.js的JavaScript库的条件下进行的编码。<br>第一步：<br>      首先我们要确定城市的数量，<br>       那么，城市坐标呢？所以需要定义一个空数组存储每个城市的点坐标。<br>       我们计算出每次随机产生的路径中的距离，并找到其中最短的一条，所以需要定义一个变量存储当前最短路径。<br>最后我们需要定义一数组把这条最优路径进行存储。<br>最终，我们的到了如下的变量：<br>   城市数量：totalCities<br>   存储城市坐标：cities []<br>   当前最短距离总长度：recordDistance<br>最短路径： bestEver;<br>如何解决城市随机产生的点坐标呢？<br>我们JavaScript中学过产生随机数函数，我们只要在一定范围内，将X，Y的点坐标用随机函数进行处理，再储存在cities这个数组内，就可以解决了。</p>
-<p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/2.png" alt></p>
-<p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/3.png" alt><br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/4.png" alt></p>
-<p>我们随机一个路线出来<br>0-3-1-2-0（最终是要返回0的）</p>
-<p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/5.png" alt><br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/6.png" alt><br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/6.png" alt></p>
-<p>接下来：随机了一个路径之后，我们要在这个路径下面找到最短的路径，方法是通过交换两个位置得到的，交换任意两个数，如果交换完了之后距离变小了，就更新recordDistance，我们采用的是在当前路径里面随机挑选2个城市，即随机生成两个城市的下标，交换这两个城市在cities里面的位置。</p>
-<p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/7.png" alt></p>
-<p>然后，我们就要开始计算每条随机产生的路径的距离，通过比较，的出最短路径最后将路径存入bestEver</p>
-<p>我们需要定义一个函数计算两个城市的点坐标并返回:<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/8.png" alt></p>
-<p>Dist函数就是欧氏距离算法，计算两个点坐标的距离。定义一个变量d存储计算的距离，如果当前距离小于recordDistance存储的距离，就更新，并将这条路径存入bestEver数组中。<br>最后用p5.js进行可视化。<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/9.png" alt></p>
-<p>我们要明白的是，只要随机的量足够大，最终一定能得到结果，因为能随机到枚举的全部。<br>是不是感觉最终得不到最优解，可是当你循环个50000次试试，你就知道，基本上99%都能拿到最优解，这个比暴力搜索快，但是比dp不稳，这个算法的有点在于编码不复杂，而且在基本问题上面都能得到最优解，所以最终我选择了这个</p>
-<hr>
-<h2 id="四流程图"><a href="#四流程图" class="headerlink" title="四流程图:"></a>四流程图:</h2><h2 id><a href="#" class="headerlink" title></a><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/10.jpg" alt></h2><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果:"></a>实验结果:</h2><p>这个是城市数为6时生成的最短路径<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/11.png" alt></p>
-<p>这个是城市数为8时，生成的最短路径<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/12.png" alt></p>
-<hr>
-<h2 id="总结和展望："><a href="#总结和展望：" class="headerlink" title="总结和展望："></a>总结和展望：</h2><p>   这一次的旅行商问题，我在百度上查找了很多的方法，也看了很多算法的实现原理。我就找了一种比较简单的算法。这个算法也是追求局部最优解而忽视了全局最优的选择。所以不太稳定。但是效率却很高，时间复杂度比较小。这个算法的难点在于随机路径的参数，以及如何在这个路径下找到最短路径。可以通过交换两个城市来进行比较。<br>  总之这一次课题让我有了很大的感触，算法真的特别能锻炼人的思维，同时自己也在不断的思考慢慢的得到了成长。</p>
-<hr>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><p>var cities = [];<br>var totalCities = 6;<br>var recordDistance;<br>var bestEver;</p>
-<p>function setup() {<br>  createCanvas(600,400);<br>  for (var i = 0; i &lt; totalCities; i++) {<br>    var v = createVector(random(width), random(height));<br>    cities[i] = v;<br>  }<br>  var d = calcDistance(cities);<br>  recordDistance = d;<br>  bestEver = cities.slice();<br>}</p>
-<p>function draw() {<br>  background(0);</p>
-<p>  stroke(255);<br>  strokeWeight(1);<br>  noFill();<br>  beginShape();<br>  for (var i = 0; i &lt; cities.length; i++) {<br>    vertex(cities[i].x, cities[i].y);<br>  }<br>  endShape();</p>
-<p>  stroke(255, 0, 255);<br>  strokeWeight(4);<br>  noFill();<br>  beginShape();<br>  for (var i = 0; i &lt; cities.length; i++) {<br>    vertex(bestEver[i].x, bestEver[i].y);<br>  }<br>  endShape();</p>
-<p>  for (let k = 0;k &lt; 20; k++){</p>
-<p>  var i = floor(random(cities.length));<br>  var j = floor(random(cities.length));<br>  swap(cities, i, j);</p>
-<p>  var d = calcDistance(cities);<br>  if (d &lt; recordDistance) {<br>    recordDistance = d;<br>    bestEver = cities.slice();<br>  }<br>}<br>}<br>function swap(a, i, j) {<br>  var temp = a[i];<br>  a[i] = a[j];<br>  a[j] = temp;<br>}<br>function calcDistance(points) {<br>  var sum = 0;<br>  for (var i = 0; i &lt; points.length - 1; i++) {<br>    var d = dist(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);<br>    sum += d;<br>  }<br>  return sum;<br>}</p>
-<hr>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-酒店管理系统" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" class="article-date">
-      <time datetime="2020-04-24T11:52:56.000Z" itemprop="datePublished">2020-04-24</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">酒店管理系统</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="酒店管理系统"><a href="#酒店管理系统" class="headerlink" title="酒店管理系统"></a>酒店管理系统</h2><p>用例文本：<br>1.系统功能设计（模块结构图统领下，对各个模块功能进行详尽的文字描述）<br>应用环境:根据用户的需求陈述可以确定系统分为前台和后台，<br>前台的主要功能是接待、预订、收银等;后台的主要是管理、统计等。本    系统只能在非网络模式下运行，无论是服务人员、管理人员还是经理，    都要通过系统登录本系统，服务人员通过用户界面获取信息、登记客户    信息;管理人员通过权限对系统进行管理，了解酒店动态。</p>
-<p>1.1登录系统:主要执行数据库的运行权限管理，只有用户登录通过才可以进入主页面进行操作。<br>1.2顾客信息登记系统（订单管理）：主要是记录顾客基本入住信息，包括身份证，姓名，年龄，家庭住址，以及一些入住信息，这个将关系到后面得结算系统。后台管理人员也可以通过查看客源来调整相应的住房情况。</p>
-<p>1.3客房标准管理系统:包括客房的编号、类型、面积、最多容纳的人数、<br>价格以及客房的硬件设施，如果空调、电视、网络、卫生间等。当添加    新的客房时，就添加相应的标准信息，可以随时查看客房的标准信息，<br>根据需要进行修改和删除等操作。</p>
-<p>1.4客房信息管理系统:酒店客房管理系统的核心部分。它的主要功能是    存储订房时的信息，包括登记人姓名、证件号、登记类型、所选的餐饮    标准、押金及入住时间等。这些信息直接关系到后续的结算信息管理。</p>
-<p>1.5结算信息管理系统:结合订房的信息进行自动化结账，并存储结算信    息，包括客房定价、押金、餐饮消费、客房消费、客户类型、结算时间、    入住天数、消费总额等,  结算完毕就可以退房。</p>
-<p>1．    参与者：</p>
-<p>参与者                角色描述<br>前台人员            接待、订房，收银等<br>顾客               预定管理<br>后台管理人员        管理、统计等<br>（备注：本系统只能在非网络模式下运行，所以所谓的预定管理指的是有一些不是当天入住的顾客）</p>
-<h2 id="用例图"><a href="#用例图" class="headerlink" title="用例图"></a>用例图</h2><p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/1.jpg" alt></p>
-<h2 id="活动流程图"><a href="#活动流程图" class="headerlink" title="活动流程图"></a>活动流程图</h2><p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/10.png" alt></p>
-<h2 id="用例描述"><a href="#用例描述" class="headerlink" title="用例描述"></a>用例描述</h2><p>3用例描述：</p>
-<p>用例号    1<br>用例名称    顾客信息登记<br>参与者    前台人员，顾客，<br>用例描述    顾客可以提前和酒店预约住房，前台人员根据顾客的描述，将顾客的一些基本信息进行系统录入数据库，并和住房信息表进行关联。</p>
-<p>用例号    2<br>用例名称    住房信息系统<br>参与者    前台人员，后台人员<br>用例描述    前台人员通过住房信息系统，进行顾客住房信息的存储（下单），并根据顾客需求调整住房信息的一些参数，例如续住，押金，以及换房等信息的修改。后台人员通过住房信息表可以关联到客房标准的修改，以及了解酒店的动态。</p>
-<p>用例号    3<br>用例名称    结算系统<br>参与者    前台人员，后台<br>用例描述    根据顾客信息表以及住房信息表进行顾客入住的结算，退还相应的押金，打印账单</p>
-<p>用例号    4<br>用例名称    客房标准<br>参与者    后台<br>用例描述    后台人员根据酒店的情况，可以增加一些新的套间，房型。</p>
-<h2 id="系统顺序图"><a href="#系统顺序图" class="headerlink" title="系统顺序图"></a>系统顺序图</h2><p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/2.jpg" alt></p>
-<h2 id="操作契约"><a href="#操作契约" class="headerlink" title="操作契约:"></a>操作契约:</h2><p>契约name:Win2 (宾客订单)<br>操作：win2 ()<br>交叉引用：用例：添加顾客信息<br>前置条件：无<br>后置条件：初始化数据库顾客信息表table的属性，<br>          与查询Win3()，删除Win4()，修改Win5()形成关联</p>
-<p>契约name:Win4<br>操作：win4 ()<br>交叉引用：用例：删除顾客信息<br>前置条件：无<br>后置条件： 数据库的table表刷新，<br>          与查询Win3()，修改Win5()形成关联，<br>           Win3()查询的顾客信息改变<br>           Win5()显示的顾客信息表改变。</p>
-<p>契约name:Win5<br>操作：win5 ()<br>交叉引用：用例：修改顾客信息<br>前置条件：无<br>后置条件： 数据库的顾客信息表刷新，<br>          与删除Win4()，查询Win3()形成关联，<br>           Win3()查询的顾客信息改变<br>           Win4()显示的顾客信息表改变。</p>
-<p>契约name:Win1<br>操作：win1 ()<br>交叉引用：用例：顾客信息查询<br>前置条件：无<br>后置条件：无 </p>
-<p>契约name:RoomSearch<br>操作：RoomSearch ()<br>交叉引用：用例：客房信息查询<br>前置条件：无<br>后置条件： 数据库的住房信息表刷新，<br>          与RoomAdd(),RoomDelete(),RoomUpdate()形成关联</p>
-<p>契约name:Room_date<br>操作：Room_date ()<br>交叉引用：用例：入住信息登记<br>前置条件：无<br>后置条件： 数据库的入住信息表刷新，与Room_mondel(),Room_update(),Room_delete()形成关联。</p>
-<p>契约name:Room_model<br>操作：Room_model()<br>交叉引用：用例：入住信息查询<br>前置条件：无<br>后置条件： 无</p>
-<p>契约name:Room_update<br>操作：Room_update ()<br>交叉引用：用例：入住信息更新<br>前置条件：无<br>后置条件：数据库入住信息表刷新，与Room_model()，Room_delete()，Room_search()关联的信息参数获取改变。</p>
-<p>契约name:Room_delete<br>操作：Room_delete ()<br>交叉引用：用例：入住信息删除<br>前置条件：无<br>后置条件：数据库入住信息表刷新，与Room_model()，Room_update()，Room_search()关联的信息参数获取改变。</p>
-<p>契约name:RoomAdd<br>操作：RoomAdd ()<br>交叉引用：用例：客房类型增加<br>前置条件：无<br>后置条件：数据库入住信息表初始化，与RoomUpdate ()，RoomDelete()关联的信息参数获取改变。</p>
-<p>契约name: RoomUpdate<br>操作：RoomUpdate ()<br>交叉引用：用例：客房类型增加<br>前置条件：无<br>后置条件：数据库入住信息表刷新，与RoomAdd()，RoomDelete()关联的信息参数获取改变。</p>
-<p>契约name: RoomDelete<br>操作：RoomDelete ()<br>交叉引用：用例：客房类型删除<br>前置条件：无<br>后置条件：数据库入住信息表刷新，与RoomAdd()，RoomUpdate ()关联的信息参数获取改变。</p>
-<p>契约name:BillSerach<br>操作：BillSerach()<br>交叉引用：用例：账单查询<br>前置条件：无<br>后置条件：无</p>
-<p>契约name:Bill_Add<br>操作：Bill_Add()<br>交叉引用：用例：添账单信息<br>前置条件：无<br>后置条件：数据库账单信息初始化，与Bill_update(),Bill_delete()关联的获取参数改变。</p>
-<p>契约name:Bill_update<br>操作：Bill_update ()<br>交叉引用：用例：添账单信息<br>前置条件：无<br>后置条件：数据库账单信息初始化，与Bill_Add(),Bill_delete()关联的获取参数改变。</p>
-<p>契约name: Bill_delete<br>操作：Bill_delete ()<br>交叉引用：用例：添账单信息<br>前置条件：无<br>后置条件：数据库账单信息初始化，与Bill_update(),Bill_Add()关联的获取参数改变。</p>
-<hr>
-<p>以上的字都是自己一个个敲的，图也是自己一笔笔画的。<br>附赠部分界面图：</p>
-<p>备注：当时因为只是测试，所以数据选的不是很好。<br>     编译器：eclipse<br>     数据库：Oracle<br>     JDK：3.1版本<br>     未采用数据库配置连接而采用驱动包JRE6</p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/3.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/4.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/5.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/6.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/7.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/8.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/9.png" alt></p>
-<hr>
 
       
     </div>
