@@ -25,9 +25,19 @@
 <meta property="og:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/7.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/8.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/9.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/11.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/12.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/10.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/13.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/14.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/15.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/16.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/17.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/18.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/19.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/20.png">
 <meta property="article:published_time" content="2020-05-16T01:49:07.000Z">
-<meta property="article:modified_time" content="2020-05-17T02:19:13.020Z">
+<meta property="article:modified_time" content="2020-05-21T08:24:48.033Z">
 <meta property="article:author" content="韦键松">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/1.png">
@@ -336,8 +346,9 @@
 <p>5.v-text:更新元素的 textContent。如果要更新部分的 textContent，需要使用  插值。<br><a href="https://cn.vuejs.org/v2/api/#v-text" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-text</a><br>但是不推荐使用，不够灵活<br>          </p><h2 v-test="message">,we are</h2><br>          message的内容会直接覆盖掉“,we are”<p></p>
 <p>6.v-pre:跳过这个元素和它的子元素的编译过程。可以用来显示原始 Mustache 标签。跳过大量没有指令的节点会加快编译。<br><a href="https://cn.vuejs.org/v2/api/#v-pre" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-pre</a><br>其实就是取消转义，要得不多，了解即可。</p>
 <p>7.v-cloak（cloak:斗篷）:这个指令保持在元素上直到关联实例结束编译<br>主要是应对在开发时，有时候js代码运行卡顿时，会将一些元素渲染出来，当js运行后会再将数据加载到元素上时，页面出现闪动效果。所有这个标签作用就是只有当js解析运行后才将元素加载。<br><a href="https://cn.vuejs.org/v2/api/#v-cloak" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-cloak</a><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/4.png" alt></p>
-<p>8.v-bind:动态地绑定一个或多个 attribute，或一个组件 prop 到表达式<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/5.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/6.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/7.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/8.png" alt><br>宿主语法：<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/9.png" alt><br>v-bind绑定style属性：</p>
-<p>作业：鼠标点击，改变颜色<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/10.png" alt><br>当时做这一题的时候，我想到了要动态绑定数组序列号，动态绑定Class改变颜色的属性，由click事件触发，序列号改变，点击哪个序列触发事件，颜色改变。但是我想用的是方法和函数，所有很复杂。但是其实只要定义一个变量currentindex等于当前我选中的序列，然后this.currentindex = index,就可以实现我想要的功能。<br><a href="https://cn.vuejs.org/v2/api/#v-bind" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-bind</a></p>
+<p>8.v-bind:动态地绑定一个或多个 attribute，或一个组件 prop 到表达式<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/5.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/6.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/7.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/8.png" alt><br>宿主语法：<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/9.png" alt></p>
+<p>v-bind绑定style属性：<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/11.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/12.png" alt><br>作业：鼠标点击，改变颜色<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/10.png" alt><br>当时做这一题的时候，我想到了要动态绑定数组序列号，动态绑定Class改变颜色的属性，由click事件触发，序列号改变，点击哪个序列触发事件，颜色改变。但是我想用的是方法和函数，所有很复杂。但是其实只要定义一个变量currentindex等于当前我选中的序列，然后this.currentindex = index,就可以实现我想要的功能。<br><a href="https://cn.vuejs.org/v2/api/#v-bind" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-bind</a></p>
+<h2 id="计算基本属性的使用"><a href="#计算基本属性的使用" class="headerlink" title="计算基本属性的使用"></a>计算基本属性的使用</h2><p>1.什么是计算属性：<br>我们知道，在模板中可以通过插值语法显示一些data中的数据。<br>但是在某些情况下，我们可能需要对数据进行一些转化后再显示，或者需要将多个数据结合起来显示。就可以将代码换成计算属性。具有计算属性的代码时写在computed中的。（计算属性是有缓存的）<br>2.案例1：<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/13.png" alt><br>代码中的fullname依然是一个属性，只不过调用了getfullname方法。<br>3.案例2：<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/14.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/15.png" alt><br>4.计算属性computed，默认带有geter,seter方法。<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/16.png" alt><br>一般调用的都是计算属性里面的get方法，而且不希望外界改变内部的set方法，所以一般在编写的时候把set方法去掉了。使用就是属性一般是没有set方法，只读属性。<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/17.png" alt><br>为了进一步简化代码，将get去掉。换成了变量属性<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/18.png" alt><br>其实这个是采用了对象封装的方法，和Java里面的get和set方法差不多。<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/19.png" alt><br>set方法就是监听fullname的属性，当fullname的属性发送改变时，就会进行回调。然后进行修改。<br>5.计算属性和methods的区别（就是计算属性有缓存）：<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/20.png" alt><br>当调用同样的代码很多次时，比如打印案例1里面的fullname这个属性四次时，通过methodes打印，后台输出时会显示计算四次，打印了四次，而用computed时只需要计算一次，打印一次。因为计算属性具有缓存区，会监听属性值是否改变，如果发现打印四次都没有发生改变时，就只会在控制台打印一次，大大提高了效率。</p>
 
       
     </div>
@@ -349,7 +360,7 @@
         <p><span>本文标题:</span><a  href="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/">Vue知识点2</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 韦键松 的个人博客">韦键松</a></p>
         <p><span>发布时间:</span>2020年05月16日 - 09时49分</p>
-        <p><span>最后更新:</span>2020年05月17日 - 10时19分</p>
+        <p><span>最后更新:</span>2020年05月21日 - 16时24分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/" title="Vue知识点2">http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/　　作者: 韦键松" title=""></span>
@@ -386,7 +397,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue的指令函数："><span class="toc-number">1.</span> <span class="toc-text">Vue的指令函数：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.</span> <span class="toc-text">,we are</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue的指令函数："><span class="toc-number">1.</span> <span class="toc-text">Vue的指令函数：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.</span> <span class="toc-text">,we are</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算基本属性的使用"><span class="toc-number">3.</span> <span class="toc-text">计算基本属性的使用</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
