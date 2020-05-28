@@ -7,33 +7,22 @@
   
   
   
-  <title>随机搜索算法解决TSP问题 | Hexo</title>
+  <title>Vue知识点3 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一问题引入:TSP(Traveling Salesman Problem)即旅行商问题，是数学领域中著名问题之一。这个问题是这样的：假设有一个旅行商人要拜访n个城市，他必须选择所要走的路径，路径的限制是每个城市只能拜访一次，而且最后要回到原来出发的城市。路径的选择目标是要求得的路径长度为所有路径之中的最小值。  二问题分析: 假设将上面的问题简化为上面这张图片所描述的内容，那么到底该如何选择路径，">
+  <meta name="description" content="块级作用域let和varlet 不可重复声明，具有块级作用域，不会预处理，const不可以被修改，其他和let一样。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="随机搜索算法解决TSP问题">
-<meta property="og:url" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="Vue知识点3">
+<meta property="og:url" content="http://yoursite.com/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一问题引入:TSP(Traveling Salesman Problem)即旅行商问题，是数学领域中著名问题之一。这个问题是这样的：假设有一个旅行商人要拜访n个城市，他必须选择所要走的路径，路径的限制是每个城市只能拜访一次，而且最后要回到原来出发的城市。路径的选择目标是要求得的路径长度为所有路径之中的最小值。  二问题分析: 假设将上面的问题简化为上面这张图片所描述的内容，那么到底该如何选择路径，">
+<meta property="og:description" content="块级作用域let和varlet 不可重复声明，具有块级作用域，不会预处理，const不可以被修改，其他和let一样。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/1.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/2.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/3.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/4.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/5.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/6.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/6.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/7.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/8.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/9.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/10.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/11.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/12.png">
-<meta property="article:published_time" content="2020-04-26T11:28:06.000Z">
-<meta property="article:modified_time" content="2020-04-26T11:49:59.594Z">
+<meta property="og:image" content="http://yoursite.com/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/2.png">
+<meta property="article:published_time" content="2020-05-25T06:52:29.000Z">
+<meta property="article:modified_time" content="2020-05-25T09:19:13.585Z">
 <meta property="article:author" content="韦键松">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -290,11 +279,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-随机搜索算法解决TSP问题" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Vue知识点3" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/" class="article-date">
-      <time datetime="2020-04-26T11:28:06.000Z" itemprop="datePublished">2020-04-26</time>
+      <a  href="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/" class="article-date">
+      <time datetime="2020-05-25T06:52:29.000Z" itemprop="datePublished">2020-05-25</time>
 </a>
 
     </div>
@@ -308,7 +297,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      随机搜索算法解决TSP问题
+      Vue知识点3
     </h1>
   
 
@@ -326,38 +315,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="一问题引入"><a href="#一问题引入" class="headerlink" title="一问题引入:"></a>一问题引入:</h2><p>TSP(Traveling Salesman Problem)即旅行商问题，是数学领域中著名问题之一。这个问题是这样的：假设有一个旅行商人要拜访n个城市，他必须选择所要走的路径，路径的限制是每个城市只能拜访一次，而且最后要回到原来出发的城市。路径的选择目标是要求得的路径长度为所有路径之中的最小值。</p>
-<hr>
-<h2 id="二问题分析"><a href="#二问题分析" class="headerlink" title="二问题分析:"></a>二问题分析:</h2><p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/1.png" alt></p>
-<p>假设将上面的问题简化为上面这张图片所描述的内容，那么到底该<br>如何选择路径，让售货员便利整个城市回到原点的路径和最短呢？<br>由上图可知，选择不同，路径不同，距离就不同。</p>
-<hr>
-<h2 id="三编程思路"><a href="#三编程思路" class="headerlink" title="三编程思路:"></a>三编程思路:</h2><p>解决这类问题有多种不同的解法，例如模拟退伙法，蚁群迁移法，遗传法，暴力枚举法，贪心法，动态粒子追踪法等等。每种算法都有自己的优缺点以及时间复杂度各有不同。可以根据不同的条件选择合适的算法。<br>   我采用的是基于暴力算法的随机搜索算法，而暴力算法是例举出所有可能的路径，再从其中找到最短的那一条。<br>例如：<br>         A          B            C</p>
-<p>随机选择就有：ABC, ACB,BAC,BCA,CBA,CAB，6种路径的选择。<br>而当城市数目过于庞大的时候。这种算法的时间复杂度就不太适合。<br>   所以，随机搜索算法并没有像暴力法那样找出所有可能路径，<br>而是随机生成N个访问路径，从这随机生成的N条访问路径中挑出最短的那条作为结果返回。<br>    这次实验是基于p5.js的JavaScript库的条件下进行的编码。<br>第一步：<br>      首先我们要确定城市的数量，<br>       那么，城市坐标呢？所以需要定义一个空数组存储每个城市的点坐标。<br>       我们计算出每次随机产生的路径中的距离，并找到其中最短的一条，所以需要定义一个变量存储当前最短路径。<br>最后我们需要定义一数组把这条最优路径进行存储。<br>最终，我们的到了如下的变量：<br>   城市数量：totalCities<br>   存储城市坐标：cities []<br>   当前最短距离总长度：recordDistance<br>最短路径： bestEver;<br>如何解决城市随机产生的点坐标呢？<br>我们JavaScript中学过产生随机数函数，我们只要在一定范围内，将X，Y的点坐标用随机函数进行处理，再储存在cities这个数组内，就可以解决了。</p>
-<p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/2.png" alt></p>
-<p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/3.png" alt><br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/4.png" alt></p>
-<p>我们随机一个路线出来<br>0-3-1-2-0（最终是要返回0的）</p>
-<p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/5.png" alt><br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/6.png" alt><br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/6.png" alt></p>
-<p>接下来：随机了一个路径之后，我们要在这个路径下面找到最短的路径，方法是通过交换两个位置得到的，交换任意两个数，如果交换完了之后距离变小了，就更新recordDistance，我们采用的是在当前路径里面随机挑选2个城市，即随机生成两个城市的下标，交换这两个城市在cities里面的位置。</p>
-<p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/7.png" alt></p>
-<p>然后，我们就要开始计算每条随机产生的路径的距离，通过比较，的出最短路径最后将路径存入bestEver</p>
-<p>我们需要定义一个函数计算两个城市的点坐标并返回:<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/8.png" alt></p>
-<p>Dist函数就是欧氏距离算法，计算两个点坐标的距离。定义一个变量d存储计算的距离，如果当前距离小于recordDistance存储的距离，就更新，并将这条路径存入bestEver数组中。<br>最后用p5.js进行可视化。<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/9.png" alt></p>
-<p>我们要明白的是，只要随机的量足够大，最终一定能得到结果，因为能随机到枚举的全部。<br>是不是感觉最终得不到最优解，可是当你循环个50000次试试，你就知道，基本上99%都能拿到最优解，这个比暴力搜索快，但是比dp不稳，这个算法的有点在于编码不复杂，而且在基本问题上面都能得到最优解，所以最终我选择了这个</p>
-<hr>
-<h2 id="四流程图"><a href="#四流程图" class="headerlink" title="四流程图:"></a>四流程图:</h2><h2 id><a href="#" class="headerlink" title></a><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/10.jpg" alt></h2><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果:"></a>实验结果:</h2><p>这个是城市数为6时生成的最短路径<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/11.png" alt></p>
-<p>这个是城市数为8时，生成的最短路径<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/12.png" alt></p>
-<hr>
-<h2 id="总结和展望："><a href="#总结和展望：" class="headerlink" title="总结和展望："></a>总结和展望：</h2><p>   这一次的旅行商问题，我在百度上查找了很多的方法，也看了很多算法的实现原理。我就找了一种比较简单的算法。这个算法也是追求局部最优解而忽视了全局最优的选择。所以不太稳定。但是效率却很高，时间复杂度比较小。这个算法的难点在于随机路径的参数，以及如何在这个路径下找到最短路径。可以通过交换两个城市来进行比较。<br>  总之这一次课题让我有了很大的感触，算法真的特别能锻炼人的思维，同时自己也在不断的思考慢慢的得到了成长。</p>
-<hr>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><p>var cities = [];<br>var totalCities = 6;<br>var recordDistance;<br>var bestEver;</p>
-<p>function setup() {<br>  createCanvas(600,400);<br>  for (var i = 0; i &lt; totalCities; i++) {<br>    var v = createVector(random(width), random(height));<br>    cities[i] = v;<br>  }<br>  var d = calcDistance(cities);<br>  recordDistance = d;<br>  bestEver = cities.slice();<br>}</p>
-<p>function draw() {<br>  background(0);</p>
-<p>  stroke(255);<br>  strokeWeight(1);<br>  noFill();<br>  beginShape();<br>  for (var i = 0; i &lt; cities.length; i++) {<br>    vertex(cities[i].x, cities[i].y);<br>  }<br>  endShape();</p>
-<p>  stroke(255, 0, 255);<br>  strokeWeight(4);<br>  noFill();<br>  beginShape();<br>  for (var i = 0; i &lt; cities.length; i++) {<br>    vertex(bestEver[i].x, bestEver[i].y);<br>  }<br>  endShape();</p>
-<p>  for (let k = 0;k &lt; 20; k++){</p>
-<p>  var i = floor(random(cities.length));<br>  var j = floor(random(cities.length));<br>  swap(cities, i, j);</p>
-<p>  var d = calcDistance(cities);<br>  if (d &lt; recordDistance) {<br>    recordDistance = d;<br>    bestEver = cities.slice();<br>  }<br>}<br>}<br>function swap(a, i, j) {<br>  var temp = a[i];<br>  a[i] = a[j];<br>  a[j] = temp;<br>}<br>function calcDistance(points) {<br>  var sum = 0;<br>  for (var i = 0; i &lt; points.length - 1; i++) {<br>    var d = dist(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);<br>    sum += d;<br>  }<br>  return sum;<br>}</p>
-<hr>
+        <h2 id="块级作用域let和var"><a href="#块级作用域let和var" class="headerlink" title="块级作用域let和var"></a>块级作用域let和var</h2><p><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/1.png" alt><br>let 不可重复声明，具有块级作用域，不会预处理，const不可以被修改，其他和let一样。<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/2.png" alt></p>
 
       
     </div>
@@ -366,13 +324,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/">随机搜索算法解决TSP问题</a></p>
+        <p><span>本文标题:</span><a  href="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/">Vue知识点3</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 韦键松 的个人博客">韦键松</a></p>
-        <p><span>发布时间:</span>2020年04月26日 - 19时28分</p>
-        <p><span>最后更新:</span>2020年04月26日 - 19时49分</p>
+        <p><span>发布时间:</span>2020年05月25日 - 14时52分</p>
+        <p><span>最后更新:</span>2020年05月25日 - 17时19分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/" title="随机搜索算法解决TSP问题">http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/　　作者: 韦键松" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/" title="Vue知识点3">http://yoursite.com/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/　　作者: 韦键松" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -383,18 +341,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          leetcode刷题第一天：幂运算
+          遗传算法解决TSP问题
         
       </div>
     </a>
   
   
-    <a  href="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">酒店管理系统</div>
+    <a  href="/2020/05/21/%E5%98%BF%EF%BC%8C%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88%E6%98%AFGit%E5%90%97%EF%BC%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">嘿，知道什么是Git吗？</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -406,7 +364,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一问题引入"><span class="toc-number">1.</span> <span class="toc-text">一问题引入:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二问题分析"><span class="toc-number">2.</span> <span class="toc-text">二问题分析:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三编程思路"><span class="toc-number">3.</span> <span class="toc-text">三编程思路:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四流程图"><span class="toc-number">4.</span> <span class="toc-text">四流程图:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">5.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验结果"><span class="toc-number">6.</span> <span class="toc-text">实验结果:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结和展望："><span class="toc-number">7.</span> <span class="toc-text">总结和展望：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码："><span class="toc-number">8.</span> <span class="toc-text">代码：</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#块级作用域let和var"><span class="toc-number">1.</span> <span class="toc-text">块级作用域let和var</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -479,13 +437,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/" title="上一篇: leetcode刷题第一天：幂运算">
+            <a  href="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/" title="上一篇: 遗传算法解决TSP问题">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" title="下一篇: 酒店管理系统">
+            <a  href="/2020/05/21/%E5%98%BF%EF%BC%8C%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88%E6%98%AFGit%E5%90%97%EF%BC%9F/" title="下一篇: 嘿，知道什么是Git吗？">
                 <i class="fa fa-angle-right"></i>
             </a>
         
