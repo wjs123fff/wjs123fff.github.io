@@ -7,25 +7,29 @@
   
   
   
-  <title>leetcode刷题第一天：幂运算 | Hexo</title>
+  <title>Vue知识点4 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="你有自己学习的网站吗？leetcode,freecodecamp,牛客等都是刷题的好地方。不过侧重点不同。我从自己刷题的感受说一下吧。freecodecamp：个人感觉初期的话，还是先从freecodecamp,因为我学习的是前端，这个社区会比较注重基础的积累，你可以一边学习新的知识点，一边进行基础的练习，上面还有一些小项目可以上手。是一个比较全面的网站。但是这个社区对于那些已经具备一定基础的同">
+  <meta name="description" content="检测数组更新重点：当通过索引值改变数组序列时，页面数据不会发生改变，但是后台数据会发生改变，原因时因为虚拟DOM没有监听到后端数据改变所以不会重新刷新渲染。代码复习：       &lt;div id&#x3D;&quot;app&quot; &gt;         &lt;div v-if&#x3D;&quot;books.length&quot; &gt;         &lt;table border&#x3D;&amp;q">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode刷题第一天：幂运算">
-<meta property="og:url" content="http://yoursite.com/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/index.html">
+<meta property="og:title" content="Vue知识点4">
+<meta property="og:url" content="http://yoursite.com/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="你有自己学习的网站吗？leetcode,freecodecamp,牛客等都是刷题的好地方。不过侧重点不同。我从自己刷题的感受说一下吧。freecodecamp：个人感觉初期的话，还是先从freecodecamp,因为我学习的是前端，这个社区会比较注重基础的积累，你可以一边学习新的知识点，一边进行基础的练习，上面还有一些小项目可以上手。是一个比较全面的网站。但是这个社区对于那些已经具备一定基础的同">
+<meta property="og:description" content="检测数组更新重点：当通过索引值改变数组序列时，页面数据不会发生改变，但是后台数据会发生改变，原因时因为虚拟DOM没有监听到后端数据改变所以不会重新刷新渲染。代码复习：       &lt;div id&#x3D;&quot;app&quot; &gt;         &lt;div v-if&#x3D;&quot;books.length&quot; &gt;         &lt;table border&#x3D;&amp;q">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/2.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/1.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/6.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/3.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/9.gif">
-<meta property="article:published_time" content="2020-05-04T02:21:26.000Z">
-<meta property="article:modified_time" content="2020-05-04T03:32:32.630Z">
+<meta property="og:image" content="http://yoursite.com/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/5.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/6.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/7.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/8.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/9.png">
+<meta property="article:published_time" content="2020-05-31T02:30:58.000Z">
+<meta property="article:modified_time" content="2020-05-31T13:41:08.799Z">
 <meta property="article:author" content="韦键松">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/2.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -282,11 +286,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-leetcode刷题第一天：幂运算" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Vue知识点4" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/" class="article-date">
-      <time datetime="2020-05-04T02:21:26.000Z" itemprop="datePublished">2020-05-04</time>
+      <a  href="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/" class="article-date">
+      <time datetime="2020-05-31T02:30:58.000Z" itemprop="datePublished">2020-05-31</time>
 </a>
 
     </div>
@@ -300,7 +304,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode刷题第一天：幂运算
+      Vue知识点4
     </h1>
   
 
@@ -318,33 +322,192 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><img src="/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/2.jpg" alt></p>
-<h2 id="你有自己学习的网站吗？"><a href="#你有自己学习的网站吗？" class="headerlink" title="你有自己学习的网站吗？"></a>你有自己学习的网站吗？</h2><p>leetcode,freecodecamp,牛客等都是刷题的好地方。不过侧重点不同。我从自己刷题的感受说一下吧。<br>freecodecamp：个人感觉初期的话，还是先从freecodecamp,因为我学习的是前端，这个社区会比较注重基础的积累，你可以一边学习新的知识点，一边进行基础的练习，上面还有一些小项目可以上手。是一个比较全面的网站。但是这个社区对于那些已经具备一定基础的同学来说不太合适，可能会觉得没有挑战以及枯燥。<br>leetcode：这个是一个偏算法的刷题网站，并且里面的题量及其丰富。适合中期的同学。并且里面有很多的大牛以及比较新颖的算法思想，是一个提高自己的好工具和网站。但是切记，刷题不是只顾刷，更是要学会总结和思考。很多人刷了得多题，确实编程能力是具备了，但是解决问题的能力不得而知。所以总结很重要，一种类型的算法思想要懂得原理，掌握解决的方法。这类题刷多了，你自己慢慢明白解决这种题的大致思路。<br>牛客：准备下海的时候，多去牛客上刷各个公司的题目，把握那个公司的面题标准。个人觉得牛客上面更多的是各个公司的一些最新消息，也不能算是一个刷题网站吧，所以还所要搭配leetcode食用更佳。</p>
-<h2 id="个人还有一个喜欢的app：掘金。阅读上面很多的文章真的能提高自己的编程思想。但是这个社区偏社会向，风气可能有点丧。但是个人感觉还是不错的。"><a href="#个人还有一个喜欢的app：掘金。阅读上面很多的文章真的能提高自己的编程思想。但是这个社区偏社会向，风气可能有点丧。但是个人感觉还是不错的。" class="headerlink" title="个人还有一个喜欢的app：掘金。阅读上面很多的文章真的能提高自己的编程思想。但是这个社区偏社会向，风气可能有点丧。但是个人感觉还是不错的。"></a>个人还有一个喜欢的app：掘金。阅读上面很多的文章真的能提高自己的编程思想。但是这个社区偏社会向，风气可能有点丧。但是个人感觉还是不错的。</h2><h2 id="谈谈幂运算"><a href="#谈谈幂运算" class="headerlink" title="谈谈幂运算"></a>谈谈幂运算</h2><p>第一题：<br>给定一个整数，编写一个函数来判断它是否是 2 的幂次方。</p>
-<p>示例 1:</p>
-<p>输入: 1<br>输出: true<br>解释: 20 = 1<br>示例 2:</p>
-<p>输入: 16<br>输出: true<br>解释: 24 = 16<br>示例 3:</p>
-<p>输入: 218<br>输出: false</p>
-<p>思路：刚开始我的想法用的是数学思维，区分2幂次方和一般能被2整除的数的区别，2的幂次方取余最后都为0，后来我用了循环进行运算，当我运行后发现：不能用循环或者递归。<br><img src="/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/1.jpg" alt><br>后来看到官方思路是位运算，才想到位运算的。<br>二进制数都有一个特点：<br>0010   2<br>0100   4<br>1000   8<br>在保证n&gt;0的情况下，当不是n&amp;(n-1)的且运算结果都是0.<br>代码：<br>    var isPowerOfTwo = function(n) {<br>        if((n &amp; (n-1)) == 0 &amp;&amp; n &gt; 0) {<br>         return true;<br>        }<br>       return false;<br>};</p>
-<hr>
-<h2 id="3次幂"><a href="#3次幂" class="headerlink" title="3次幂"></a>3次幂</h2><p>给定一个整数，写一个函数来判断它是否是 3 的幂次方。</p>
-<p>示例 1:</p>
-<p>输入: 27<br>输出: true<br>示例 2:</p>
-<p>输入: 0<br>输出: false<br>示例 3:</p>
-<p>输入: 9<br>输出: true<br>示例 4:</p>
-<p>输入: 45<br>输出: false</p>
-<p>思路：这题我用的是取对数的方法，因为对数是基于幂运算的反函数。<br><img src="/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/6.jpg" alt><br>代码：<br> var isPowerOfFour = function(num) {<br>        result = Math.log10(num)/Math.log10(3);<br>        return Number.isInteger(result);</p>
-<p>};</p>
-<hr>
-<h2 id="4次幂"><a href="#4次幂" class="headerlink" title="4次幂"></a>4次幂</h2><p>给定一个整数 (32 位有符号整数)，请编写一个函数来判断它是否是 4 的幂次方。</p>
-<p>示例 1:</p>
-<p>输入: 16<br>输出: true<br>示例 2:</p>
-<p>输入: 5<br>输出: false</p>
-<p>思路：想一想之前的2次幂，有没有什么思路?没错，看看关于4的二进制数有什么特点，果然 4 的幂次方的数的二进制表示 1 的位置都是在奇数位。<br>如何，如果和一个二进制数偶数位都是1进行&amp;运算的话，结果还是它自己。<br>这个特殊的数有如下特点：</p>
-<p>足够大，但不能超过 32 位，即最大为 1111111111111111111111111111111（ 31 个 1）<br>它的二进制表示中奇数位为 1 ，偶数位为 0<br>符合这两个条件的二进制数是：</p>
-<p>1010101010101010101010101010101<br>16进制为：0x55555555<br><img src="/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/3.jpg" alt><br>var isPowerOfFour = function(n) {<br>   if((n &amp; (n-1) &amp;&amp; n &gt; 0)) {<br>       if((n &amp; 0x55555555) == n) {<br>           return true;<br>       }<br>   }<br>   return false;<br>};</p>
-<hr>
-<p>最后，我只想说：<br><img src="/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/9.gif" alt></p>
+        <h2 id="检测数组更新"><a href="#检测数组更新" class="headerlink" title="检测数组更新"></a>检测数组更新</h2><p><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/1.png" alt><br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/2.png" alt><br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/3.png" alt><br>重点：<br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/4.png" alt><br>当通过索引值改变数组序列时，页面数据不会发生改变，但是后台数据会发生改变，原因时因为虚拟DOM没有监听到后端数据改变所以不会重新刷新渲染。<br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/5.png" alt><br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/6.png" alt><br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/7.png" alt><br>代码复习：</p>
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript" src="vue.js"></script>
+    <meta name="generator" content="Hexo 4.2.0"></head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for="item in message" :key="item"></li>
+<pre><code>    &lt;/ul&gt;
+    &lt;button @click=&quot;btnClick&quot;&gt;操作&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    const app = new Vue({
+        el:&apos;#app&apos;,
+        data:{
+            message:[&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;,&apos;E&apos;]
+        },
+        methods:{
+            btnClick() { </code></pre><p>//                        1.push方法，数组尾部添加<br>//                      this.message.push(‘name’);<br>//                      2.pop()删除数组最后应该元素<br>//                       this.message.pop();<br>//                      3.shift():删除数组中第一个元素<br>//                        this.message.shift();<br>//                      4.unshift():在数组最前面添加元素<br>//                         this.message.unshift(‘nmae’);<br>//                      5.splice():插入/删除/替换元素<br>//                        this.message.splice(1,0,’k’,’M’,’L’);<br>//                        this.message.splice(1,1);<br>//                        this.message.splice(1,2,’k’,’M’,’L’);<br>//                      6.sort():数组排序<br>                           this.message.sort();<br>//                        7.reverse():反转<br>//                           this.message.reverse();<br>                      vue方法：Vue.set(更改对象，更改位置序号，更改内容);<br>                      Vue.set(this.message,1,’G’);<br>//                     }<br>//                 }<br>//             });<br>//         </script><br>//     </body><br>// </html>–&gt;</p>
+<h2 id="小试牛刀"><a href="#小试牛刀" class="headerlink" title="小试牛刀"></a>小试牛刀</h2><p>图书购物车DEMO:<br>代码<br>html部分:</p>
+<!-- <!DOCTYPE html> -->
+<!-- <html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <link rel="stylesheet" href="css/book.css" />
+    </head>
+    <body>
+    <script type="text/javascript" src="vue.js"></script>
+        <!--<script type="text/javascript" src="js/book.js"></script>-->
+<pre><code>    &lt;div id=&quot;app&quot; &gt;
+        &lt;div v-if=&quot;books.length&quot; &gt;
+        &lt;table border=&quot;&quot; cellspacing=&quot;&quot; cellpadding=&quot;&quot;&gt;
+            &lt;thead&gt;
+            &lt;!--&lt;tr class=&quot;bg&quot;&gt;
+                &lt;th&gt;&lt;/th&gt;
+                &lt;th&gt;书籍名称&lt;/th&gt;
+                &lt;th&gt;出版日期&lt;/th&gt;
+                &lt;th&gt;价值&lt;/th&gt;
+                &lt;th&gt;购买数量&lt;/th&gt;
+                &lt;th&gt;操作&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;1&lt;/td&gt;
+                &lt;td&gt;《算法导论》&lt;/td&gt;
+                &lt;td&gt;2006-9&lt;/td&gt;
+                &lt;td&gt;$85.00&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button&gt;-&lt;/button&gt;
+                    &lt;span&gt;&lt;/span&gt;
+                    &lt;button&gt;+&lt;/button&gt;
+                &lt;/td&gt;
+                &lt;td&gt;&lt;button&gt;移除&lt;/button&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;2&lt;/td&gt;
+                &lt;td&gt;《人月神话》&lt;/td&gt;
+                &lt;td&gt;2006-2&lt;/td&gt;
+                &lt;td&gt;$59.00&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button&gt;-&lt;/button&gt;
+                    &lt;span&gt;&lt;/span&gt;
+                    &lt;button&gt;+&lt;/button&gt;
+                &lt;/td&gt;
+                &lt;td&gt;&lt;button&gt;移除&lt;/button&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;3&lt;/td&gt;
+                &lt;td&gt;《编程珠玑》&lt;/td&gt;
+                &lt;td&gt;2006-10&lt;/td&gt;
+                &lt;td&gt;$39.00&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button&gt;-&lt;/button&gt;
+                    &lt;span&gt;&lt;/span&gt;
+                    &lt;button&gt;+&lt;/button&gt;
+                &lt;/td&gt;
+                &lt;td&gt;&lt;button&gt;移除&lt;/button&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;4&lt;/td&gt;
+                &lt;td&gt;《代码大全》&lt;/td&gt;
+                &lt;td&gt;2006-3&lt;/td&gt;
+                &lt;td&gt;$128.00&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button&gt;-&lt;/button&gt;
+                    &lt;span&gt;&lt;/span&gt;
+                    &lt;button&gt;+&lt;/button&gt;
+                &lt;/td&gt;
+                &lt;td&gt;&lt;button&gt;移除&lt;/button&gt;&lt;/td&gt;
+            &lt;/tr&gt;--&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr &gt;
+                &lt;th&gt;&lt;/th&gt;
+                &lt;th&gt;书籍名称&lt;/th&gt;
+                &lt;th&gt;出版日期&lt;/th&gt;
+                &lt;th&gt;价值&lt;/th&gt;
+                &lt;th&gt;购买数量&lt;/th&gt;
+                &lt;th&gt;操作&lt;/th&gt;
+            &lt;/tr&gt;
+                &lt;tr v-for=&quot;(item ,index) in books&quot;&gt;
+                    &lt;td&gt;{{item.id}}&lt;/td&gt;
+                    &lt;td&gt;{{item.name}}&lt;/td&gt;
+                    &lt;td&gt;{{item.date}}&lt;/td&gt;
+                    &lt;td&gt;{{item.price|getFinalPrice}}&lt;/td&gt;
+                    &lt;td&gt;
+                    &lt;button @click=&quot;decrement(index)&quot; v-bind:disabled=&quot;item.count &lt;= 1&quot; &gt;-&lt;/button&gt;
+                    {{item.count}}
+                    &lt;button @click=&quot;increment(index)&quot;&gt;+&lt;/button&gt;
+                    &lt;/td&gt;
+                    &lt;td class=&quot;bg&quot;&gt;&lt;button @click=&quot;remove(index)&quot; &gt;移除&lt;/button&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+        &lt;span&gt;总价:{{showPrice|getFinalPrice}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div v-else&gt;购物车为空&lt;/div&gt;
+        &lt;br /&gt;
+        &lt;br /&gt;
+        &lt;a href=&quot;&quot; @click=&quot;aClick&quot; class=&quot;btn&quot;&gt;sumbit&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;!-- &lt;script type=&quot;text/javascript&quot;&gt;
+    const app = new Vue({
+            el:&apos;#app&apos;,
+          data:{
+                books:[
+                {id:1,
+                name:&apos;《算法导论》&apos;,
+                date:&apos;2006-9&apos;,
+                price:85.00,
+                count:1
+                },
+                {id:2,
+                name:&apos;《人月神话》&apos;,
+                date:&apos;2006-2&apos;,
+                price:59.00,
+                count:1
+                },
+                {id:3,
+                name:&apos;《编程珠玑》&apos;,
+                date:&apos;2006-10&apos;,
+                price:39.00,
+                count:1
+                },
+                {id:4,
+                name:&apos;《代码大全》&apos;,
+                date:&apos;2006-3&apos;,
+                price:128.00,
+                count:1
+                },
+                ],
+
+            },
+            methods:{
+                decrement(index){</code></pre><p>//                        console.log(“heool”,index)<br>                            this.books[index].count–;<br>                    },<br>                    increment(index){<br>//                        console.log(“ksdhs”,index)<br>                        this.books[index].count++;<br>                    },<br>                    remove(index){<br>                        this.books.splice(index,1)<br>                    },</p>
+<pre><code>        },
+        computed:{
+            showPrice(){
+                let totalPrice = 0;
+                for(let i=0;i&lt;this.books.length;i++)
+                {
+                    totalPrice += this.books[i].price*this.books[i].count;
+                }
+
+                return totalPrice;
+            }
+        },
+        filters:{
+             getFinalPrice(price){
+               return &apos;$&apos;+price.toFixed(2);
+           }
+        }  //过滤器
+        })
+&lt;/script&gt; --&gt;</code></pre><!-- </html> -->
+<p>css部分：<br>body{<br>    height: 100vh;<br>    background: linear-gradient(#141e30,#243b55);<br>}<br>table{<br>    border: 1px solid #e9e9e9;<br>    border-collapse: collapse;<br>    border-spacing: 0;<br>}</p>
+<p>th,td{<br>    padding: 8px, 16px;<br>    border: 1px,solid,#E9E9E9;<br>    text-align: left;<br>}<br>th{<br>    background-color: #f7f7f7;<br>    color: #5c6b77;<br>    font-weight: 600;<br>}<br>#app{<br>    color: white;<br>    position: absolute;<br>    left:50%;<br>    top:50%;<br>    transform: translate(-50%,-50%);<br>    background: linear-gradient(#141e30,#243b55);<br>    /<em>background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);</em>/<br>    background-size: 400%;<br>}<br>button{<br>    width: 50px;<br>    height: 25px;<br>    margin: 18px;<br>    color: #f7f7f7;<br>    border: 1px;<br>    border-radius: 50px;<br>    background: linear-gradient(45deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);<br>    background-size: 400%;<br>}</p>
+<p>.bg{<br>    width: 80px;<br>    height: 45px;<br>}<br>a{<br>    position: absolute;<br>    left: 50%;<br>    top: 110%;<br>    text-decoration: none;<br>    color: white;<br>    text-align: center;<br>    transform: translate(-50%,-50%);<br>    font-size: 20px;<br>    background: linear-gradient(45deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);<br>    background-size: 400%;<br>    width: 100px;<br>    height: 50px;<br>    line-height: 50px;<br>    text-transform: uppercase;<br>    border-radius: 40px;    </p>
+<p>}<br>a:before{<br>    content: “”;<br>    position: absolute;<br>    left: -5px;<br>    right: -5px;<br>    top: -5px;<br>    bottom: -5px;<br>    border: 1px solid red;<br>    background: linear-gradient(45deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);<br>    background-size: 400%;<br>     border-radius: 40px;<br>     filter: blur(20px);<br>     z-index: -1;<br>}<br>@keyframes sun{<br>    100%{<br>        background-position: -400% 0;<br>    }<br>}</p>
+<p>button,a:hover{<br>    animation: sun 8s infinite;<br>}</p>
+<p>a:hover::before{<br>        animation: sun 8s infinite;<br>}</p>
+<p>.active{<br>    display: none;<br>}<br>界面展示：<br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/8.png" alt><br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/9.png" alt></p>
 
       
     </div>
@@ -353,13 +516,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/">leetcode刷题第一天：幂运算</a></p>
+        <p><span>本文标题:</span><a  href="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/">Vue知识点4</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 韦键松 的个人博客">韦键松</a></p>
-        <p><span>发布时间:</span>2020年05月04日 - 10时21分</p>
-        <p><span>最后更新:</span>2020年05月04日 - 11时32分</p>
+        <p><span>发布时间:</span>2020年05月31日 - 10时30分</p>
+        <p><span>最后更新:</span>2020年05月31日 - 21时41分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/" title="leetcode刷题第一天：幂运算">http://yoursite.com/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/　　作者: 韦键松" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/" title="Vue知识点4">http://yoursite.com/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/　　作者: 韦键松" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -370,18 +533,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/05/13/%E7%A8%8B%E5%BA%8F%E5%91%98-%E8%88%94%E7%8B%97/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          程序员 = 舔狗
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">随机搜索算法解决TSP问题</div>
+    <a  href="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">遗传算法解决TSP问题</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -393,7 +547,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#你有自己学习的网站吗？"><span class="toc-number">1.</span> <span class="toc-text">你有自己学习的网站吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#个人还有一个喜欢的app：掘金。阅读上面很多的文章真的能提高自己的编程思想。但是这个社区偏社会向，风气可能有点丧。但是个人感觉还是不错的。"><span class="toc-number">2.</span> <span class="toc-text">个人还有一个喜欢的app：掘金。阅读上面很多的文章真的能提高自己的编程思想。但是这个社区偏社会向，风气可能有点丧。但是个人感觉还是不错的。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谈谈幂运算"><span class="toc-number">3.</span> <span class="toc-text">谈谈幂运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3次幂"><span class="toc-number">4.</span> <span class="toc-text">3次幂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4次幂"><span class="toc-number">5.</span> <span class="toc-text">4次幂</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#检测数组更新"><span class="toc-number">1.</span> <span class="toc-text">检测数组更新</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -466,13 +620,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/05/13/%E7%A8%8B%E5%BA%8F%E5%91%98-%E8%88%94%E7%8B%97/" title="上一篇: 程序员 = 舔狗">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/" title="下一篇: 随机搜索算法解决TSP问题">
+            <a  href="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/" title="下一篇: 遗传算法解决TSP问题">
                 <i class="fa fa-angle-right"></i>
             </a>
         
