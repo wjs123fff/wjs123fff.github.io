@@ -277,6 +277,99 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Vue知识点5" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/" class="article-date">
+      <time datetime="2020-06-01T13:06:26.000Z" itemprop="datePublished">2020-06-01</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/">Vue知识点5</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="组件化开发"><a href="#组件化开发" class="headerlink" title="组件化开发"></a>组件化开发</h2><h2>什么是组件化？</h2>
+![](Vue知识点5/9.png)
+![](Vue知识点5/10.png)
+<h2>组件的注册：</h2>
+![](Vue知识点5/11.png)
+![](Vue知识点5/12.png)
+![](Vue知识点5/13.png)
+<h2>步骤解析：</h2>
+![](Vue知识点5/14.png)
+<h2>全局组件和局部组件：</h2>
+全局组件意味着可以在多个vue实例下面使用（前面例子都是全局组件）
+<h2>局部组件：</h2>
+只在定义下的组件内有用
+![](Vue知识点5/15.png)
+（为什么组件要在vue实例上才能使用，因为如果在实例之外，页面是无法识别这个自定义标签的）
+<h2>父组件和子组件</h2>
+![](Vue知识点5/17.png)
+![](Vue知识点5/16.png)
+<h2>语法糖注册组件+父子组件写法</h2>
+![](Vue知识点5/18.png)
+<h2>组件模板分离</h2>
+![](Vue知识点5/20.png)
+![](Vue知识点5/19.png)
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="部分扩充"><a href="#部分扩充" class="headerlink" title="部分扩充"></a>部分扩充</h2><p>编程范式：<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/2.png" alt><br>函数式编程我个人感觉就是面向过程编程。<br>高阶函数：<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/3.png" alt><br>filter：（适用于数组元素过滤）<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/5.png" alt><br>map:（适用于对数组内所有元素进行计算，改变原值）<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/6.png" alt><br>reduce:<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/7.png" alt><br>箭头函数：<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/8.png" alt></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Vue知识点4" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -343,63 +436,6 @@
 <pre><code>    &lt;div id=&quot;app&quot; &gt;
         &lt;div v-if=&quot;books.length&quot; &gt;
         &lt;table border=&quot;&quot; cellspacing=&quot;&quot; cellpadding=&quot;&quot;&gt;
-            &lt;thead&gt;
-            &lt;!--&lt;tr class=&quot;bg&quot;&gt;
-                &lt;th&gt;&lt;/th&gt;
-                &lt;th&gt;书籍名称&lt;/th&gt;
-                &lt;th&gt;出版日期&lt;/th&gt;
-                &lt;th&gt;价值&lt;/th&gt;
-                &lt;th&gt;购买数量&lt;/th&gt;
-                &lt;th&gt;操作&lt;/th&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;1&lt;/td&gt;
-                &lt;td&gt;《算法导论》&lt;/td&gt;
-                &lt;td&gt;2006-9&lt;/td&gt;
-                &lt;td&gt;$85.00&lt;/td&gt;
-                &lt;td&gt;
-                    &lt;button&gt;-&lt;/button&gt;
-                    &lt;span&gt;&lt;/span&gt;
-                    &lt;button&gt;+&lt;/button&gt;
-                &lt;/td&gt;
-                &lt;td&gt;&lt;button&gt;移除&lt;/button&gt;&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;2&lt;/td&gt;
-                &lt;td&gt;《人月神话》&lt;/td&gt;
-                &lt;td&gt;2006-2&lt;/td&gt;
-                &lt;td&gt;$59.00&lt;/td&gt;
-                &lt;td&gt;
-                    &lt;button&gt;-&lt;/button&gt;
-                    &lt;span&gt;&lt;/span&gt;
-                    &lt;button&gt;+&lt;/button&gt;
-                &lt;/td&gt;
-                &lt;td&gt;&lt;button&gt;移除&lt;/button&gt;&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;3&lt;/td&gt;
-                &lt;td&gt;《编程珠玑》&lt;/td&gt;
-                &lt;td&gt;2006-10&lt;/td&gt;
-                &lt;td&gt;$39.00&lt;/td&gt;
-                &lt;td&gt;
-                    &lt;button&gt;-&lt;/button&gt;
-                    &lt;span&gt;&lt;/span&gt;
-                    &lt;button&gt;+&lt;/button&gt;
-                &lt;/td&gt;
-                &lt;td&gt;&lt;button&gt;移除&lt;/button&gt;&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;4&lt;/td&gt;
-                &lt;td&gt;《代码大全》&lt;/td&gt;
-                &lt;td&gt;2006-3&lt;/td&gt;
-                &lt;td&gt;$128.00&lt;/td&gt;
-                &lt;td&gt;
-                    &lt;button&gt;-&lt;/button&gt;
-                    &lt;span&gt;&lt;/span&gt;
-                    &lt;button&gt;+&lt;/button&gt;
-                &lt;/td&gt;
-                &lt;td&gt;&lt;button&gt;移除&lt;/button&gt;&lt;/td&gt;
-            &lt;/tr&gt;--&gt;
             &lt;/thead&gt;
             &lt;tbody&gt;
                 &lt;tr &gt;
@@ -492,6 +528,7 @@
 <p>button,a:hover{<br>    animation: sun 8s infinite;<br>}</p>
 <p>a:hover::before{<br>        animation: sun 8s infinite;<br>}</p>
 <p>.active{<br>    display: none;<br>}<br>界面展示：<br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/8.png" alt><br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/9.png" alt></p>
+<p>关于for循环的补充：<br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/10.png" alt></p>
 
       
     </div>
@@ -671,6 +708,11 @@
 <h2 id="v-show"><a href="#v-show" class="headerlink" title="v-show?"></a>v-show?</h2><p><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/29.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/30.png" alt><br>v-if当里面值为false时，就会直接删掉，为true时则重新创建，所以当切换非常频繁时最好使用v-show,当切换较少时使用v-if</p>
 <h2 id="v-for的妙处"><a href="#v-for的妙处" class="headerlink" title="v-for的妙处"></a>v-for的妙处</h2><p><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/31.png" alt><br>遍历数组：<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/32.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/33.png" alt><br>遍历对象：<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/34.png" alt><br>（后一种少用）<br>组件key的使用<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/36.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/37.png" alt><br>其实如果了解过数据结构里面的链表插值原理，应该就了解了。</p>
 <p>有一个疑问：课程讲的是应该绑定item，理由是当有时候index改变了，其它item和index就不能一一对应，可能会出现bug.但是如果绑定的是item，假设插入的元素和之前的一个元素是一样的，也会出现index与item不对应的情况。所以我觉得老师讲的太绝对了，至于怎么使用还应该具体问题具体分析。<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/35.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/38.png" alt></p>
+<h2 id="表单绑定v-model"><a href="#表单绑定v-model" class="headerlink" title="表单绑定v-model"></a>表单绑定v-model</h2><p><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/41.png" alt></p>
+<h2 id="数据双向绑定原理"><a href="#数据双向绑定原理" class="headerlink" title="数据双向绑定原理"></a>数据双向绑定原理</h2><p><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/39.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/40.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/42.png" alt></p>
+<h2 id="v-model-radio"><a href="#v-model-radio" class="headerlink" title="v-model:radio"></a>v-model:radio</h2><p>当存在多个选框时：<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/43.png" alt></p>
+<h2 id="v-model-checkbox"><a href="#v-model-checkbox" class="headerlink" title="v-model:checkbox"></a>v-model:checkbox</h2><p>复选框有两种情况：单个勾选框和多个勾选框<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/44.png" alt></p>
+<h2 id="v-model结合select"><a href="#v-model结合select" class="headerlink" title="v-model结合select"></a>v-model结合select</h2><p><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/46.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/45.png" alt><br>关于值绑定：<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/47.png" alt><br>关于修饰符：<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/48.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/49.png" alt></p>
 
       
     </div>
@@ -1065,64 +1107,6 @@ const app = new Vue({
       
           
         <h2 id="计算机网络–网络层"><a href="#计算机网络–网络层" class="headerlink" title="计算机网络–网络层"></a>计算机网络–网络层</h2><p><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/1.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/2.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/3.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/4.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/5.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/6.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/7.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/8.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/9.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/10.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/11.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/9.gif" alt></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-计算机网络笔记3" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/" class="article-date">
-      <time datetime="2020-05-14T06:01:18.000Z" itemprop="datePublished">2020-05-14</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/">计算机网络笔记3</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="计算机网络–数据链路层"><a href="#计算机网络–数据链路层" class="headerlink" title="计算机网络–数据链路层"></a>计算机网络–数据链路层</h2><p><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/1.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/2.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/3.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/4.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/5.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/6.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/7.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/8.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/9.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/10.jpg" alt></p>
 
       
     </div>
