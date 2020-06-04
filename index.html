@@ -277,6 +277,67 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Vue知识点6" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/" class="article-date">
+      <time datetime="2020-06-04T01:43:57.000Z" itemprop="datePublished">2020-06-04</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/">Vue知识点6</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="编译作用域"><a href="#编译作用域" class="headerlink" title="编译作用域"></a>编译作用域</h2><p><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/1.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/7.png" alt><br>插槽slot:<br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/2.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/3.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/4.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/6.png" alt><br>当标签里面没有任何标签时，可以在插槽中放一个默认标签。这个没有使用的标签会显示这个默认标签。<br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/5.png" alt><br>注意vue3版本以上会废弃这个语法，采用v-sort<br><a href="https://cn.vuejs.org/v2/guide/components-slots.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components-slots.html</a></p>
+<h2 id="v-slot插槽（具名插槽-作用域插槽）"><a href="#v-slot插槽（具名插槽-作用域插槽）" class="headerlink" title="v-slot插槽（具名插槽+作用域插槽）"></a>v-slot插槽（具名插槽+作用域插槽）</h2><p>什么是作用域插槽：<br>个人理解：父组件对子组件在父组件内显示的数据样式或其他感觉不满意，所以七绕八绕的把数据拿出来增加加一下自己的一些想法，东西上去再进行展示的一件破事。over<br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/8.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/9.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/10.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/11.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/12.png" alt><br>新组件的使用方法：<br><a href="https://www.jianshu.com/p/f69bc367fcee" target="_blank" rel="noopener">https://www.jianshu.com/p/f69bc367fcee</a><br><a href="https://blog.csdn.net/xiaolinlife/article/details/89517928?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-9.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-9.nonecase" target="_blank" rel="noopener">https://blog.csdn.net/xiaolinlife/article/details/89517928?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-9.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-9.nonecase</a></p>
+<h2 id="模块化开发"><a href="#模块化开发" class="headerlink" title="模块化开发"></a>模块化开发</h2><p>javascript的原始功能<br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/13.png" alt><br>项目复杂性–&gt;命名文件–&gt;变量命名冲突–&gt;闭包函数–&gt;代码复用性降低–&gt;闭包函数内创建导出对象–&gt;<br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/14.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/15.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/17.png" alt></p>
+<h2 id="commonJS"><a href="#commonJS" class="headerlink" title="commonJS"></a>commonJS</h2><p><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/18.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/19.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/20.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/21.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/22.png" alt><br>import导入：<br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/23.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/24.png" alt><br>export导出：<br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/25.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/26.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/27.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/1.png" alt></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Vue知识点5" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -686,7 +747,7 @@
 <h2 id="聊一聊const"><a href="#聊一聊const" class="headerlink" title="聊一聊const"></a>聊一聊const</h2><p><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/5.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/6.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/7.png" alt><br>其实我觉得这个问题很好理解，const定义的变量内存地址时不能改变的。但是变量属性是可以改变的。<br>就好比你不能改变你儿子的性别，让他从小子变成丫头，但是你可以把他打扮一下，女装大佬也是可以嘛。<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/8.png" alt><br>当然，随着es6发布了很多关于新的特性，也暴露了JavaScript的一些弊端，比如JavaScript没有所谓的类型检测，所以当编译时如果传参发生错误，编译有时候可能不会发现参数错误，但是项目上线时，因为用户的一些操作不当，会造成数据与类型不符。所以有了一些可以检测类型的语言：<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/9.png" alt></p>
 <h2 id="关于监听这件事—》v-on"><a href="#关于监听这件事—》v-on" class="headerlink" title="关于监听这件事—》v-on"></a>关于监听这件事—》v-on</h2><p><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/10.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/11.png" alt><br>v-on关于参数传递：<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/12.png" alt><br>v-on关于修饰符：<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/13.png" alt><br>1.修饰符：.stop<br>我们要先了解什么是事件冒泡：<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/14.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/15.png" alt><br>vue中是怎么阻止这种冒泡事件呢？<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/16.png" alt><br>不需要点击显示的添加stop就可以了<br>2.修饰符:.prevent<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/17.png" alt><br>这样你就可以在后台将数据进行一些处理后再提交服务器（但是本人觉得意义不是很大）<br>3.键盘监听：keyup<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/18.png" alt><br>4.修饰符：.native<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/19.png" alt><br>当使用自定义组件时进行事件监听，如果只是按照之前监听的方法是无法进行监听的，所以只有加.native才能进行监听。<br>5.修饰符：.once（用处不大，当时当有一些只能进行一次点击确定的操作：例如获取验证码等等）<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/20.png" alt></p>
 <h2 id="关于判断这件事"><a href="#关于判断这件事" class="headerlink" title="关于判断这件事"></a>关于判断这件事</h2><p><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/21.png" alt><br>这和之前学的判断语句都是一样的，只是要注意逻辑处理。<br>结合自己理解写的小demo：鼠标点击改变内容，再点击回到之前的内容。<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/22.png" alt><br>用户切换登录案例：<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/23.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/24.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/25.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/26.png" alt><br>vue的虚拟DOM会在渲染前比较，因为举例中的两个功能是互斥的，所以当在渲染的时候虚拟DOM直接将指向同一个渲染出来的标签地址，只是当里面的一些参数进行相应的改变（比如将用户名，id改变等，这个就涉及到diff算法）。所以当第一个输入用户姓名时，当切换到用户邮箱时，用户名依然存在。<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/27.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/28.png" alt><br>how to solve?<br>input标签后加key值，给key值赋不同值就可以防止复用，类似于数据库里面表里面的主键key。</p>
-<h2 id="v-show"><a href="#v-show" class="headerlink" title="v-show?"></a>v-show?</h2><p><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/29.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/30.png" alt><br>v-if当里面值为false时，就会直接删掉，为true时则重新创建，所以当切换非常频繁时最好使用v-show,当切换较少时使用v-if</p>
+<h2 id="v-show"><a href="#v-show" class="headerlink" title="v-show?"></a>v-show?</h2><p><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/29.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/30.png" alt><br>v-if当里面值为false时，就会直接删掉，为true时则重新创建，所以当切换非常频繁时最好使用v-show,当切换较少时使用v-if<br>v-show 隐藏 是display:’none’<br>v-if 隐藏是 visibility:hidden;<br>区别是<br>display:none和visibility:hidden的区别是：<br>1.display:none是彻底消失，不在文档流中占位，浏览器也不会解析该元素；visibility:hidden是视觉上消失了，可以理解为透明度为0的效果，在文档流中占位，浏览器会解析该元素；<br>2.使用visibility:hidden比display:none性能上要好，display:none切换显示时visibility，页面产生回流（当页面中的一部分元素需要改变规模尺寸、布局、显示隐藏等，页面重新构建，此时就是回流。所有页面第一次加载时需要产生一次回流），而visibility切换是否显示时则不会引起回流。</p>
 <h2 id="v-for的妙处"><a href="#v-for的妙处" class="headerlink" title="v-for的妙处"></a>v-for的妙处</h2><p><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/31.png" alt><br>遍历数组：<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/32.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/33.png" alt><br>遍历对象：<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/34.png" alt><br>（后一种少用）<br>组件key的使用<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/36.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/37.png" alt><br>其实如果了解过数据结构里面的链表插值原理，应该就了解了。</p>
 <p>有一个疑问：课程讲的是应该绑定item，理由是当有时候index改变了，其它item和index就不能一一对应，可能会出现bug.但是如果绑定的是item，假设插入的元素和之前的一个元素是一样的，也会出现index与item不对应的情况。所以我觉得老师讲的太绝对了，至于怎么使用还应该具体问题具体分析。<br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/35.png" alt><br><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/38.png" alt></p>
 <h2 id="表单绑定v-model"><a href="#表单绑定v-model" class="headerlink" title="表单绑定v-model"></a>表单绑定v-model</h2><p><img src="/2020/05/25/Vue%E7%9F%A5%E8%AF%86%E7%82%B93/41.png" alt></p>
@@ -1030,64 +1091,6 @@ const app = new Vue({
       
           
         <h2 id="计算机网络–传输层"><a href="#计算机网络–传输层" class="headerlink" title="计算机网络–传输层"></a>计算机网络–传输层</h2><p><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/1.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/2.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/3.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/4.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/5.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/6.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/7.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/8.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/9.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/9.gif" alt></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-计算机网络笔记4" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/" class="article-date">
-      <time datetime="2020-05-14T06:51:39.000Z" itemprop="datePublished">2020-05-14</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/">计算机网络笔记4</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="计算机网络–网络层"><a href="#计算机网络–网络层" class="headerlink" title="计算机网络–网络层"></a>计算机网络–网络层</h2><p><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/1.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/2.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/3.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/4.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/5.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/6.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/7.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/8.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/9.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/10.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/11.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B04/9.gif" alt></p>
 
       
     </div>
