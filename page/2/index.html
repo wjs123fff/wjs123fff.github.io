@@ -277,6 +277,69 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-vlan三层交换机划分子网" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/" class="article-date">
+      <time datetime="2020-05-17T15:11:56.000Z" itemprop="datePublished">2020-05-17</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/">vlan三层交换机划分子网</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-设计题目与要求"><a href="#一-设计题目与要求" class="headerlink" title="一.设计题目与要求:"></a>一.设计题目与要求:</h2><p>   网络参数设计表</p>
+<p>计算机名           IP地址           VLAN号        网  关<br>  PC11         192.168.10.11/24       10       192.168.10.254/24<br>  PC12         192.168.10.12/24       10       192.168.10.254/24<br>  PC13         192.168.10.13/24       10       192.168.10.254/24<br>  PC21         192.168.20.21/24       20       192.168.20.254/24<br>  PC22         192.168.20.22/24       20       192.168.20.254/24<br>  PC23         192.168.20.23/24       20       192.168.20.254/24<br>  PC31         192.168.30.31/24       30       192.168.30.254/24<br>  PC32         192.168.30.32/24       30       192.168.30.254/24<br>  PC33         192.168.30.33/24       30       192.168.30.254/24<br>  DNS          192.168.40.1/24        40       192.168.40.254/24<br>  WEB-FTP      192.168.40.2/24        40       192.168.40.254/24</p>
+<p>设计要求：<br>1.正确划分VLAN。<br>2.不同VLAN之间的计算机能相互通信。<br>3.所有计算机能够用域名访问WEB服务器和FTP服务器。<br>WEB服务器域名为：<a href="http://www.anli.com.cn,FTP服务器域名为：ftp.anli.com.cn">www.anli.com.cn,FTP服务器域名为：ftp.anli.com.cn</a></p>
+<h2 id="二、设计与实现的过程："><a href="#二、设计与实现的过程：" class="headerlink" title="二、设计与实现的过程："></a>二、设计与实现的过程：</h2><p>首先我们要分析一下如何划分vlan，然后配置路由表的问题。<br>由于我也是摸石头过河式进行的实验，所以只给出相关的指令，以及划分示意图。<br>1.首先划分vlan。</p>
+<p><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/1.png" alt></p>
+<p>2.配置lsw1：<br>创建vlan：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/2.png" alt><br>配置trunk链路：<br>[Huawei]int e0/0/4<br>[Huawei-Ethernet0/0/4]port link-type trunk<br>[Huawei-Ethernet0/0/4]port trunk allow-pass vlan all<br>划分vlan10:<br>[Huawei]int e0/0/1<br>[Huawei-Ethernet0/0/1]port link-type access<br>[Huawei-Ethernet0/0/1]port default vlan 10<br>划分vlan20:<br>[Huawei]int e0/0/2<br>[Huawei-Ethernet0/0/2]port link-type access<br>[Huawei-Ethernet0/0/2]port default vlan 20<br>划分vlan30:<br>[Huawei]int e0/0/3<br>[Huawei-Ethernet0/0/3]port link-type access<br>[Huawei-Ethernet0/0/3]port default vlan 30<br>3.配置lsw2：<br>创建vlan：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/2.png" alt><br>配置trunk链路：<br>[Huawei]int e0/0/4<br>[Huawei-Ethernet0/0/4]port link-type trunk<br>[Huawei-Ethernet0/0/4]port trunk allow-pass vlan all<br>[Huawei]int e0/0/5<br>[Huawei-Ethernet0/0/5]port link-type trunk<br>[Huawei-Ethernet0/0/5]port trunk allow-pass vlan all<br>[Huawei]int e0/0/6<br>[Huawei-Ethernet0/0/6]port link-type trunk<br>[Huawei-Ethernet0/0/6]port trunk allow-pass vlan all<br>划分vlan同lsw1一样<br>4.配置lsw3：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/2.png" alt><br>配置trunk链路：<br>[Huawei]int e0/0/4<br>[Huawei-Ethernet0/0/4]port link-type trunk<br>[Huawei-Ethernet0/0/4]port trunk allow-pass vlan all<br>划分vlan同lsw1一样<br>5.配置lsw5：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/2.png" alt><br>配置trunk链路：<br>[Huawei]int GigabitEthernet 0/0/1<br>[Huawei-GigabitEthernet0/0/1]port link-type trunk<br>[Huawei-GigabitEthernet 0/0/1]port trunk allow-pass vlan all<br>lsw1的trunk链路创建成功<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/3.png" alt><br>lsw1的vlan载入成功<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/4.png" alt><br>接下来要通过lsw5配置网关：<br>[Huawei]int VlanIf 10<br>[Huawei- VlanIf10]ip add 192.168.10.254 24<br>[Huawei]int VlanIf 20<br>[Huawei- VlanIf10]ip add 192.168.20.254 24<br>[Huawei]int VlanIf 30<br>[Huawei- VlanIf10]ip add 192.168.30.254 24<br>[Huawei]int VlanIf 40<br>[Huawei- VlanIf10]ip add 192.168.40.254 24<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/5.png" alt><br>5.配置DNS<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/6.png" alt><br>6.配置web-ftp:<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/7.png" alt><br>三、测试运行结果:<br>计算机之间的互ping：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/8.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/9.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/10.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/11.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/12.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/13.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/14.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/15.png" alt><br>四、遇到的主要问题及解决办法:<br>1.关于指令的一些用法不太懂，一开始拿到这个就是挺懵的。然后不停的百度以及各种查资料。然后把指令都写在记事本上方便查阅。<br>2.关于vlan划分的概念以及作用的不理解以及迷惑。后来去B站看了韩立刚老师的关于划分子网那部分才明白这些概念。然后看了这方面的视频。<br>3.刚开始划分了四个子网，然后就开始ping，但是发现vlan10-30这几个网段可以相互ping通，但是就是ping不通vlan40，，我的解决办法就是删掉一切重建，然后捋清楚自己的思路。然后发现可以了。<br>4.当配置域名的时候，发现通过域名就是无法访问，后来检查发现我把网关地址写成IP地址的，可能是写急眼了，改正后就好了。<br>5.我想说这个华为ensp其实bug挺多的，有时明明可以ping通的，但是过一会就不行了，我老以为是自己的问题，但是过一会再ping就又通了，我只能说还需改进啊。<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/9.gif" alt></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Vue知识点2" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -915,95 +978,6 @@ const app = new Vue({
 <p>1010101010101010101010101010101<br>16进制为：0x55555555<br><img src="/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/3.jpg" alt><br>var isPowerOfFour = function(n) {<br>   if((n &amp; (n-1) &amp;&amp; n &gt; 0)) {<br>       if((n &amp; 0x55555555) == n) {<br>           return true;<br>       }<br>   }<br>   return false;<br>};</p>
 <hr>
 <p>最后，我只想说：<br><img src="/2020/05/04/leetcode%E5%88%B7%E9%A2%98%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%9A%E5%B9%82%E8%BF%90%E7%AE%97/9.gif" alt></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-随机搜索算法解决TSP问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/" class="article-date">
-      <time datetime="2020-04-26T11:28:06.000Z" itemprop="datePublished">2020-04-26</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/">随机搜索算法解决TSP问题</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一问题引入"><a href="#一问题引入" class="headerlink" title="一问题引入:"></a>一问题引入:</h2><p>TSP(Traveling Salesman Problem)即旅行商问题，是数学领域中著名问题之一。这个问题是这样的：假设有一个旅行商人要拜访n个城市，他必须选择所要走的路径，路径的限制是每个城市只能拜访一次，而且最后要回到原来出发的城市。路径的选择目标是要求得的路径长度为所有路径之中的最小值。</p>
-<hr>
-<h2 id="二问题分析"><a href="#二问题分析" class="headerlink" title="二问题分析:"></a>二问题分析:</h2><p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/1.png" alt></p>
-<p>假设将上面的问题简化为上面这张图片所描述的内容，那么到底该<br>如何选择路径，让售货员便利整个城市回到原点的路径和最短呢？<br>由上图可知，选择不同，路径不同，距离就不同。</p>
-<hr>
-<h2 id="三编程思路"><a href="#三编程思路" class="headerlink" title="三编程思路:"></a>三编程思路:</h2><p>解决这类问题有多种不同的解法，例如模拟退伙法，蚁群迁移法，遗传法，暴力枚举法，贪心法，动态粒子追踪法等等。每种算法都有自己的优缺点以及时间复杂度各有不同。可以根据不同的条件选择合适的算法。<br>   我采用的是基于暴力算法的随机搜索算法，而暴力算法是例举出所有可能的路径，再从其中找到最短的那一条。<br>例如：<br>         A          B            C</p>
-<p>随机选择就有：ABC, ACB,BAC,BCA,CBA,CAB，6种路径的选择。<br>而当城市数目过于庞大的时候。这种算法的时间复杂度就不太适合。<br>   所以，随机搜索算法并没有像暴力法那样找出所有可能路径，<br>而是随机生成N个访问路径，从这随机生成的N条访问路径中挑出最短的那条作为结果返回。<br>    这次实验是基于p5.js的JavaScript库的条件下进行的编码。<br>第一步：<br>      首先我们要确定城市的数量，<br>       那么，城市坐标呢？所以需要定义一个空数组存储每个城市的点坐标。<br>       我们计算出每次随机产生的路径中的距离，并找到其中最短的一条，所以需要定义一个变量存储当前最短路径。<br>最后我们需要定义一数组把这条最优路径进行存储。<br>最终，我们的到了如下的变量：<br>   城市数量：totalCities<br>   存储城市坐标：cities []<br>   当前最短距离总长度：recordDistance<br>最短路径： bestEver;<br>如何解决城市随机产生的点坐标呢？<br>我们JavaScript中学过产生随机数函数，我们只要在一定范围内，将X，Y的点坐标用随机函数进行处理，再储存在cities这个数组内，就可以解决了。</p>
-<p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/2.png" alt></p>
-<p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/3.png" alt><br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/4.png" alt></p>
-<p>我们随机一个路线出来<br>0-3-1-2-0（最终是要返回0的）</p>
-<p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/5.png" alt><br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/6.png" alt><br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/6.png" alt></p>
-<p>接下来：随机了一个路径之后，我们要在这个路径下面找到最短的路径，方法是通过交换两个位置得到的，交换任意两个数，如果交换完了之后距离变小了，就更新recordDistance，我们采用的是在当前路径里面随机挑选2个城市，即随机生成两个城市的下标，交换这两个城市在cities里面的位置。</p>
-<p><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/7.png" alt></p>
-<p>然后，我们就要开始计算每条随机产生的路径的距离，通过比较，的出最短路径最后将路径存入bestEver</p>
-<p>我们需要定义一个函数计算两个城市的点坐标并返回:<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/8.png" alt></p>
-<p>Dist函数就是欧氏距离算法，计算两个点坐标的距离。定义一个变量d存储计算的距离，如果当前距离小于recordDistance存储的距离，就更新，并将这条路径存入bestEver数组中。<br>最后用p5.js进行可视化。<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/9.png" alt></p>
-<p>我们要明白的是，只要随机的量足够大，最终一定能得到结果，因为能随机到枚举的全部。<br>是不是感觉最终得不到最优解，可是当你循环个50000次试试，你就知道，基本上99%都能拿到最优解，这个比暴力搜索快，但是比dp不稳，这个算法的有点在于编码不复杂，而且在基本问题上面都能得到最优解，所以最终我选择了这个</p>
-<hr>
-<h2 id="四流程图"><a href="#四流程图" class="headerlink" title="四流程图:"></a>四流程图:</h2><h2 id><a href="#" class="headerlink" title></a><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/10.jpg" alt></h2><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果:"></a>实验结果:</h2><p>这个是城市数为6时生成的最短路径<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/11.png" alt></p>
-<p>这个是城市数为8时，生成的最短路径<br><img src="/2020/04/26/%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/12.png" alt></p>
-<hr>
-<h2 id="总结和展望："><a href="#总结和展望：" class="headerlink" title="总结和展望："></a>总结和展望：</h2><p>   这一次的旅行商问题，我在百度上查找了很多的方法，也看了很多算法的实现原理。我就找了一种比较简单的算法。这个算法也是追求局部最优解而忽视了全局最优的选择。所以不太稳定。但是效率却很高，时间复杂度比较小。这个算法的难点在于随机路径的参数，以及如何在这个路径下找到最短路径。可以通过交换两个城市来进行比较。<br>  总之这一次课题让我有了很大的感触，算法真的特别能锻炼人的思维，同时自己也在不断的思考慢慢的得到了成长。</p>
-<hr>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><p>var cities = [];<br>var totalCities = 6;<br>var recordDistance;<br>var bestEver;</p>
-<p>function setup() {<br>  createCanvas(600,400);<br>  for (var i = 0; i &lt; totalCities; i++) {<br>    var v = createVector(random(width), random(height));<br>    cities[i] = v;<br>  }<br>  var d = calcDistance(cities);<br>  recordDistance = d;<br>  bestEver = cities.slice();<br>}</p>
-<p>function draw() {<br>  background(0);</p>
-<p>  stroke(255);<br>  strokeWeight(1);<br>  noFill();<br>  beginShape();<br>  for (var i = 0; i &lt; cities.length; i++) {<br>    vertex(cities[i].x, cities[i].y);<br>  }<br>  endShape();</p>
-<p>  stroke(255, 0, 255);<br>  strokeWeight(4);<br>  noFill();<br>  beginShape();<br>  for (var i = 0; i &lt; cities.length; i++) {<br>    vertex(bestEver[i].x, bestEver[i].y);<br>  }<br>  endShape();</p>
-<p>  for (let k = 0;k &lt; 20; k++){</p>
-<p>  var i = floor(random(cities.length));<br>  var j = floor(random(cities.length));<br>  swap(cities, i, j);</p>
-<p>  var d = calcDistance(cities);<br>  if (d &lt; recordDistance) {<br>    recordDistance = d;<br>    bestEver = cities.slice();<br>  }<br>}<br>}<br>function swap(a, i, j) {<br>  var temp = a[i];<br>  a[i] = a[j];<br>  a[j] = temp;<br>}<br>function calcDistance(points) {<br>  var sum = 0;<br>  for (var i = 0; i &lt; points.length - 1; i++) {<br>    var d = dist(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);<br>    sum += d;<br>  }<br>  return sum;<br>}</p>
-<hr>
 
       
     </div>

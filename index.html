@@ -277,6 +277,197 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-软件质量与测试实验报告" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" class="article-date">
+      <time datetime="2020-06-08T05:46:03.000Z" itemprop="datePublished">2020-06-08</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">软件质量与测试实验报告</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一、题目"><a href="#一、题目" class="headerlink" title="一、题目"></a>一、题目</h2><p>1.做程序测试，找出其中的错误，并修正（物品的价格和名称-实验报告中的第一道题，纠错题）</p>
+<h2 id="二、问题分析"><a href="#二、问题分析" class="headerlink" title="二、问题分析"></a>二、问题分析</h2><p>1.需要新建一个Java项目test，然后将需要测试的product类导入到项目中，再导入JUNIT4测试包。<br><img src="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1.png" alt><br>再导入需要测试的类：<br><img src="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/2.png" alt><br>最后运行程序，查找错误，修改测试类。</p>
+<h2 id="三、问题实现代码"><a href="#三、问题实现代码" class="headerlink" title="三、问题实现代码"></a>三、问题实现代码</h2><p>package test;</p>
+<p>public class product {<br>    private String title;<br>    private double price;</p>
+<pre><code>public product(String title, double price) {
+    this.title = title;
+    this.price = price;
+}
+
+public String getTitle() {
+    return title;
+}
+
+public double getPrice() {
+    return price;
+}
+
+public boolean equals(Object o) {
+    if (o instanceof product) {
+        product p = (product)o;
+        return p.getTitle().equals(title);
+    }
+    return false;
+}</code></pre><p>}</p>
+<h2 id="四、测试代码"><a href="#四、测试代码" class="headerlink" title="四、测试代码"></a>四、测试代码</h2><p>package test;</p>
+<p>import static org.junit.Assert.*;</p>
+<p>import org.junit.After;<br>import org.junit.Before;<br>import org.junit.Test;</p>
+<p>public class productTest {</p>
+<pre><code>public product p1;
+@Before
+public void setUp() throws Exception {
+    p1 = new product(&quot;book&quot;, 32.85);
+}
+
+@After
+public void tearDown() throws Exception {
+}
+
+@Test
+public void testGetTitle() {
+    assertEquals(&quot;book&quot;, p1.getTitle() ,&quot;BK&quot;);
+}
+
+@Test
+public void testEqualsObject() {
+    String q=&quot;Yest&quot;;
+    assertEquals(&quot;should not equal to a string object&quot;,false,p1.equals(q));
+}
+
+@Test
+public void testGetPrice() {
+    assertEquals(32.86,p1.getPrice(),0.01);
+
+}</code></pre><p>}</p>
+<h2 id="五、测试结果与分析"><a href="#五、测试结果与分析" class="headerlink" title="五、测试结果与分析"></a>五、测试结果与分析</h2><p>运行后出现了2个故障：<br><img src="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/3.png" alt><br>首先我看了product类，首先代码结构，定义两个私有变量，title，price定义了getTitle和getPrice方法进行两个变量的调取。最后定义一个对象的实例，调用getTitle()方法：<br><img src="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/4.png" alt><br><img src="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/5.png" alt><br><img src="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/6.png" alt><br>插入的数据不应该是0.001而应该是0.01.因为junit中没有assertEquals(double,double)的方法。因为double值是允许误差的。所以要实现double的断言要用assertEquals(double,double,double)这个方法。第三个参数是允许误差 。<br>测试类中：32.85和32.86误差值应该是0.01.<br>第二个错误：<br><img src="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/7.png" alt><br>应该增加调用getTitle()方法，并且定义的“BK”与“book”不一样也要修改。<br>修改后的显示：<br><img src="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/8.png" alt></p>
+<h2 id="一、题目-1"><a href="#一、题目-1" class="headerlink" title="一、题目"></a>一、题目</h2><p>2、设计一个包含加、减、乘、除四则运算的计算器基本功能，使用断言assertEquals对结果的精度进行判断。</p>
+<h2 id="二、问题分析-1"><a href="#二、问题分析-1" class="headerlink" title="二、问题分析"></a>二、问题分析</h2><p>建test2项目，导入JUNIT4测试包。<br>新定义一个Calculate定义Add()，Minus(),Multiply(),Divide()方法，分别进行加减乘除的运算。<br>导入测试类，开始进行检测：</p>
+<h2 id="三、问题实现代码-1"><a href="#三、问题实现代码-1" class="headerlink" title="三、问题实现代码"></a>三、问题实现代码</h2><p>package test3;<br>import java.util.Scanner;<br>public class Calculate {<br>     private double a;<br>     private double b;</p>
+<pre><code>public Calculate(double x, double y) {
+    a = x;
+    b = y;
+}
+
+public double Add() {
+    return a + b;
+}
+
+public double Minus() {
+    return a - b;
+}
+
+public double Multiply() {
+    return a * b;
+}
+
+public double Divide() {
+    if(b != 0)
+        return a / b;
+    else
+        System.out.println(&quot;除数不能为0！&quot;);
+    return 0;
+}
+
+public static void main(String[] args) {
+    Scanner scanner = null;
+    scanner = new Scanner(System.in);
+    int a = scanner.nextInt();
+
+    int b = scanner.nextInt();
+
+    System.out.println(&quot;请输入数字a和b：&quot;);
+
+    Calculate Cal = new Calculate(a,b);
+
+    System.out.println(&quot;运算结果是：&quot;);
+
+    System.out.println(&quot;加法&quot;+&quot;:&quot;+ a + &quot;+&quot; + b + &quot;=&quot;+ Cal.Add());
+
+    System.out.println(&quot;减法&quot;+&quot;:&quot;+ a + &quot;+&quot; + b +  &quot;=&quot;+ Cal.Minus());
+
+    System.out.println(&quot;乘法&quot;+&quot;:&quot; + a + &quot;+&quot; + b +  &quot;=&quot;+ Cal.Multiply());
+
+    System.out.println(&quot;除法&quot;+&quot;:&quot; + a + &quot;+&quot; + b + &quot;=&quot;+ Cal.Divide());
+}</code></pre><p>}</p>
+<p>效果截图:<br><img src="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/9.png" alt></p>
+<h2 id="四、测试代码-1"><a href="#四、测试代码-1" class="headerlink" title="四、测试代码"></a>四、测试代码</h2><p>package test3;</p>
+<p>import static org.junit.Assert.*;</p>
+<p>import org.junit.Test;</p>
+<p>import junit.framework.TestCase;</p>
+<p>public class CalculateTest extends TestCase {<br>    private Calculate a;<br>    private Calculate b;<br>    private Calculate c;<br>    private Calculate d;</p>
+<pre><code>public void setUp() throws Exception {
+    a = new Calculate (1,99);
+    b = new Calculate (100,50);
+    c = new Calculate(1,2);
+    d = new Calculate(10,5);
+}
+
+public void testAdd() {
+    assertEquals(100.0,a.Add());
+}
+
+public void testMinus() {
+    assertEquals(50.0,b.Minus());
+}
+
+public void testMultiply() {
+    assertEquals(2.0,c.Multiply());
+}
+
+public void testDivide() {
+    assertEquals(2.0,d.Divide());
+}</code></pre><p>}</p>
+<h2 id="五、测试结果与分析-1"><a href="#五、测试结果与分析-1" class="headerlink" title="五、测试结果与分析"></a>五、测试结果与分析</h2><p>测试类截图：<br>测试数据符合预期要求截图：<br><img src="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/10.png" alt><br>测试当除数为0的情况：<br><img src="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/11.png" alt><br><img src="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/12.png" alt><br><img src="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/13.png" alt><br><img src="/2020/06/08/%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E4%B8%8E%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/14.png" alt></p>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>第一题总结：<br>在运行的时候，刚开始一直以为是product类里面的代码出现了错误，所以在那部分代码花了挺久的时间，改了很多部分，后来仔细看了错误，以及参数列表才发现是测试类写的不够完整assertEquals方法调用了解的不够。不过，还是学到了很多。<br>第二题总结：<br>我感觉用Java打计数器那部分还是挺简单的，但是到写测试类的地方就有点手足无措了，第一次接触这样的程序形式，但是想到的第一个想法是利用继承关系调用Calculate的构造函数。但是发现不行。第一次失败。<br>后来我又定义了四个test方法调用assertEquals函数，结果程序不能运行，弹出“Assert 的方法 assertEquals(double, double) 已过时”的错误，有点懵。后来去官网上查了关于assertEquals函数的特点，后来引入了import junit.framework.TestCase;就好了。也能运行和输出一些信息。<br>这一次学到了很多，也更加了解测试其实在一个软件里面也是很重要的。掌握一些测试方法对开发是很有帮助。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-小课设" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -368,7 +559,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="试题集锦"><a href="#试题集锦" class="headerlink" title="试题集锦"></a>试题集锦</h2>
+        <h2 id="试题集锦"><a href="#试题集锦" class="headerlink" title="试题集锦"></a>试题集锦</h2><p>!()[]</p>
+
       
     </div>
     
@@ -1003,69 +1195,6 @@
 <h2 id="Git的教程"><a href="#Git的教程" class="headerlink" title="Git的教程"></a>Git的教程</h2><p><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
 <p>emmmmm,看完我只能说，你大佬还是你大佬。</p>
 <p><img src="/2020/05/21/%E5%98%BF%EF%BC%8C%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88%E6%98%AFGit%E5%90%97%EF%BC%9F/9.gif" alt></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-vlan三层交换机划分子网" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/" class="article-date">
-      <time datetime="2020-05-17T15:11:56.000Z" itemprop="datePublished">2020-05-17</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/">vlan三层交换机划分子网</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="一-设计题目与要求"><a href="#一-设计题目与要求" class="headerlink" title="一.设计题目与要求:"></a>一.设计题目与要求:</h2><p>   网络参数设计表</p>
-<p>计算机名           IP地址           VLAN号        网  关<br>  PC11         192.168.10.11/24       10       192.168.10.254/24<br>  PC12         192.168.10.12/24       10       192.168.10.254/24<br>  PC13         192.168.10.13/24       10       192.168.10.254/24<br>  PC21         192.168.20.21/24       20       192.168.20.254/24<br>  PC22         192.168.20.22/24       20       192.168.20.254/24<br>  PC23         192.168.20.23/24       20       192.168.20.254/24<br>  PC31         192.168.30.31/24       30       192.168.30.254/24<br>  PC32         192.168.30.32/24       30       192.168.30.254/24<br>  PC33         192.168.30.33/24       30       192.168.30.254/24<br>  DNS          192.168.40.1/24        40       192.168.40.254/24<br>  WEB-FTP      192.168.40.2/24        40       192.168.40.254/24</p>
-<p>设计要求：<br>1.正确划分VLAN。<br>2.不同VLAN之间的计算机能相互通信。<br>3.所有计算机能够用域名访问WEB服务器和FTP服务器。<br>WEB服务器域名为：<a href="http://www.anli.com.cn,FTP服务器域名为：ftp.anli.com.cn">www.anli.com.cn,FTP服务器域名为：ftp.anli.com.cn</a></p>
-<h2 id="二、设计与实现的过程："><a href="#二、设计与实现的过程：" class="headerlink" title="二、设计与实现的过程："></a>二、设计与实现的过程：</h2><p>首先我们要分析一下如何划分vlan，然后配置路由表的问题。<br>由于我也是摸石头过河式进行的实验，所以只给出相关的指令，以及划分示意图。<br>1.首先划分vlan。</p>
-<p><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/1.png" alt></p>
-<p>2.配置lsw1：<br>创建vlan：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/2.png" alt><br>配置trunk链路：<br>[Huawei]int e0/0/4<br>[Huawei-Ethernet0/0/4]port link-type trunk<br>[Huawei-Ethernet0/0/4]port trunk allow-pass vlan all<br>划分vlan10:<br>[Huawei]int e0/0/1<br>[Huawei-Ethernet0/0/1]port link-type access<br>[Huawei-Ethernet0/0/1]port default vlan 10<br>划分vlan20:<br>[Huawei]int e0/0/2<br>[Huawei-Ethernet0/0/2]port link-type access<br>[Huawei-Ethernet0/0/2]port default vlan 20<br>划分vlan30:<br>[Huawei]int e0/0/3<br>[Huawei-Ethernet0/0/3]port link-type access<br>[Huawei-Ethernet0/0/3]port default vlan 30<br>3.配置lsw2：<br>创建vlan：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/2.png" alt><br>配置trunk链路：<br>[Huawei]int e0/0/4<br>[Huawei-Ethernet0/0/4]port link-type trunk<br>[Huawei-Ethernet0/0/4]port trunk allow-pass vlan all<br>[Huawei]int e0/0/5<br>[Huawei-Ethernet0/0/5]port link-type trunk<br>[Huawei-Ethernet0/0/5]port trunk allow-pass vlan all<br>[Huawei]int e0/0/6<br>[Huawei-Ethernet0/0/6]port link-type trunk<br>[Huawei-Ethernet0/0/6]port trunk allow-pass vlan all<br>划分vlan同lsw1一样<br>4.配置lsw3：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/2.png" alt><br>配置trunk链路：<br>[Huawei]int e0/0/4<br>[Huawei-Ethernet0/0/4]port link-type trunk<br>[Huawei-Ethernet0/0/4]port trunk allow-pass vlan all<br>划分vlan同lsw1一样<br>5.配置lsw5：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/2.png" alt><br>配置trunk链路：<br>[Huawei]int GigabitEthernet 0/0/1<br>[Huawei-GigabitEthernet0/0/1]port link-type trunk<br>[Huawei-GigabitEthernet 0/0/1]port trunk allow-pass vlan all<br>lsw1的trunk链路创建成功<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/3.png" alt><br>lsw1的vlan载入成功<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/4.png" alt><br>接下来要通过lsw5配置网关：<br>[Huawei]int VlanIf 10<br>[Huawei- VlanIf10]ip add 192.168.10.254 24<br>[Huawei]int VlanIf 20<br>[Huawei- VlanIf10]ip add 192.168.20.254 24<br>[Huawei]int VlanIf 30<br>[Huawei- VlanIf10]ip add 192.168.30.254 24<br>[Huawei]int VlanIf 40<br>[Huawei- VlanIf10]ip add 192.168.40.254 24<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/5.png" alt><br>5.配置DNS<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/6.png" alt><br>6.配置web-ftp:<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/7.png" alt><br>三、测试运行结果:<br>计算机之间的互ping：<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/8.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/9.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/10.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/11.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/12.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/13.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/14.png" alt><br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/15.png" alt><br>四、遇到的主要问题及解决办法:<br>1.关于指令的一些用法不太懂，一开始拿到这个就是挺懵的。然后不停的百度以及各种查资料。然后把指令都写在记事本上方便查阅。<br>2.关于vlan划分的概念以及作用的不理解以及迷惑。后来去B站看了韩立刚老师的关于划分子网那部分才明白这些概念。然后看了这方面的视频。<br>3.刚开始划分了四个子网，然后就开始ping，但是发现vlan10-30这几个网段可以相互ping通，但是就是ping不通vlan40，，我的解决办法就是删掉一切重建，然后捋清楚自己的思路。然后发现可以了。<br>4.当配置域名的时候，发现通过域名就是无法访问，后来检查发现我把网关地址写成IP地址的，可能是写急眼了，改正后就好了。<br>5.我想说这个华为ensp其实bug挺多的，有时明明可以ping通的，但是过一会就不行了，我老以为是自己的问题，但是过一会再ping就又通了，我只能说还需改进啊。<br><img src="/2020/05/17/vlan%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91/9.gif" alt></p>
 
       
     </div>
