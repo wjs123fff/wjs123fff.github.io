@@ -277,6 +277,208 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Vue知识点2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/" class="article-date">
+      <time datetime="2020-05-16T01:49:07.000Z" itemprop="datePublished">2020-05-16</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/">Vue知识点2</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Vue的指令函数："><a href="#Vue的指令函数：" class="headerlink" title="Vue的指令函数："></a>Vue的指令函数：</h2><p>1.v-for:基于源数据多次渲染元素或模板块。此指令之值，必须使用特定语法 alias in expression，为当前遍历的元素提供别名：</p>
+<pre><code>&lt;div v-for=&quot;item in items&quot;&gt;
+  {{ item.text }}
+ &lt;/div&gt; </code></pre><p><a href="https://cn.vuejs.org/v2/api/#v-for" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-for</a></p>
+<p>2.v-on：缩写：“@”，绑定事件监听器。事件类型由参数指定。表达式可以是一个方法的名字或一个内联语句，如果没有修饰符也可以省略。</p>
+<p><a href="https://cn.vuejs.org/v2/api/#v-on" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-on</a></p>
+<p>3.v-once:只渲染元素和组件一次。随后的重新渲染，元素/组件及其所有的子节点将被视为静态内容并跳过。这可以用于优化更新性能。</p>
+<p><a href="https://cn.vuejs.org/v2/api/#v-once" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-once</a></p>
+<p><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/1.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/2.png" alt></p>
+<p>4.v-html:更新元素的 innerHTML<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/3.png" alt><br><a href="https://cn.vuejs.org/v2/api/#v-html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-html</a></p>
+<p>5.v-text:更新元素的 textContent。如果要更新部分的 textContent，需要使用  插值。<br><a href="https://cn.vuejs.org/v2/api/#v-text" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-text</a><br>但是不推荐使用，不够灵活<br>          </p><h2 v-test="message">,we are</h2><br>          message的内容会直接覆盖掉“,we are”<p></p>
+<p>6.v-pre:跳过这个元素和它的子元素的编译过程。可以用来显示原始 Mustache 标签。跳过大量没有指令的节点会加快编译。<br><a href="https://cn.vuejs.org/v2/api/#v-pre" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-pre</a><br>其实就是取消转义，要得不多，了解即可。</p>
+<p>7.v-cloak（cloak:斗篷）:这个指令保持在元素上直到关联实例结束编译<br>主要是应对在开发时，有时候js代码运行卡顿时，会将一些元素渲染出来，当js运行后会再将数据加载到元素上时，页面出现闪动效果。所有这个标签作用就是只有当js解析运行后才将元素加载。<br><a href="https://cn.vuejs.org/v2/api/#v-cloak" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-cloak</a><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/4.png" alt></p>
+<p>8.v-bind:动态地绑定一个或多个 attribute，或一个组件 prop 到表达式<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/5.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/6.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/7.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/8.png" alt><br>宿主语法：<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/9.png" alt></p>
+<p>v-bind绑定style属性：<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/11.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/12.png" alt><br>作业：鼠标点击，改变颜色<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/10.png" alt><br>当时做这一题的时候，我想到了要动态绑定数组序列号，动态绑定Class改变颜色的属性，由click事件触发，序列号改变，点击哪个序列触发事件，颜色改变。但是我想用的是方法和函数，所有很复杂。但是其实只要定义一个变量currentindex等于当前我选中的序列，然后this.currentindex = index,就可以实现我想要的功能。<br><a href="https://cn.vuejs.org/v2/api/#v-bind" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#v-bind</a></p>
+<h2 id="计算基本属性的使用"><a href="#计算基本属性的使用" class="headerlink" title="计算基本属性的使用"></a>计算基本属性的使用</h2><p>1.什么是计算属性：<br>我们知道，在模板中可以通过插值语法显示一些data中的数据。<br>但是在某些情况下，我们可能需要对数据进行一些转化后再显示，或者需要将多个数据结合起来显示。就可以将代码换成计算属性。具有计算属性的代码时写在computed中的。（计算属性是有缓存的）<br>2.案例1：<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/13.png" alt><br>代码中的fullname依然是一个属性，只不过调用了getfullname方法。<br>3.案例2：<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/14.png" alt><br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/15.png" alt><br>4.计算属性computed，默认带有geter,seter方法。<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/16.png" alt><br>一般调用的都是计算属性里面的get方法，而且不希望外界改变内部的set方法，所以一般在编写的时候把set方法去掉了。使用就是属性一般是没有set方法，只读属性。<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/17.png" alt><br>为了进一步简化代码，将get去掉。换成了变量属性<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/18.png" alt><br>其实这个是采用了对象封装的方法，和Java里面的get和set方法差不多。<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/19.png" alt><br>set方法就是监听fullname的属性，当fullname的属性发送改变时，就会进行回调。然后进行修改。<br>5.计算属性和methods的区别（就是计算属性有缓存）：<br><img src="/2020/05/16/Vue%E7%9F%A5%E8%AF%86%E7%82%B92/20.png" alt><br>当调用同样的代码很多次时，比如打印案例1里面的fullname这个属性四次时，通过methodes打印，后台输出时会显示计算四次，打印了四次，而用computed时只需要计算一次，打印一次。因为计算属性具有缓存区，会监听属性值是否改变，如果发现打印四次都没有发生改变时，就只会在控制台打印一次，大大提高了效率。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Vue知识点1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/" class="article-date">
+      <time datetime="2020-05-15T03:28:58.000Z" itemprop="datePublished">2020-05-15</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/">Vue知识点1</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Vue–1day"><a href="#Vue–1day" class="headerlink" title="Vue–1day"></a>Vue–1day</h2><p>1.关于let(es6中定义变量)和const(es6定义常量)<br>let定义得变量的值是可以进行改变的，但是const定义的变量是不能改变的。<br>var没有作用域<br>es6中，var的作用域是函数级，let的作用域是块级。<br>2.vue的基本格式：</p>
+<pre><code> div id=&quot;app&quot;{{message}}}/div {{}}里面嵌套的是程序段或数据
+const app = new Vue({
+        e:&apos;#app&apos;,         ---&gt;用于挂载要管理的元素
+        data:{            ---&gt;定义数据
+       message:&apos;hello world!&apos;
+   }
+})</code></pre><p>3.vue的数据是动态双向绑定的，与JavaScript和jQuery相比，当数据刷新时，前端加载出来的数据也同步更新，不用再重新编写语句将新数据渲染到页面标签中。（VUE的核心：数据驱动视图。），适用于任何前后端分离的项目。<br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/1.png" alt></p>
+<p>4.Mustache语法<br>Mustache语法中，不仅仅可以直接写变量，也可以写简单的表达式</p>
+<h2 id="VUE中的MVVM（Model-View-ViewModel）开发模式"><a href="#VUE中的MVVM（Model-View-ViewModel）开发模式" class="headerlink" title="VUE中的MVVM（Model View  ViewModel）开发模式:"></a>VUE中的MVVM（Model View  ViewModel）开发模式:</h2><p>在MVVM的框架下视图和模型是不能直接通信的。它们通过ViewModel来通信，ViewModel通常要实现一个observer观察者，当数据发生变化，ViewModel能够监听到数据的这种变化，然后通知到对应的视图做自动更新，而当用户操作视图，ViewModel也能监听到视图的变化，然后通知数据做改动，这实际上就实现了数据的双向绑定。并且MVVM中的View 和 ViewModel可以互相通信。<br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/2.jpg" alt></p>
+<p><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/3.png" alt></p>
+<p>ViewModel的作用：1界面触发事件，通过viewModel回调到model。<br>                 2.model更新的数据，通过viewmodel向页面传递。<br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/4.png" alt><br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/5.png" alt></p>
+<h2 id="创建Vue实例传入options"><a href="#创建Vue实例传入options" class="headerlink" title="创建Vue实例传入options"></a>创建Vue实例传入options</h2><p><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/6.png" alt></p>
+<h2 id="vue的生命周期"><a href="#vue的生命周期" class="headerlink" title="vue的生命周期"></a>vue的生命周期</h2><p>什么是生命周期：事物的产生到消亡的过程<br>关于版本选择：debug(开发版本)/relese（稳定版本）<br>个人理解：当创建一个实例后，在做每件事的过程中，生命周期会进行回调，告诉程序进行到了哪一步。<br><img src="/2020/05/15/Vue%E7%9F%A5%E8%AF%86%E7%82%B91/7.png" alt><br>生命周期的作用：生命周期给了很多回调，所有要根据项目需求决定要用哪些回调。通过callhook函数传递的数据，hook(钩子)函数来进行回调。其实有点像Java通过监听器来判断实例是否触发，再调用相应接口实现相应的功能。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-计算机网络笔记5" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/" class="article-date">
+      <time datetime="2020-05-14T07:08:35.000Z" itemprop="datePublished">2020-05-14</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/">计算机网络笔记5</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="计算机网络–传输层"><a href="#计算机网络–传输层" class="headerlink" title="计算机网络–传输层"></a>计算机网络–传输层</h2><p><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/1.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/2.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/3.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/4.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/5.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/6.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/7.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/8.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/9.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B05/9.gif" alt></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-计算机网络笔记4" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -830,260 +1032,9 @@
 
 
   
-    <article id="post-酒店管理系统" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" class="article-date">
-      <time datetime="2020-04-24T11:52:56.000Z" itemprop="datePublished">2020-04-24</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">酒店管理系统</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="酒店管理系统"><a href="#酒店管理系统" class="headerlink" title="酒店管理系统"></a>酒店管理系统</h2><p>用例文本：<br>1.系统功能设计（模块结构图统领下，对各个模块功能进行详尽的文字描述）<br>应用环境:根据用户的需求陈述可以确定系统分为前台和后台，<br>前台的主要功能是接待、预订、收银等;后台的主要是管理、统计等。本    系统只能在非网络模式下运行，无论是服务人员、管理人员还是经理，    都要通过系统登录本系统，服务人员通过用户界面获取信息、登记客户    信息;管理人员通过权限对系统进行管理，了解酒店动态。</p>
-<p>1.1登录系统:主要执行数据库的运行权限管理，只有用户登录通过才可以进入主页面进行操作。<br>1.2顾客信息登记系统（订单管理）：主要是记录顾客基本入住信息，包括身份证，姓名，年龄，家庭住址，以及一些入住信息，这个将关系到后面得结算系统。后台管理人员也可以通过查看客源来调整相应的住房情况。</p>
-<p>1.3客房标准管理系统:包括客房的编号、类型、面积、最多容纳的人数、<br>价格以及客房的硬件设施，如果空调、电视、网络、卫生间等。当添加    新的客房时，就添加相应的标准信息，可以随时查看客房的标准信息，<br>根据需要进行修改和删除等操作。</p>
-<p>1.4客房信息管理系统:酒店客房管理系统的核心部分。它的主要功能是    存储订房时的信息，包括登记人姓名、证件号、登记类型、所选的餐饮    标准、押金及入住时间等。这些信息直接关系到后续的结算信息管理。</p>
-<p>1.5结算信息管理系统:结合订房的信息进行自动化结账，并存储结算信    息，包括客房定价、押金、餐饮消费、客房消费、客户类型、结算时间、    入住天数、消费总额等,  结算完毕就可以退房。</p>
-<p>1．    参与者：</p>
-<p>参与者                角色描述<br>前台人员            接待、订房，收银等<br>顾客               预定管理<br>后台管理人员        管理、统计等<br>（备注：本系统只能在非网络模式下运行，所以所谓的预定管理指的是有一些不是当天入住的顾客）</p>
-<h2 id="用例图"><a href="#用例图" class="headerlink" title="用例图"></a>用例图</h2><p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/1.jpg" alt></p>
-<h2 id="活动流程图"><a href="#活动流程图" class="headerlink" title="活动流程图"></a>活动流程图</h2><p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/10.png" alt></p>
-<h2 id="用例描述"><a href="#用例描述" class="headerlink" title="用例描述"></a>用例描述</h2><p>3用例描述：</p>
-<p>用例号    1<br>用例名称    顾客信息登记<br>参与者    前台人员，顾客，<br>用例描述    顾客可以提前和酒店预约住房，前台人员根据顾客的描述，将顾客的一些基本信息进行系统录入数据库，并和住房信息表进行关联。</p>
-<p>用例号    2<br>用例名称    住房信息系统<br>参与者    前台人员，后台人员<br>用例描述    前台人员通过住房信息系统，进行顾客住房信息的存储（下单），并根据顾客需求调整住房信息的一些参数，例如续住，押金，以及换房等信息的修改。后台人员通过住房信息表可以关联到客房标准的修改，以及了解酒店的动态。</p>
-<p>用例号    3<br>用例名称    结算系统<br>参与者    前台人员，后台<br>用例描述    根据顾客信息表以及住房信息表进行顾客入住的结算，退还相应的押金，打印账单</p>
-<p>用例号    4<br>用例名称    客房标准<br>参与者    后台<br>用例描述    后台人员根据酒店的情况，可以增加一些新的套间，房型。</p>
-<h2 id="系统顺序图"><a href="#系统顺序图" class="headerlink" title="系统顺序图"></a>系统顺序图</h2><p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/2.jpg" alt></p>
-<h2 id="操作契约"><a href="#操作契约" class="headerlink" title="操作契约:"></a>操作契约:</h2><p>契约name:Win2 (宾客订单)<br>操作：win2 ()<br>交叉引用：用例：添加顾客信息<br>前置条件：无<br>后置条件：初始化数据库顾客信息表table的属性，<br>          与查询Win3()，删除Win4()，修改Win5()形成关联</p>
-<p>契约name:Win4<br>操作：win4 ()<br>交叉引用：用例：删除顾客信息<br>前置条件：无<br>后置条件： 数据库的table表刷新，<br>          与查询Win3()，修改Win5()形成关联，<br>           Win3()查询的顾客信息改变<br>           Win5()显示的顾客信息表改变。</p>
-<p>契约name:Win5<br>操作：win5 ()<br>交叉引用：用例：修改顾客信息<br>前置条件：无<br>后置条件： 数据库的顾客信息表刷新，<br>          与删除Win4()，查询Win3()形成关联，<br>           Win3()查询的顾客信息改变<br>           Win4()显示的顾客信息表改变。</p>
-<p>契约name:Win1<br>操作：win1 ()<br>交叉引用：用例：顾客信息查询<br>前置条件：无<br>后置条件：无 </p>
-<p>契约name:RoomSearch<br>操作：RoomSearch ()<br>交叉引用：用例：客房信息查询<br>前置条件：无<br>后置条件： 数据库的住房信息表刷新，<br>          与RoomAdd(),RoomDelete(),RoomUpdate()形成关联</p>
-<p>契约name:Room_date<br>操作：Room_date ()<br>交叉引用：用例：入住信息登记<br>前置条件：无<br>后置条件： 数据库的入住信息表刷新，与Room_mondel(),Room_update(),Room_delete()形成关联。</p>
-<p>契约name:Room_model<br>操作：Room_model()<br>交叉引用：用例：入住信息查询<br>前置条件：无<br>后置条件： 无</p>
-<p>契约name:Room_update<br>操作：Room_update ()<br>交叉引用：用例：入住信息更新<br>前置条件：无<br>后置条件：数据库入住信息表刷新，与Room_model()，Room_delete()，Room_search()关联的信息参数获取改变。</p>
-<p>契约name:Room_delete<br>操作：Room_delete ()<br>交叉引用：用例：入住信息删除<br>前置条件：无<br>后置条件：数据库入住信息表刷新，与Room_model()，Room_update()，Room_search()关联的信息参数获取改变。</p>
-<p>契约name:RoomAdd<br>操作：RoomAdd ()<br>交叉引用：用例：客房类型增加<br>前置条件：无<br>后置条件：数据库入住信息表初始化，与RoomUpdate ()，RoomDelete()关联的信息参数获取改变。</p>
-<p>契约name: RoomUpdate<br>操作：RoomUpdate ()<br>交叉引用：用例：客房类型增加<br>前置条件：无<br>后置条件：数据库入住信息表刷新，与RoomAdd()，RoomDelete()关联的信息参数获取改变。</p>
-<p>契约name: RoomDelete<br>操作：RoomDelete ()<br>交叉引用：用例：客房类型删除<br>前置条件：无<br>后置条件：数据库入住信息表刷新，与RoomAdd()，RoomUpdate ()关联的信息参数获取改变。</p>
-<p>契约name:BillSerach<br>操作：BillSerach()<br>交叉引用：用例：账单查询<br>前置条件：无<br>后置条件：无</p>
-<p>契约name:Bill_Add<br>操作：Bill_Add()<br>交叉引用：用例：添账单信息<br>前置条件：无<br>后置条件：数据库账单信息初始化，与Bill_update(),Bill_delete()关联的获取参数改变。</p>
-<p>契约name:Bill_update<br>操作：Bill_update ()<br>交叉引用：用例：添账单信息<br>前置条件：无<br>后置条件：数据库账单信息初始化，与Bill_Add(),Bill_delete()关联的获取参数改变。</p>
-<p>契约name: Bill_delete<br>操作：Bill_delete ()<br>交叉引用：用例：添账单信息<br>前置条件：无<br>后置条件：数据库账单信息初始化，与Bill_update(),Bill_Add()关联的获取参数改变。</p>
-<hr>
-<p>以上的字都是自己一个个敲的，图也是自己一笔笔画的。<br>附赠部分界面图：</p>
-<p>备注：当时因为只是测试，所以数据选的不是很好。<br>     编译器：eclipse<br>     数据库：Oracle<br>     JDK：3.1版本<br>     未采用数据库配置连接而采用驱动包JRE6</p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/3.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/4.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/5.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/6.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/7.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/8.png" alt></p>
-<p><img src="/2020/04/24/%E9%85%92%E5%BA%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/9.png" alt></p>
-<hr>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-扒一扒搭建博客踩过的坑" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/" class="article-date">
-      <time datetime="2020-04-22T03:36:52.000Z" itemprop="datePublished">2020-04-22</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">扒一扒搭建博客踩过的坑</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="B站是个好地方"><a href="#B站是个好地方" class="headerlink" title="B站是个好地方"></a>B站是个好地方</h2><p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/1.jpg" alt></p>
-<p>某天正在B站”白嫖“计算机网络的时候，偶然间看见一个up主发布了一篇关于如何免费搭建个人博客而且不需要自己掏钱买域名服务器的方法，作为”资深白白嫖客“的我，如何能错过。</p>
-<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/2.jpg" alt></p>
-<p>1:下载node.js，安装淘宝镜像。<br>npm install -g cnpm –registry=<a href="http://registry.npm.taobao.org" target="_blank" rel="noopener">http://registry.npm.taobao.org</a>    #安装淘宝的cnpm 管理器<br>2：安装hexo博客框架<br>cnpm install -g hexo-cli    #安装hexo框架<br>hexo -v    #查看hexo版本<br>cd blog    #创建blog目录<br>cd blog     #进入blog目录(注：如果电脑是Mac的，命令行是：mkdir)<br>hexo init     #生成博客 初始化博客（mac:mkdir blog    #创建blog目录）<br>hexo s    #启动本地博客服务<br><a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>    #本地访问地址<br>hexo n “我的第一篇文章” #创建新的文章<br>#返回blog目录<br>hexo clean #清理<br>hexo g #生成<br>#Github创建一个新的仓库 你的GitHub的用户名.github.io<br>cnpm install –save hexo-deployer-git #在blog目录下安装git部署插件<br>（git是为了将项目部署到远端GitHub，对本地的项目管理以及远端项目克隆也是极好的）<br>#配置_config.yml </p>
-<pre><code># Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-      type: git
-     repo: https://github.com/YourGithubName/YourGithubName.github.io.git
-      branch: master</code></pre><p>hexo d    #部署到Github仓库里<br>https://你的GitHub的用户名.github.io/  #访问这个地址可以查看博客</p>
-<hr>
-<h2 id="关于更换主题"><a href="#关于更换主题" class="headerlink" title="关于更换主题"></a>关于更换主题</h2><p> git clone <a href="https://github.com/litten/hexo-theme-yilia.git" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia  #下载yilia主题到本地<br>（注：也可以自己去网上找一款自己喜欢的主题，我用的是black_bluez这一款）</p>
-<p>#修改hexo根目录下的 _config.yml 文件 ： theme: yilia</p>
-<p>hexo c    #清理一下<br>hexo g    #生成<br>hexo d    #部署到远程Github仓库<br>https://你的GitHub的用户名.io/  #查看博客</p>
-<p>是不是很简单呀？<br><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/8.jpg" alt></p>
-<p>but， 当时我搭建的时候真的气到爆炸，每走一步，就出现一个错误，特别是下载git那里，我发现在cmd里面就是下载不了，最后不得不用软件管家下载。<br>若你未关联Github，则执行hexo deploy<br>命令时终端会提示你输入Github的用户名和密码，即<br>Username for ‘<a href="https://github.com&#39;" target="_blank" rel="noopener">https://github.com&#39;</a>:<br>Password for ‘<a href="https://github.com&#39;" target="_blank" rel="noopener">https://github.com&#39;</a>:</p>
-<p>这样呢，是不是就会好了呢，nonono<br><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/6.jpg" alt></p>
-<h2 id="关于如何上传本地图片"><a href="#关于如何上传本地图片" class="headerlink" title="关于如何上传本地图片"></a>关于如何上传本地图片</h2><p>你的博客不可能都是文字描述吧，古人还说图文并茂呢，所以呀，我迎来了我的又一个大坑，去chrome上访问了很多大佬的博客，然后乐呵呵的去安装步骤一步步进行，安装了上传图片的插件:<br>1.首先把blog（hexo）目录下的_config.yml里的psot_asset_folder:设置为true</p>
-<p>2.在blog（hexo）目录下执行:</p>
-<p>cnpm install hexo-asset-image –save</p>
-<p>3.在blog（hexo）目录下Git Bash Here，运行hexo n “博客名”来生成md博客时，会在_post目录下看到一个与博客同名的文件夹。</p>
-<p>4.将想要上传的图片先扔到文件夹下，然后在博客中使用markdown的格式引入图片：</p>
-<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/%E5%9B%BE%E7%89%87%E5%90%8D.jpg" alt="你想要输入的替代文字"></p>
-<p>然后》》》》</p>
-<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/9.png" alt></p>
-<p>what?<br>关键是这可是按照大佬的方法一步步进行的哎，咋回事啊，小老弟？<br>后来找了很多关于这个的博客，差不多是这个方法啊，难不成我的电脑有毒吗？</p>
-<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/5.jpg" alt></p>
-<p>后来，终于在一个冷门的论坛里面找到了原因：可能是版本原因<br>cnpm install hexo-asset-image –save<br>使用这条语句，安装的是0.0.1版本的插件<br>cnpm install <a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="noopener">https://github.com/CodeFalling/hexo-asset-image</a> – save<br>使用这条语句，安装的是0.0.5版本的插件</p>
-<p>由于地址映射的不同，0.0.1这个版本的不支持本地图片的映射。</p>
-<p><img src="/2020/04/22/%E6%89%92%E4%B8%80%E6%89%92%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/4.jpg" alt></p>
-<p>哼，你对bug的力量一无所知。</p>
-<h2 id="好了，这就是我关于搭建博客的一些方法，以及遇到过的坑"><a href="#好了，这就是我关于搭建博客的一些方法，以及遇到过的坑" class="headerlink" title="好了，这就是我关于搭建博客的一些方法，以及遇到过的坑"></a>好了，这就是我关于搭建博客的一些方法，以及遇到过的坑</h2>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-我的第一篇博客" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/04/20/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="article-date">
-      <time datetime="2020-04-20T10:00:07.000Z" itemprop="datePublished">2020-04-20</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/04/20/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="你好，我的第一篇博客"><a href="#你好，我的第一篇博客" class="headerlink" title="你好，我的第一篇博客"></a>你好，我的第一篇博客</h2><p>有兴趣去我B站看看吗？一个喜欢剪辑的up主。作为奖励，可以教会你如何制作视频转场预设<br>以及进行视频转码。</p>
-<p>我的B站名：鱼总and伦桑</p>
-<hr>
-<h2 id="如何搭建自己的一个博客？"><a href="#如何搭建自己的一个博客？" class="headerlink" title="如何搭建自己的一个博客？"></a>如何搭建自己的一个博客？</h2><p>如果感兴趣的话，请继续阅读我的博客，你或许就可以跳过很多的坑。</p>
-<hr>
-<h2 id="当然，我也会在博客中记录我自己的学习进度"><a href="#当然，我也会在博客中记录我自己的学习进度" class="headerlink" title="当然，我也会在博客中记录我自己的学习进度"></a>当然，我也会在博客中记录我自己的学习进度</h2><p>有人说过这么一句话 ，你尽管自律和自信，剩下的一切交给时间。</p>
-<hr>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
