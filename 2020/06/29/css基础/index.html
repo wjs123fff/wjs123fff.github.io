@@ -9,12 +9,12 @@
   
   <title>css基础 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="html+css基础（浏览器+内核）![]10.png) 进阶html5+css3进阶 表单新增特性 进度条 音频和视频 操作元素样式 自定义属性 网络接口 全屏接口 FileReader的作用">
+  <meta name="description" content="html+css基础（浏览器+内核） 进阶html5+css3进阶 表单新增特性 进度条 音频和视频 操作元素样式 自定义属性 网络接口 全屏接口 FileReader的作用 拖拽接口使用 地理定位http:&#x2F;&#x2F;lbsyun.baidu.com&#x2F;百度地图开发文档复制代码 添加密匙 查询需要定位的坐标点 替换代码中的坐标值 web存储-sessionStorage web存储-localStorag">
 <meta property="og:type" content="article">
 <meta property="og:title" content="css基础">
 <meta property="og:url" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="html+css基础（浏览器+内核）![]10.png) 进阶html5+css3进阶 表单新增特性 进度条 音频和视频 操作元素样式 自定义属性 网络接口 全屏接口 FileReader的作用">
+<meta property="og:description" content="html+css基础（浏览器+内核） 进阶html5+css3进阶 表单新增特性 进度条 音频和视频 操作元素样式 自定义属性 网络接口 全屏接口 FileReader的作用 拖拽接口使用 地理定位http:&#x2F;&#x2F;lbsyun.baidu.com&#x2F;百度地图开发文档复制代码 添加密匙 查询需要定位的坐标点 替换代码中的坐标值 web存储-sessionStorage web存储-localStorag">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/1.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/2.png">
@@ -24,6 +24,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/6.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/7.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/9.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/10.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/11.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/12.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/13.png">
@@ -53,8 +54,45 @@
 <meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/221.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/222.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/223.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/224.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/225.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/226.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/227.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/228.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/229.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/230.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/231.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/232.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/233.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/234.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/235.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/236.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/237.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/238.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/239.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/240.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/241.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/244.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/242.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/243.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/245.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/246.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/247.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/248.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/249.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/250.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/251.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/252.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/253.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/254.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/255.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/256.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/257.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/258.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/259.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/260.png">
 <meta property="article:published_time" content="2020-06-29T15:07:15.000Z">
-<meta property="article:modified_time" content="2020-07-02T13:52:02.349Z">
+<meta property="article:modified_time" content="2020-07-09T07:53:47.914Z">
 <meta property="article:author" content="韦键松">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/1.png">
@@ -350,7 +388,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="html-css基础（浏览器-内核）"><a href="#html-css基础（浏览器-内核）" class="headerlink" title="html+css基础（浏览器+内核）"></a>html+css基础（浏览器+内核）</h3><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/1.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/2.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/3.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/4.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/5.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/6.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/7.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/9.png" alt><br>![]10.png)<br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/11.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/12.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/13.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/14.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/15.png" alt></p>
+        <h3 id="html-css基础（浏览器-内核）"><a href="#html-css基础（浏览器-内核）" class="headerlink" title="html+css基础（浏览器+内核）"></a>html+css基础（浏览器+内核）</h3><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/1.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/2.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/3.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/4.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/5.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/6.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/7.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/9.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/10.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/11.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/12.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/13.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/14.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/15.png" alt></p>
 <h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><h3 id="html5-css3进阶"><a href="#html5-css3进阶" class="headerlink" title="html5+css3进阶"></a>html5+css3进阶</h3><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/200.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/201.png" alt></p>
 <h4 id="表单新增特性"><a href="#表单新增特性" class="headerlink" title="表单新增特性"></a>表单新增特性</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/202.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/203.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/204.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/205.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/206.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/207.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/30.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/208.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/209.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/210.png" alt></p>
 <h4 id="进度条"><a href="#进度条" class="headerlink" title="进度条"></a>进度条</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/211.png" alt></p>
@@ -359,7 +397,13 @@
 <h4 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/216.png" alt></p>
 <h4 id="网络接口"><a href="#网络接口" class="headerlink" title="网络接口"></a>网络接口</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/217.png" alt></p>
 <h4 id="全屏接口"><a href="#全屏接口" class="headerlink" title="全屏接口"></a>全屏接口</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/219.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/220.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/221.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/222.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/223.png" alt></p>
-<h4 id="FileReader的作用"><a href="#FileReader的作用" class="headerlink" title="FileReader的作用"></a>FileReader的作用</h4>
+<h4 id="FileReader的作用"><a href="#FileReader的作用" class="headerlink" title="FileReader的作用"></a>FileReader的作用</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/224.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/225.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/226.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/227.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/228.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/229.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/230.png" alt></p>
+<h4 id="拖拽接口使用"><a href="#拖拽接口使用" class="headerlink" title="拖拽接口使用"></a>拖拽接口使用</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/231.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/232.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/233.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/234.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/235.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/236.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/237.png" alt></p>
+<h4 id="地理定位"><a href="#地理定位" class="headerlink" title="地理定位"></a>地理定位</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/238.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/239.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/240.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/241.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/244.png" alt><br><a href="http://lbsyun.baidu.com/" target="_blank" rel="noopener">http://lbsyun.baidu.com/</a><br>百度地图开发文档<br>复制代码 添加密匙 查询需要定位的坐标点 替换代码中的坐标值</p>
+<h4 id="web存储-sessionStorage"><a href="#web存储-sessionStorage" class="headerlink" title="web存储-sessionStorage"></a>web存储-sessionStorage</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/242.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/243.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/245.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/246.png" alt></p>
+<h4 id="web存储-localStorage"><a href="#web存储-localStorage" class="headerlink" title="web存储-localStorage"></a>web存储-localStorage</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/247.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/248.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/249.png" alt></p>
+<h4 id="应用程序缓存"><a href="#应用程序缓存" class="headerlink" title="应用程序缓存"></a>应用程序缓存</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/250.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/251.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/252.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/253.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/254.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/255.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/256.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/257.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/258.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/259.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/260.png" alt></p>
+<h4 id="自定义播放器"><a href="#自定义播放器" class="headerlink" title="自定义播放器"></a>自定义播放器</h4>
       
     </div>
     
@@ -370,7 +414,7 @@
         <p><span>本文标题:</span><a  href="/2020/06/29/css%E5%9F%BA%E7%A1%80/">css基础</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 韦键松 的个人博客">韦键松</a></p>
         <p><span>发布时间:</span>2020年06月29日 - 23时07分</p>
-        <p><span>最后更新:</span>2020年07月02日 - 21时52分</p>
+        <p><span>最后更新:</span>2020年07月09日 - 15时53分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/06/29/css%E5%9F%BA%E7%A1%80/" title="css基础">http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/06/29/css%E5%9F%BA%E7%A1%80/　　作者: 韦键松" title=""></span>
@@ -398,7 +442,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#html-css基础（浏览器-内核）"><span class="toc-number">1.</span> <span class="toc-text">html+css基础（浏览器+内核）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶"><span class="toc-number"></span> <span class="toc-text">进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#html5-css3进阶"><span class="toc-number">1.</span> <span class="toc-text">html5+css3进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#表单新增特性"><span class="toc-number">1.1.</span> <span class="toc-text">表单新增特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#进度条"><span class="toc-number">1.2.</span> <span class="toc-text">进度条</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#音频和视频"><span class="toc-number">1.3.</span> <span class="toc-text">音频和视频</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#操作元素样式"><span class="toc-number">1.4.</span> <span class="toc-text">操作元素样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义属性"><span class="toc-number">1.5.</span> <span class="toc-text">自定义属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#网络接口"><span class="toc-number">1.6.</span> <span class="toc-text">网络接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全屏接口"><span class="toc-number">1.7.</span> <span class="toc-text">全屏接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FileReader的作用"><span class="toc-number">1.8.</span> <span class="toc-text">FileReader的作用</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#html-css基础（浏览器-内核）"><span class="toc-number">1.</span> <span class="toc-text">html+css基础（浏览器+内核）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶"><span class="toc-number"></span> <span class="toc-text">进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#html5-css3进阶"><span class="toc-number">1.</span> <span class="toc-text">html5+css3进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#表单新增特性"><span class="toc-number">1.1.</span> <span class="toc-text">表单新增特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#进度条"><span class="toc-number">1.2.</span> <span class="toc-text">进度条</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#音频和视频"><span class="toc-number">1.3.</span> <span class="toc-text">音频和视频</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#操作元素样式"><span class="toc-number">1.4.</span> <span class="toc-text">操作元素样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义属性"><span class="toc-number">1.5.</span> <span class="toc-text">自定义属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#网络接口"><span class="toc-number">1.6.</span> <span class="toc-text">网络接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全屏接口"><span class="toc-number">1.7.</span> <span class="toc-text">全屏接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FileReader的作用"><span class="toc-number">1.8.</span> <span class="toc-text">FileReader的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#拖拽接口使用"><span class="toc-number">1.9.</span> <span class="toc-text">拖拽接口使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#地理定位"><span class="toc-number">1.10.</span> <span class="toc-text">地理定位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#web存储-sessionStorage"><span class="toc-number">1.11.</span> <span class="toc-text">web存储-sessionStorage</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#web存储-localStorage"><span class="toc-number">1.12.</span> <span class="toc-text">web存储-localStorage</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#应用程序缓存"><span class="toc-number">1.13.</span> <span class="toc-text">应用程序缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义播放器"><span class="toc-number">1.14.</span> <span class="toc-text">自定义播放器</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
