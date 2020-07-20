@@ -277,6 +277,139 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-计算机网络笔记2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/" class="article-date">
+      <time datetime="2020-05-14T00:57:54.000Z" itemprop="datePublished">2020-05-14</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/">计算机网络笔记2</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><p>物理层实现的是传输媒体上的数据比特流传输。其实学完这一章，突然明白了当时学的数字逻辑与计算机组成原理。当时觉得这两门课特别难学，数字逻辑计算数字1和0进行各种与或非计算，而计算机组成原理偏向于计算机硬件的作用和原理。主机（cpu+内存），外设（输入设备+输出设备+外存），总线（地址总线+数据总线+控制总线），记忆最深的应该是数据表示和运算器和方法。感觉当时学到头痛。但是当学完这两门课后再看物理层就能更加理解物理层的工作原理。</p>
+<h2 id="物理层模型"><a href="#物理层模型" class="headerlink" title="物理层模型"></a>物理层模型</h2><p>通信的目的是传送消息(message)。如话音、文字、图像、视频等都是消息。数据(data)是运送消息的实体。根据RFC 4949给出的定义，数据是使用特定方式表示的信息，通常是有意义的符号序列。这种信息的表示可用计算机或其他机器(或人)处理或产生。信号(signal)则是数据的电气或电磁的表现。</p>
+<p>根据信号中代表消息的参数的取值方式不同，信号可分为以下两大类：</p>
+<p>模拟信号，或连续信号—代表消息的参数的取值是连续的。例如在图中，用户家中的调制解调器到电话端局之间的用户线上传送的就是模拟信号。<br>数字信号，或离散信号—代表消息的参数的取值是离散的。例如在图中，用户家中的计算机到调制解调器之间，或在电话网中继线上传送的就是数字信号。在使用时间域(或简称为时域)的波形表示数字信号时，代表不同离散数值的基本波形就称为码元。在使用二进制编码时，只有两种不同的码元，一种代表0状态而另一种代表1状态。<br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/10.png" alt></p>
+<h2 id="关于信道"><a href="#关于信道" class="headerlink" title="关于信道"></a>关于信道</h2><p>在许多情况下，我们要使用信道(channel)这一名词。信道和电路并不等同。信道一般都是用来表示向某一个方向传送信息的媒体。因此，一条通信电路往往包含一条发送信道和一条接收信道。从通信的双方信息交互的方式来看，可以有以下三种基本方式：</p>
+<p>单向通信又称为单工通信，即只能有一个方向的通信而没有反方向的交互。无线电广播或有线电广播以及电视广播就属于这种类型。<br>双向交替通信又称为半双工通信，即通信的双方都可以发送信息，但不能双方同时发送(当然也就不能同时接收)。这种通信方式是一方发送另一方接收，过一段时间后可以再反过来。<br>双向同时通信又称为全双工通信，即通信的双方可以同时发送和接收信息。单向通信只需要一条信道，而双向交替通信或双向同时通信则都需要两条信道(每个方向各一条)。显然，双向同时通信的传输效率最高。<br>来自信源的信号常称为基带信号(即基本频带信号)。像计算机输出的代表各种文字或图像文件的数据信号都属于基带信号。许多信道并不能传输基带信号中的低频分量或直流分量。为了解决这一问题，就必须对基带信号进行调制(modulation)。调制可分为两大类：</p>
+<p>这类调制称为基带调制。仅仅对基带信号的波形进行变换，使它能够与信道特性相适应。变换后的信号仍然是基带信号。由于这种基带调制是把数字信号转换为另一种形式的数字信号，因此大家更愿意把这种过程称为编码(coding)。<br>这类调制称为带通调制。使用载波(carrier)进行调制，把基带信号的频率范围搬移到较高的频段，并转换为模拟信号，这样就能够更好地在模拟信道中传输。经过载波调制后的信号称为带通信号(即仅在一段频率范围内能够通过信道)。<br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/11.jpg" alt></p>
+<h2 id="信道极限容量"><a href="#信道极限容量" class="headerlink" title="信道极限容量"></a>信道极限容量</h2><p>信道能够通过的频率范围</p>
+<p>由于系统传输总特性不理想，导致前后码元的波形畸变、展宽，并使前面波形出现很长的拖尾，蔓延到当前码元的抽样时刻上，从而对当前码元的判决造成干扰，这就是码间串扰，如上图(b)。为了避免码间串扰，奈奎斯特(Nyquist)<br>推导出了著名的奈氏准则。他给出了在假定的理想条件下，为了避免码间串扰，码元的传输速率的上限值。所以，在任何信道中，码元传输的速率是有上限的，传输速率超过此上限，就会出现严重的码间串扰的问题，使接收端对码元的判决(即识别)成为不可能。</p>
+<p>信噪比</p>
+<p>噪声存在于所有的电子设备和通信信道中。信噪比就是信号的平均功率和噪声的平均功率之比，常记为S/N，并用分贝(dB)作为度量单位。在1948年，信息论的创始人香农((Shannon)推导出了著名的香农公式。香农公式指出，信道的极限信息传输速率C是<br>C=Wlog2(1+S/N)(bit/s)<br>C=Wlog2(1+S/N)(bit/s)</p>
+<p>式中，W为信道的带宽(以Hz为单位)，S为信道内所传信号的平均功率，N为信道达部的高斯噪声功率。香农公式表明，信道的带宽或信道中的信噪比越大，信息的极限传输速率就越高。香农公式指出了信息传输速率的上限。香农公式的意义在于：只要信息传输速率低于信道的极限信息传输速率，就一定存在某种办法来实现无差错的传输。<br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/11.png" alt></p>
+<p><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/1.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/2.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/3.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/4.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/5.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/6.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/7.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/8.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/9.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/9.png" alt></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-计算机网络笔记1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/" class="article-date">
+      <time datetime="2020-05-13T11:09:02.000Z" itemprop="datePublished">2020-05-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/">计算机网络笔记1</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><p>突然感觉很羞愧，我居然要在一个小破站上听一个卖化肥的讲计算机网络。<br><img src="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/jpg" alt></p>
+<h2 id="学习体会"><a href="#学习体会" class="headerlink" title="学习体会"></a>学习体会</h2><p>之前在学校学习的时候，感觉就是一知半解，囫囵吞枣的感觉。对于深入来说，其实挺难的。后来听了韩立刚老师的《计算机网络》，从进一步明白计算机的结构，数据的传送，协议的作用以及电脑参数的配置，拓扑电路以及路由的配置。以前在学校的时候，老师让我们ethereal这个抓包软件进行数据抓取。我知道怎么抓，可对于抓到的数据却不懂这些数据的参数的意义是什么。但他的课是理论和实际结合在一起的。一步一个坑，填完再跳下一个坑。特别是子网划分那一部分，现在想想我当时考的时候空的那几道划分子网的题就想锤自己。</p>
+<h2 id="第一部分：绪论"><a href="#第一部分：绪论" class="headerlink" title="第一部分：绪论"></a>第一部分：绪论</h2><p>这个章节主要是告诉我们计算机分层的概念，什么是OSL七层模型，TCP/IP模型，以及综合版五级模型<br>我的感想：分层其实很重要，可以通过一层层的排查，确定到底是哪一层出现了问题，好及时进行排查。<br><img src="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/33.jpg" alt><br><img src="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/40.jpg" alt><br><img src="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/1.jpg" alt><br><img src="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/2.jpg" alt><br><img src="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/3.jpg" alt></p>
+<hr>
+<p>1.分层的意义：标准化和降低每一层与其他层的关联。<br>2.可靠传输的建立必须建立会话，而不可靠传输是不建立会话。</p>
+<p>常有的不可靠传输：QQ对话框的信息输入<br>                 域名解析<br>                 广播屏幕（大家都接收从一台主机发送的数据包）<br><img src="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/9.gif" alt></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-程序员-舔狗" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

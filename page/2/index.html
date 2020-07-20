@@ -277,6 +277,306 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Vue知识点4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/" class="article-date">
+      <time datetime="2020-05-31T02:30:58.000Z" itemprop="datePublished">2020-05-31</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/">Vue知识点4</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="检测数组更新"><a href="#检测数组更新" class="headerlink" title="检测数组更新"></a>检测数组更新</h2><p><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/1.png" alt><br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/2.png" alt><br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/3.png" alt><br>重点：<br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/4.png" alt><br>当通过索引值改变数组序列时，页面数据不会发生改变，但是后台数据会发生改变，原因时因为虚拟DOM没有监听到后端数据改变所以不会重新刷新渲染。<br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/5.png" alt><br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/6.png" alt><br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/7.png" alt><br>代码复习：</p>
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript" src="vue.js"></script>
+    <meta name="generator" content="Hexo 4.2.0"></head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for="item in message" :key="item"></li>
+<pre><code>    &lt;/ul&gt;
+    &lt;button @click=&quot;btnClick&quot;&gt;操作&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    const app = new Vue({
+        el:&apos;#app&apos;,
+        data:{
+            message:[&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;,&apos;E&apos;]
+        },
+        methods:{
+            btnClick() { </code></pre><p>//                        1.push方法，数组尾部添加<br>//                      this.message.push(‘name’);<br>//                      2.pop()删除数组最后应该元素<br>//                       this.message.pop();<br>//                      3.shift():删除数组中第一个元素<br>//                        this.message.shift();<br>//                      4.unshift():在数组最前面添加元素<br>//                         this.message.unshift(‘nmae’);<br>//                      5.splice():插入/删除/替换元素<br>//                        this.message.splice(1,0,’k’,’M’,’L’);<br>//                        this.message.splice(1,1);<br>//                        this.message.splice(1,2,’k’,’M’,’L’);<br>//                      6.sort():数组排序<br>                           this.message.sort();<br>//                        7.reverse():反转<br>//                           this.message.reverse();<br>                      vue方法：Vue.set(更改对象，更改位置序号，更改内容);<br>                      Vue.set(this.message,1,’G’);<br>//                     }<br>//                 }<br>//             });<br>//         </script><br>//     </body><br>// </html>–&gt;</p>
+<h2 id="小试牛刀"><a href="#小试牛刀" class="headerlink" title="小试牛刀"></a>小试牛刀</h2><p>图书购物车DEMO:<br>代码<br>html部分:</p>
+<!-- <!DOCTYPE html> -->
+<!-- <html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <link rel="stylesheet" href="css/book.css" />
+    </head>
+    <body>
+    <script type="text/javascript" src="vue.js"></script>
+        <!--<script type="text/javascript" src="js/book.js"></script>-->
+<pre><code>    &lt;div id=&quot;app&quot; &gt;
+        &lt;div v-if=&quot;books.length&quot; &gt;
+        &lt;table border=&quot;&quot; cellspacing=&quot;&quot; cellpadding=&quot;&quot;&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr &gt;
+                &lt;th&gt;&lt;/th&gt;
+                &lt;th&gt;书籍名称&lt;/th&gt;
+                &lt;th&gt;出版日期&lt;/th&gt;
+                &lt;th&gt;价值&lt;/th&gt;
+                &lt;th&gt;购买数量&lt;/th&gt;
+                &lt;th&gt;操作&lt;/th&gt;
+            &lt;/tr&gt;
+                &lt;tr v-for=&quot;(item ,index) in books&quot;&gt;
+                    &lt;td&gt;{{item.id}}&lt;/td&gt;
+                    &lt;td&gt;{{item.name}}&lt;/td&gt;
+                    &lt;td&gt;{{item.date}}&lt;/td&gt;
+                    &lt;td&gt;{{item.price|getFinalPrice}}&lt;/td&gt;
+                    &lt;td&gt;
+                    &lt;button @click=&quot;decrement(index)&quot; v-bind:disabled=&quot;item.count &lt;= 1&quot; &gt;-&lt;/button&gt;
+                    {{item.count}}
+                    &lt;button @click=&quot;increment(index)&quot;&gt;+&lt;/button&gt;
+                    &lt;/td&gt;
+                    &lt;td class=&quot;bg&quot;&gt;&lt;button @click=&quot;remove(index)&quot; &gt;移除&lt;/button&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+        &lt;span&gt;总价:{{showPrice|getFinalPrice}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div v-else&gt;购物车为空&lt;/div&gt;
+        &lt;br /&gt;
+        &lt;br /&gt;
+        &lt;a href=&quot;&quot; @click=&quot;aClick&quot; class=&quot;btn&quot;&gt;sumbit&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;!-- &lt;script type=&quot;text/javascript&quot;&gt;
+    const app = new Vue({
+            el:&apos;#app&apos;,
+          data:{
+                books:[
+                {id:1,
+                name:&apos;《算法导论》&apos;,
+                date:&apos;2006-9&apos;,
+                price:85.00,
+                count:1
+                },
+                {id:2,
+                name:&apos;《人月神话》&apos;,
+                date:&apos;2006-2&apos;,
+                price:59.00,
+                count:1
+                },
+                {id:3,
+                name:&apos;《编程珠玑》&apos;,
+                date:&apos;2006-10&apos;,
+                price:39.00,
+                count:1
+                },
+                {id:4,
+                name:&apos;《代码大全》&apos;,
+                date:&apos;2006-3&apos;,
+                price:128.00,
+                count:1
+                },
+                ],
+
+            },
+            methods:{
+                decrement(index){</code></pre><p>//                        console.log(“heool”,index)<br>                            this.books[index].count–;<br>                    },<br>                    increment(index){<br>//                        console.log(“ksdhs”,index)<br>                        this.books[index].count++;<br>                    },<br>                    remove(index){<br>                        this.books.splice(index,1)<br>                    },</p>
+<pre><code>        },
+        computed:{
+            showPrice(){
+                let totalPrice = 0;
+                for(let i=0;i&lt;this.books.length;i++)
+                {
+                    totalPrice += this.books[i].price*this.books[i].count;
+                }
+
+                return totalPrice;
+            }
+        },
+        filters:{
+             getFinalPrice(price){
+               return &apos;$&apos;+price.toFixed(2);
+           }
+        }  //过滤器
+        })
+&lt;/script&gt; --&gt;</code></pre><!-- </html> -->
+<p>css部分：<br>body{<br>    height: 100vh;<br>    background: linear-gradient(#141e30,#243b55);<br>}<br>table{<br>    border: 1px solid #e9e9e9;<br>    border-collapse: collapse;<br>    border-spacing: 0;<br>}</p>
+<p>th,td{<br>    padding: 8px, 16px;<br>    border: 1px,solid,#E9E9E9;<br>    text-align: left;<br>}<br>th{<br>    background-color: #f7f7f7;<br>    color: #5c6b77;<br>    font-weight: 600;<br>}<br>#app{<br>    color: white;<br>    position: absolute;<br>    left:50%;<br>    top:50%;<br>    transform: translate(-50%,-50%);<br>    background: linear-gradient(#141e30,#243b55);<br>    /<em>background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);</em>/<br>    background-size: 400%;<br>}<br>button{<br>    width: 50px;<br>    height: 25px;<br>    margin: 18px;<br>    color: #f7f7f7;<br>    border: 1px;<br>    border-radius: 50px;<br>    background: linear-gradient(45deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);<br>    background-size: 400%;<br>}</p>
+<p>.bg{<br>    width: 80px;<br>    height: 45px;<br>}<br>a{<br>    position: absolute;<br>    left: 50%;<br>    top: 110%;<br>    text-decoration: none;<br>    color: white;<br>    text-align: center;<br>    transform: translate(-50%,-50%);<br>    font-size: 20px;<br>    background: linear-gradient(45deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);<br>    background-size: 400%;<br>    width: 100px;<br>    height: 50px;<br>    line-height: 50px;<br>    text-transform: uppercase;<br>    border-radius: 40px;    </p>
+<p>}<br>a:before{<br>    content: “”;<br>    position: absolute;<br>    left: -5px;<br>    right: -5px;<br>    top: -5px;<br>    bottom: -5px;<br>    border: 1px solid red;<br>    background: linear-gradient(45deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);<br>    background-size: 400%;<br>     border-radius: 40px;<br>     filter: blur(20px);<br>     z-index: -1;<br>}<br>@keyframes sun{<br>    100%{<br>        background-position: -400% 0;<br>    }<br>}</p>
+<p>button,a:hover{<br>    animation: sun 8s infinite;<br>}</p>
+<p>a:hover::before{<br>        animation: sun 8s infinite;<br>}</p>
+<p>.active{<br>    display: none;<br>}<br>界面展示：<br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/8.png" alt><br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/9.png" alt></p>
+<p>关于for循环的补充：<br><img src="/2020/05/31/Vue%E7%9F%A5%E8%AF%86%E7%82%B94/10.png" alt></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-遗传算法解决TSP问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/" class="article-date">
+      <time datetime="2020-05-28T09:24:27.000Z" itemprop="datePublished">2020-05-28</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/">遗传算法解决TSP问题</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一问题引入"><a href="#一问题引入" class="headerlink" title="一问题引入:"></a>一问题引入:</h2><p>TSP(Traveling Salesman Problem)即旅行商问题，是数学领域中著名问题之一。这个问题是这样的：假设有一个旅行商人要拜访n个城市，他必须选择所要走的路径，路径的限制是每个城市只能拜访一次，而且最后要回到原来出发的城市。路径的选择目标是要求得的路径长度为所有路径之中的最小值。</p>
+<h2 id="二问题分析"><a href="#二问题分析" class="headerlink" title="二问题分析:"></a>二问题分析:</h2><p><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/1.png" alt><br>假设ABCD指的是城市，而连线上的数字指的是两座城市之间的距离，而TSP问题就是如何在这几座城市中选择最佳路径，其实由上图中可以看出，最佳路径是ABCD。当时真实的情况可能会更加复杂，而且TSP属于NPC问题，没有解法，只能不断改进算法，找到最优解。</p>
+<h2 id="三编程思路"><a href="#三编程思路" class="headerlink" title="三编程思路:"></a>三编程思路:</h2><p>首先我们要理解什么是遗传算法：遗传算法是一种通过模拟生物进化来解决特定问题的方法，它的核心思想是将问题编码为“基因”，然后生成若干个基因不同的个体，让这些个体相互竞争，并使用一种评估机制让它们“优胜劣汰”，最终“进化”出足够优秀的解。具体而言，它有两个核心要点：第一是编码，即需要找到一种合适的方法，将待解决的问题映射为“基因”编码，生成多个个体；第二是评估，即需要一种定量的方法给每个个体打分，评估哪个个体所对应的方案更接近最佳答案，从而可以根据这个分数优胜劣汰。遗传算法只是一种思想，并没有很具体的方法，比如编码和评估方法，都需要具体问题具体分析。<br><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/2.png" alt></p>
+<h2>编码</h2>
+为了方便分析，我们可以将所有城市编号。旅行商从一个城市出发，每个城市只走一次，且没有城市被遗漏，那么旅行商的轨迹实际上就可以简化为城市编号的一个排列，这个排列可以用数列（数组）来表示。
+举例来说，如果一共有 50 个城市，我们给城市从 1 开始编号，可以得到这样的数列：
+<br>
+1, 2, 3, 4, 5, 6, ..., 47, 48, 49, 50
+<br>
+这个数列顺序可以随意打乱，每一种排列都对应一种走法。比如:
+<br>
+12, 50, 30, 26, 13, 45, ..., 39, 18, 41, 17
+<br>
+这个序列表示旅行商从 12 号城市出发，先到 50 号城市，再到 30 号城市，再到 26 号城市，再到 13 号城市，再到 45 号城市，……，再到 39 号城市，再到 18 号城市，再到 41 号城市，最后到 17 号城市，当然，最后的最后还要回到起点城市 12 号城市。
+这样的序列便是一种编码方法，每一种序列我们称之为一个“基因”。一个基因对应的数组类似下图这样
+
+<p><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/3.png" alt></p>
+<p>计算开始时，我们可以随机生成 N 个序列，然后进行下一步评估。本例中，城市数量为 50 个，对应的基因个体数为 100 个<br>所以，我们需要打乱数组生成父代</p>
+<p><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/4.png" alt></p>
+<h2>评估</h2>
+旅行商问题的评估目标非常明确：总路程最短。为了处理方便，我们通常希望每个个体的分数是越大越好，既然总路程是越小越好。所以适应度函数实现便有一个很简单直接的方案，——取总路程的倒数。有了评估函数，我们便能给所有“基因”打分，并基于这个打分产生下一代。下一代的数量通常与前代相同。生成规则一般是：
+1.前代最佳的基因直接进入下一代；
+2.从前代选中两个基因，选中概率正比于得分，将两个基因随机交叉、变异，生成下一代；
+3.重复第 2 步，直到下一代的个体数达到要求。
+
+<p><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/5.png" alt></p>
+<h2>交叉</h2>
+遗传算法模仿的是生物的进化，每次产生下一代时，总是两个前代交换基因（交叉），生成一个后代。交叉的过程如下图所示：
+1.    输入两个父代
+
+<p><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/6.png" alt></p>
+<ol start="2">
+<li>随机选择父代的基因片断</li>
+</ol>
+<p><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/7.png" alt></p>
+<ol start="3">
+<li>交换基因片断</li>
+</ol>
+<p><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/8.png" alt></p>
+<p>这样便能得到两个新的子代，我们只需随机返回一个子代即可。需要注意的是，在旅行商问题中，城市不能重复也不能遗漏，上面的方法产生的子代显然不能满足这个要求。解决方法也很简单，我们直接将另一个父代的基因连接在子代后面，再对数组去重即可：</p>
+<p><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/9.png" alt></p>
+<h2>变异</h2>
+遗传算法本质上是一种搜索算法，为了避免陷入局部最优解，我们要以一定概率让基因发生变异。如同生物界，基因突变大多数情况下都是不好的，但如果没有基因突变，仅靠现有个体交换基因，会很难产生新物种，整个种群有可能一直在低水平的局部最优解徘徊。
+<h2>交换</h2>
+交换指的是在一段基因中，随机选取两个片断，然后交换它们的位置。如下图所示：
+
+<p><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/10.png" alt><br><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/11.png" alt></p>
+<p>一直交配 一直变异 最好的 放到下一代 交配产生的也放到下一代，然后下一代 再选出最好的 放到下下一代。物竞天择，适者生存。总会找到最优的基因也就是最佳路径。<br>评估，找到最优代：</p>
+<p><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/12.png" alt></p>
+<p>最佳路径规范化：</p>
+<p><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/13.png" alt></p>
+<p>然后最优代继续交叉，变异，选择寻找最优的一代，循环往复:</p>
+<p><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/14.png" alt><br><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/15.png" alt></p>
+<h2 id="四流程图"><a href="#四流程图" class="headerlink" title="四流程图:"></a>四流程图:</h2><p>总流程图:<br><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/16.png" alt><br>评估流程图calculateFitness():<br><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/17.png" alt><br>交叉变异产生下一代流程图nextGeneration():<br><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/18.png" alt></p>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果:"></a>实验结果:</h2><p>城市数目为30，基因个体数为：600产生的路径：<br>可以看见是杂乱无序的：<br><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/19.png" alt><br>城市数目为15，基因个体数为：600产生的路径：<br><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/20.png" alt><br>城市数目为30，基因个体数为：600产生的路径，采用遗传算法选择的路径：<br><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/21.png" alt><br><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/22.png" alt><br>城市数目为15，基因个体数为：600产生的路径，采用遗传算法选择的路径：<br><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/23.png" alt><br><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/24.png" alt></p>
+<h2 id="总结和展望："><a href="#总结和展望：" class="headerlink" title="总结和展望："></a>总结和展望：</h2><p>TSP问题是经典的路径选择问题，也有很多解决的算法，例如蚁群算法，动态规划，模拟火山退伙算法，遗传算法等。我之所以选择遗传算法，是因为因为它在算法思想、最优解准确率、适用面等各方面表现都比较好。其实我感觉各种算法归根结底都是穷举法的优化。遗传算法的特点就是通过不断的交配，不断的选择下一代，基因不断优化其实也是不断找到最短，最优路径。然后不断更新城市点坐标，最后找到一条比较好的路径。至于为什么要引入变异，我个人认为是因为遗传算法在某种程度上还是通过不断列举所以可能的路径，在不断交配产生下一代的过程中，难免会陷入局部最优解的困境，而变异则可以跳出局部搜索的弊端，进行全局最优解的搜索。这也是遗传算法与其他算法的不同之处。这一次课设让我学到了很多，对深度学习产生更浓厚的兴趣。我还就遗传算法与蚁群算法和模拟火山退火算法进行了对比，发现了很多共同之处。也受到了很多启发。但是遗传算法也是有自己的不足之处：<br>1.问题必须可编码为“基因”；<br>2.有合适的评估函数。<br>评估函数的选择很重要，可能决定这个算法的是否能找到最优解。所以当要使用这个算法时要结合问题实际。<br><img src="/2020/05/28/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3TSP%E9%97%AE%E9%A2%98/9.gif" alt></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Vue知识点3" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -772,139 +1072,6 @@ const app = new Vue({
       
           
         <h2 id="计算机网络–数据链路层"><a href="#计算机网络–数据链路层" class="headerlink" title="计算机网络–数据链路层"></a>计算机网络–数据链路层</h2><p><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/1.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/2.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/3.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/4.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/5.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/6.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/7.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/8.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/9.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B03/10.jpg" alt></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-计算机网络笔记2" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/" class="article-date">
-      <time datetime="2020-05-14T00:57:54.000Z" itemprop="datePublished">2020-05-14</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/">计算机网络笔记2</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><p>物理层实现的是传输媒体上的数据比特流传输。其实学完这一章，突然明白了当时学的数字逻辑与计算机组成原理。当时觉得这两门课特别难学，数字逻辑计算数字1和0进行各种与或非计算，而计算机组成原理偏向于计算机硬件的作用和原理。主机（cpu+内存），外设（输入设备+输出设备+外存），总线（地址总线+数据总线+控制总线），记忆最深的应该是数据表示和运算器和方法。感觉当时学到头痛。但是当学完这两门课后再看物理层就能更加理解物理层的工作原理。</p>
-<h2 id="物理层模型"><a href="#物理层模型" class="headerlink" title="物理层模型"></a>物理层模型</h2><p>通信的目的是传送消息(message)。如话音、文字、图像、视频等都是消息。数据(data)是运送消息的实体。根据RFC 4949给出的定义，数据是使用特定方式表示的信息，通常是有意义的符号序列。这种信息的表示可用计算机或其他机器(或人)处理或产生。信号(signal)则是数据的电气或电磁的表现。</p>
-<p>根据信号中代表消息的参数的取值方式不同，信号可分为以下两大类：</p>
-<p>模拟信号，或连续信号—代表消息的参数的取值是连续的。例如在图中，用户家中的调制解调器到电话端局之间的用户线上传送的就是模拟信号。<br>数字信号，或离散信号—代表消息的参数的取值是离散的。例如在图中，用户家中的计算机到调制解调器之间，或在电话网中继线上传送的就是数字信号。在使用时间域(或简称为时域)的波形表示数字信号时，代表不同离散数值的基本波形就称为码元。在使用二进制编码时，只有两种不同的码元，一种代表0状态而另一种代表1状态。<br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/10.png" alt></p>
-<h2 id="关于信道"><a href="#关于信道" class="headerlink" title="关于信道"></a>关于信道</h2><p>在许多情况下，我们要使用信道(channel)这一名词。信道和电路并不等同。信道一般都是用来表示向某一个方向传送信息的媒体。因此，一条通信电路往往包含一条发送信道和一条接收信道。从通信的双方信息交互的方式来看，可以有以下三种基本方式：</p>
-<p>单向通信又称为单工通信，即只能有一个方向的通信而没有反方向的交互。无线电广播或有线电广播以及电视广播就属于这种类型。<br>双向交替通信又称为半双工通信，即通信的双方都可以发送信息，但不能双方同时发送(当然也就不能同时接收)。这种通信方式是一方发送另一方接收，过一段时间后可以再反过来。<br>双向同时通信又称为全双工通信，即通信的双方可以同时发送和接收信息。单向通信只需要一条信道，而双向交替通信或双向同时通信则都需要两条信道(每个方向各一条)。显然，双向同时通信的传输效率最高。<br>来自信源的信号常称为基带信号(即基本频带信号)。像计算机输出的代表各种文字或图像文件的数据信号都属于基带信号。许多信道并不能传输基带信号中的低频分量或直流分量。为了解决这一问题，就必须对基带信号进行调制(modulation)。调制可分为两大类：</p>
-<p>这类调制称为基带调制。仅仅对基带信号的波形进行变换，使它能够与信道特性相适应。变换后的信号仍然是基带信号。由于这种基带调制是把数字信号转换为另一种形式的数字信号，因此大家更愿意把这种过程称为编码(coding)。<br>这类调制称为带通调制。使用载波(carrier)进行调制，把基带信号的频率范围搬移到较高的频段，并转换为模拟信号，这样就能够更好地在模拟信道中传输。经过载波调制后的信号称为带通信号(即仅在一段频率范围内能够通过信道)。<br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/11.jpg" alt></p>
-<h2 id="信道极限容量"><a href="#信道极限容量" class="headerlink" title="信道极限容量"></a>信道极限容量</h2><p>信道能够通过的频率范围</p>
-<p>由于系统传输总特性不理想，导致前后码元的波形畸变、展宽，并使前面波形出现很长的拖尾，蔓延到当前码元的抽样时刻上，从而对当前码元的判决造成干扰，这就是码间串扰，如上图(b)。为了避免码间串扰，奈奎斯特(Nyquist)<br>推导出了著名的奈氏准则。他给出了在假定的理想条件下，为了避免码间串扰，码元的传输速率的上限值。所以，在任何信道中，码元传输的速率是有上限的，传输速率超过此上限，就会出现严重的码间串扰的问题，使接收端对码元的判决(即识别)成为不可能。</p>
-<p>信噪比</p>
-<p>噪声存在于所有的电子设备和通信信道中。信噪比就是信号的平均功率和噪声的平均功率之比，常记为S/N，并用分贝(dB)作为度量单位。在1948年，信息论的创始人香农((Shannon)推导出了著名的香农公式。香农公式指出，信道的极限信息传输速率C是<br>C=Wlog2(1+S/N)(bit/s)<br>C=Wlog2(1+S/N)(bit/s)</p>
-<p>式中，W为信道的带宽(以Hz为单位)，S为信道内所传信号的平均功率，N为信道达部的高斯噪声功率。香农公式表明，信道的带宽或信道中的信噪比越大，信息的极限传输速率就越高。香农公式指出了信息传输速率的上限。香农公式的意义在于：只要信息传输速率低于信道的极限信息传输速率，就一定存在某种办法来实现无差错的传输。<br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/11.png" alt></p>
-<p><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/1.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/2.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/3.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/4.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/5.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/6.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/7.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/8.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/9.jpg" alt><br><img src="/2020/05/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B02/9.png" alt></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-计算机网络笔记1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/" class="article-date">
-      <time datetime="2020-05-13T11:09:02.000Z" itemprop="datePublished">2020-05-13</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/">计算机网络笔记1</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><p>突然感觉很羞愧，我居然要在一个小破站上听一个卖化肥的讲计算机网络。<br><img src="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/jpg" alt></p>
-<h2 id="学习体会"><a href="#学习体会" class="headerlink" title="学习体会"></a>学习体会</h2><p>之前在学校学习的时候，感觉就是一知半解，囫囵吞枣的感觉。对于深入来说，其实挺难的。后来听了韩立刚老师的《计算机网络》，从进一步明白计算机的结构，数据的传送，协议的作用以及电脑参数的配置，拓扑电路以及路由的配置。以前在学校的时候，老师让我们ethereal这个抓包软件进行数据抓取。我知道怎么抓，可对于抓到的数据却不懂这些数据的参数的意义是什么。但他的课是理论和实际结合在一起的。一步一个坑，填完再跳下一个坑。特别是子网划分那一部分，现在想想我当时考的时候空的那几道划分子网的题就想锤自己。</p>
-<h2 id="第一部分：绪论"><a href="#第一部分：绪论" class="headerlink" title="第一部分：绪论"></a>第一部分：绪论</h2><p>这个章节主要是告诉我们计算机分层的概念，什么是OSL七层模型，TCP/IP模型，以及综合版五级模型<br>我的感想：分层其实很重要，可以通过一层层的排查，确定到底是哪一层出现了问题，好及时进行排查。<br><img src="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/33.jpg" alt><br><img src="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/40.jpg" alt><br><img src="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/1.jpg" alt><br><img src="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/2.jpg" alt><br><img src="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/3.jpg" alt></p>
-<hr>
-<p>1.分层的意义：标准化和降低每一层与其他层的关联。<br>2.可靠传输的建立必须建立会话，而不可靠传输是不建立会话。</p>
-<p>常有的不可靠传输：QQ对话框的信息输入<br>                 域名解析<br>                 广播屏幕（大家都接收从一台主机发送的数据包）<br><img src="/2020/05/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B01/9.gif" alt></p>
 
       
     </div>
