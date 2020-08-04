@@ -17,7 +17,7 @@
 <meta property="og:description" content="HTML的 Doctype 作用 ?  严格模式与混杂模式如何区分？它们有何意义 ?1.&lt; Doctype&gt; 声明位于文档中的最前面，处于html标签之前。告知浏览器以何种模式来渲染文档。 2.所谓的严格模式也称标准模式是指，浏览器按W3C标准解析执行代码；混杂模式也称怪异模式则是使用浏览器自己的方式解析执行代码，因为不同浏览器解析执行的方式不一样，所以我们称之为怪异模式。 3.浏览器">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-18T07:08:34.000Z">
-<meta property="article:modified_time" content="2020-07-18T07:11:36.103Z">
+<meta property="article:modified_time" content="2020-08-04T09:32:04.066Z">
 <meta property="article:author" content="韦键松">
 <meta name="twitter:card" content="summary">
   
@@ -315,6 +315,8 @@
         <h5 id="HTML的-Doctype-作用-严格模式与混杂模式如何区分？它们有何意义"><a href="#HTML的-Doctype-作用-严格模式与混杂模式如何区分？它们有何意义" class="headerlink" title="HTML的 Doctype 作用 ?  严格模式与混杂模式如何区分？它们有何意义 ?"></a>HTML的 Doctype 作用 ?  严格模式与混杂模式如何区分？它们有何意义 ?</h5><p>1.&lt; Doctype&gt; 声明位于文档中的最前面，处于html标签之前。告知浏览器以何种模式来渲染文档。</p>
 <p>2.所谓的严格模式也称标准模式是指，浏览器按W3C标准解析执行代码；混杂模式也称怪异模式则是使用浏览器自己的方式解析执行代码，因为不同浏览器解析执行的方式不一样，所以我们称之为怪异模式。</p>
 <p>3.浏览器解析时到底使用标准模式还是怪异模式，与你网页中的DTD声明直接相关，DTD声明定义了标准文档的类型（标准模式解析）文档类型，会使浏览器使用相应的方式加载网页并显示，忽略DTD声明,将使网页进入怪异模式。DOCTYPE 不存在或形式不正确会导致文档以怪异模式呈现。HTML5 没有 DTD ，因此也就没有严格模式与混杂模式的区别，HTML5 有相对宽松的语法，实现时，已经尽可能大的实现了向后兼容。</p>
+<h4 id="document-write和inner-HTML的区别"><a href="#document-write和inner-HTML的区别" class="headerlink" title="document.write和inner.HTML的区别"></a>document.write和inner.HTML的区别</h4><p>区别：document.write 是直接将内容写入页面的内容流，会导致整个页面重绘。<br>     inner.HTML会精确定位到某一个节点元素，将内容写入某个DOM节点，不会导致整个页面重绘。</p>
+<h4 id="什么是rem布局："><a href="#什么是rem布局：" class="headerlink" title="什么是rem布局："></a>什么是rem布局：</h4><p><a href="https://www.jianshu.com/p/09bd0ca51ef5" target="_blank" rel="noopener">https://www.jianshu.com/p/09bd0ca51ef5</a></p>
 
       
     </div>
@@ -326,7 +328,7 @@
         <p><span>本文标题:</span><a  href="/2020/07/18/NIOUKE-exercise/">NIOUKE-exercise</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 韦键松 的个人博客">韦键松</a></p>
         <p><span>发布时间:</span>2020年07月18日 - 15时08分</p>
-        <p><span>最后更新:</span>2020年07月18日 - 15时11分</p>
+        <p><span>最后更新:</span>2020年08月04日 - 17时32分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/07/18/NIOUKE-exercise/" title="NIOUKE-exercise">http://yoursite.com/2020/07/18/NIOUKE-exercise/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/07/18/NIOUKE-exercise/　　作者: 韦键松" title=""></span>
@@ -363,7 +365,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#HTML的-Doctype-作用-严格模式与混杂模式如何区分？它们有何意义"><span class="toc-number">1.</span> <span class="toc-text">HTML的 Doctype 作用 ?  严格模式与混杂模式如何区分？它们有何意义 ?</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#HTML的-Doctype-作用-严格模式与混杂模式如何区分？它们有何意义"><span class="toc-number">1.</span> <span class="toc-text">HTML的 Doctype 作用 ?  严格模式与混杂模式如何区分？它们有何意义 ?</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#document-write和inner-HTML的区别"><span class="toc-number"></span> <span class="toc-text">document.write和inner.HTML的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是rem布局："><span class="toc-number"></span> <span class="toc-text">什么是rem布局：</span></a>
 </div>
 <style>
     .left-col .switch-btn {
