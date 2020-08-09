@@ -277,6 +277,72 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-git-code" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/08/04/git-code/" class="article-date">
+      <time datetime="2020-08-04T11:07:13.000Z" itemprop="datePublished">2020-08-04</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/08/04/git-code/">git-code</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="git命令集"><a href="#git命令集" class="headerlink" title="git命令集"></a>git命令集</h4><h4 id="增加文件，命令提交"><a href="#增加文件，命令提交" class="headerlink" title="增加文件，命令提交"></a>增加文件，命令提交</h4><p>命令用于显示当前目录：pwd<br>命令把这个目录变成Git可以管理的仓库：git init<br>告诉Git，把文件添加到仓库：git add<br>可多添加多个文件：git add .<br>$ git commit -m “wrote a readme file”<br>看结果，是否修改：git status<br>小结</p>
+<h4 id="查看文件状态"><a href="#查看文件状态" class="headerlink" title="查看文件状态"></a>查看文件状态</h4><p>要随时掌握工作区的状态，使用git status命令。<br>如果git status告诉你有文件被修改过，用git diff可以查看修改内容。<br>查看修改内容：$ git diff readme.txt<br>查看提交历史记录：git log（$ git log –pretty=oneline:简化信息提交）<br>回退到上一个版本：git reset<br>记录之前输入命令记录：$ git reflog<br>总结：<br>HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset –hard commit_id。<br>穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。<br>要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</p>
+<h4 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件"></a>修改文件</h4><p>丢弃工作区的修改：$ git checkout – readme.txt<br>git checkout – file命令中的–很重要，没有–，就变成了“切换到另一个分支”的命令<br>暂存区的修改撤销掉（unstage），重新放回工作区：$ git reset HEAD readme.txt<br>git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。<br>小结<br>又到了小结时间。<br>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file。<br>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作。<br>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。</file></p>
+<h4 id="删除文件：-rm-test-txt"><a href="#删除文件：-rm-test-txt" class="headerlink" title="删除文件：$ rm test.txt"></a>删除文件：$ rm test.txt</h4><p>查看文件状态：$ git status<br>现在你有两个选择，一是确实要从版本库中删除该文件，那就用命令git rm删掉，并且git commit：<br>$ git rm test.txt<br>$ git commit -m “remove test.txt”<br>彻底删除<br>另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：<br>$ git checkout – test.txt<br>命令git rm用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。</p>
+<h4 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h4><p>创建SSH Key：$ ssh-keygen -t rsa -C “<a href="mailto:youremail@example.com">youremail@example.com</a>“<br>手动创建仓库</p>
+<h4 id="文件远端推送"><a href="#文件远端推送" class="headerlink" title="文件远端推送"></a>文件远端推送</h4><p>$ git init<br>$ git status<br>$ git add .<br>$ git commit -m”关联设计”<br>$ git remote add origin <a href="https://github.com/wjs123fff/ssm-layui.git" target="_blank" rel="noopener">https://github.com/wjs123fff/ssm-layui.git</a></p>
+<!-- $ git pull --rebase origin master -->
+<p>$ git push -u origin master</p>
+<h4 id="仓库克隆"><a href="#仓库克隆" class="headerlink" title="仓库克隆"></a>仓库克隆</h4><p>git clone  <a href="https://github.com/wjs123fff/ssm-layui.git(此操作在自己想要建立的残酷文件下)" target="_blank" rel="noopener">https://github.com/wjs123fff/ssm-layui.git(此操作在自己想要建立的残酷文件下)</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-websit-qianduan" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -500,8 +566,9 @@
 <h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/164.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/165.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/166.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/167.png" alt><br>java和c++和JavaScript的对象的区别，前两者定义的对象属性和方法是固定的，生成对象后是不能更改的，但是JavaScript生成的对象更加灵活，可以之后增加，删除，修改属性和方法，就对象而言更加自然。<br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/168.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/169.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/170.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/171.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/172.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/173.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/174.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/175.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/176.png" alt></p>
 <h4 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h4><p><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/177.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/178.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/179.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/180.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/181.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/182.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/183.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/184.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/185.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/186.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/187.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/188.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/189.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/190.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/191.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/192.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/193.png" alt></p>
 <h4 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h4><p>属性选择遵循：就近原则<br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/194.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/195.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/196.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/197.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/198.png" alt></p>
-<h4 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h4><p>call和apply的区别：<br>call传参是一个个传入对象，所以有多个形参。<br>apply传参只能传一个参数，并且数数组型的。</p>
-<h3 id="javascript进阶"><a href="#javascript进阶" class="headerlink" title="javascript进阶"></a>javascript进阶</h3><h4 id="DOM导读"><a href="#DOM导读" class="headerlink" title="DOM导读"></a>DOM导读</h4><p><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/300.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/301.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/302.png" alt></p>
+<h4 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h4><p>call和apply的区别：<br>call传参是一个个传入对象，所以有多个形参。<br>apply传参只能传一个参数，并且数数组型的。<br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/199.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/200.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/201.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/202.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/203.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/204.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/205.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/206.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/207.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/208.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/209.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/210.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/211.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/212.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/213.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/214.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/215.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/216.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/217.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/218.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/219.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/220.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/221.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/222.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/223.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/224.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/225.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/226.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/227.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/228.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/229.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/230.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/231.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/232.png" alt></p>
+<h4 id="继承模式"><a href="#继承模式" class="headerlink" title="继承模式"></a>继承模式</h4><p><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/233.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/234.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/235.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/236.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/237.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/238.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/239.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/240.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/241png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/242.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/243.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/244.png" alt></p>
+<h4 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h4><h3 id="javascript进阶"><a href="#javascript进阶" class="headerlink" title="javascript进阶"></a>javascript进阶</h3><h4 id="DOM导读"><a href="#DOM导读" class="headerlink" title="DOM导读"></a>DOM导读</h4><p><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/300.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/301.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/302.png" alt></p>
 <h4 id="获取元素方式"><a href="#获取元素方式" class="headerlink" title="获取元素方式"></a>获取元素方式</h4><p><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/303.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/304.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/305.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/306.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/307.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/308.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/309.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/310.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/311.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/312.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/313.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/314.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/315.png" alt><br><img src="/2020/07/09/javascript%E7%AC%94%E8%AE%B0/316.png" alt></p>
 
       
@@ -598,6 +665,13 @@
 <h4 id="transform-orgin"><a href="#transform-orgin" class="headerlink" title="transform-orgin"></a>transform-orgin</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/348.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/349.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/350.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/351.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/352.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/353.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/354.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/355.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/356.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/357.png" alt></p>
 <h4 id="元素居中"><a href="#元素居中" class="headerlink" title="元素居中"></a>元素居中</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/358.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/359.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/360.png" alt></p>
 <h4 id="3D移动"><a href="#3D移动" class="headerlink" title="3D移动"></a>3D移动</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/361.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/362.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/363.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/364.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/365.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/366.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/367.png" alt></p>
+<h4 id="立方体"><a href="#立方体" class="headerlink" title="立方体"></a>立方体</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/368.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/369.png" alt></p>
+<h4 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/370.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/371.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/372.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/373.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/374.png" alt></p>
+<h4 id="时钟案例"><a href="#时钟案例" class="headerlink" title="时钟案例"></a>时钟案例</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/375.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/376.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/377.png" alt></p>
+<h4 id="web字体"><a href="#web字体" class="headerlink" title="web字体"></a>web字体</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/378.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/379.png" alt></p>
+<h4 id="列布局"><a href="#列布局" class="headerlink" title="列布局"></a>列布局</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/380.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/381.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/382.png" alt></p>
+<h4 id="弹性布局"><a href="#弹性布局" class="headerlink" title="弹性布局"></a>弹性布局</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/383.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/384.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/385.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/386.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/387.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/388.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/389.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/390.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/391.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/392.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/393.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/394.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/395.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/396.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/397.png" alt></p>
+<h4 id="小demo"><a href="#小demo" class="headerlink" title="小demo"></a>小demo</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/398.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/399.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/400.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/401.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/402.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/403.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/404.png" alt></p>
 <h4 id="淘宝项目"><a href="#淘宝项目" class="headerlink" title="淘宝项目"></a>淘宝项目</h4><p><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/1000.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/1001.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/1002.png" alt><br><img src="/2020/06/29/css%E5%9F%BA%E7%A1%80/1003.png" alt></p>
 
       
@@ -973,80 +1047,6 @@ public void testDivide() {
 <h2 id="v-slot插槽（具名插槽-作用域插槽）"><a href="#v-slot插槽（具名插槽-作用域插槽）" class="headerlink" title="v-slot插槽（具名插槽+作用域插槽）"></a>v-slot插槽（具名插槽+作用域插槽）</h2><p>什么是作用域插槽：<br>个人理解：父组件对子组件在父组件内显示的数据样式或其他感觉不满意，所以七绕八绕的把数据拿出来增加加一下自己的一些想法，东西上去再进行展示的一件破事。over<br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/8.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/9.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/10.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/11.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/12.png" alt><br>新组件的使用方法：<br><a href="https://www.jianshu.com/p/f69bc367fcee" target="_blank" rel="noopener">https://www.jianshu.com/p/f69bc367fcee</a><br><a href="https://blog.csdn.net/xiaolinlife/article/details/89517928?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-9.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-9.nonecase" target="_blank" rel="noopener">https://blog.csdn.net/xiaolinlife/article/details/89517928?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-9.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-9.nonecase</a></p>
 <h2 id="模块化开发"><a href="#模块化开发" class="headerlink" title="模块化开发"></a>模块化开发</h2><p>javascript的原始功能<br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/13.png" alt><br>项目复杂性–&gt;命名文件–&gt;变量命名冲突–&gt;闭包函数–&gt;代码复用性降低–&gt;闭包函数内创建导出对象–&gt;<br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/14.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/15.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/17.png" alt></p>
 <h2 id="commonJS"><a href="#commonJS" class="headerlink" title="commonJS"></a>commonJS</h2><p><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/18.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/19.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/20.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/21.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/22.png" alt><br>import导入：<br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/23.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/24.png" alt><br>export导出：<br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/25.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/26.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/27.png" alt><br><img src="/2020/06/04/Vue%E7%9F%A5%E8%AF%86%E7%82%B96/1.png" alt></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Vue知识点5" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/" class="article-date">
-      <time datetime="2020-06-01T13:06:26.000Z" itemprop="datePublished">2020-06-01</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/">Vue知识点5</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="组件化开发"><a href="#组件化开发" class="headerlink" title="组件化开发"></a>组件化开发</h2><h2 id="什么是组件化？"><a href="#什么是组件化？" class="headerlink" title="什么是组件化？"></a>什么是组件化？</h2><p><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/9.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/10.png" alt></p>
-<h2 id="组件的注册："><a href="#组件的注册：" class="headerlink" title="组件的注册："></a>组件的注册：</h2><p><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/11.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/12.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/13.png" alt></p>
-<h2 id="步骤解析："><a href="#步骤解析：" class="headerlink" title="步骤解析："></a>步骤解析：</h2><p><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/14.png" alt></p>
-<h2 id="全局组件和局部组件"><a href="#全局组件和局部组件" class="headerlink" title="全局组件和局部组件"></a>全局组件和局部组件</h2><p>全局组件意味着可以在多个vue实例下面使用（前面例子都是全局组件）</p>
-<h2 id="局部组件："><a href="#局部组件：" class="headerlink" title="局部组件："></a>局部组件：</h2><p>只在定义下的组件内有用<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/15.png" alt><br>（为什么组件要在vue实例上才能使用，因为如果在实例之外，页面是无法识别这个自定义标签的）</p>
-<h2 id="父组件和子组件"><a href="#父组件和子组件" class="headerlink" title="父组件和子组件"></a>父组件和子组件</h2><p><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/17.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/16.png" alt></p>
-<h2 id="父子组件通信"><a href="#父子组件通信" class="headerlink" title="父子组件通信"></a>父子组件通信</h2><p><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/35.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/34.png" alt><br>父组件向子组件传递数据通过props<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/37.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/36.png" alt><br>当使用v-bind来绑定coffeed属性，才能进行对变量coffee的数据查询。否则只是将coffee看作一个字符串进行变量输出。</p>
-<h2 id="props的数据验证"><a href="#props的数据验证" class="headerlink" title="props的数据验证"></a>props的数据验证</h2><p><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/38.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/39.png" alt><br>（对象的写法）<br>开发中多用对象写法</p>
-<h2 id="父传子中props中的驼峰标识"><a href="#父传子中props中的驼峰标识" class="headerlink" title="父传子中props中的驼峰标识"></a>父传子中props中的驼峰标识</h2><p><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/40.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/41.png" alt><br>子组件向父组件传递数据通过自定义事件<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/42.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/43.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/44.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/45.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/46.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/47.png" alt></p>
-<h2 id="语法糖注册组件-父子组件写法"><a href="#语法糖注册组件-父子组件写法" class="headerlink" title="语法糖注册组件+父子组件写法"></a>语法糖注册组件+父子组件写法</h2><p><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/18.png" alt></p>
-<h2 id="关于父子组件-双向绑定"><a href="#关于父子组件-双向绑定" class="headerlink" title="关于父子组件+双向绑定"></a>关于父子组件+双向绑定</h2><p><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/48.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/49.png" alt></p>
-<h2 id="父访问子-children-和-refs"><a href="#父访问子-children-和-refs" class="headerlink" title="父访问子-$children 和 $refs"></a>父访问子-$children 和 $refs</h2><p><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/50.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/51.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/53.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/52.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/54.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/55.png" alt></p>
-<h2 id="子访问父-parent-和-￥root-开发中不推荐使用"><a href="#子访问父-parent-和-￥root-开发中不推荐使用" class="headerlink" title="子访问父 -$parent 和 -￥root(开发中不推荐使用)"></a>子访问父 -$parent 和 -￥root(开发中不推荐使用)</h2><p><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/56.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/57.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/58.png" alt></p>
-<h2 id="组件模板分离"><a href="#组件模板分离" class="headerlink" title="组件模板分离"></a>组件模板分离</h2><p><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/20.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/19.png" alt></p>
-<h2 id="组件可以访问vue实例吗？"><a href="#组件可以访问vue实例吗？" class="headerlink" title="组件可以访问vue实例吗？"></a>组件可以访问vue实例吗？</h2><p><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/21.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/22.png" alt></p>
-<h2 id="组件中的data为什么是一个函数"><a href="#组件中的data为什么是一个函数" class="headerlink" title="组件中的data为什么是一个函数"></a>组件中的data为什么是一个函数</h2><p>首先，我们来看一下js中的函数<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/23.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/24.png" alt><br>可以看到，当改变obj1对象的属性时，obj2,obj3的属性值并没有发生改变。因为每次调用的时候函数的栈空间每次都会返回一个新对象。<br>如果将函数改成返回一个obj对象的时候，值会不会跟着改变呢？<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/26.png" alt><br>因为它们指向的都是同一个内存地址，所有当obj1的值发生改变时，obj2,obj3的值也会发生改变。<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/27.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/28.png" alt><br>同理：当我们组件内创建多个组件实例时，每个组件指向的都是同一个data，相当于资源共享。<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/29.png" alt><br>这样就有点麻烦了，因为当其中一个实例改变数据时，另外共享同一个data的组件实例也会发生改变<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/30.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/33.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/31.png" alt><br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/32.png" alt><br>这样应该就不难理解为什么要把数据放在函数里并返回了吧</p>
-<h2 id="部分扩充"><a href="#部分扩充" class="headerlink" title="部分扩充"></a>部分扩充</h2><p>编程范式：<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/2.png" alt><br>函数式编程我个人感觉就是面向过程编程。<br>高阶函数：<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/3.png" alt><br>filter：（适用于数组元素过滤）<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/5.png" alt><br>map:（适用于对数组内所有元素进行计算，改变原值）<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/6.png" alt><br>reduce:<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/7.png" alt><br>箭头函数：<br><img src="/2020/06/01/Vue%E7%9F%A5%E8%AF%86%E7%82%B95/8.png" alt></p>
 
       
     </div>
